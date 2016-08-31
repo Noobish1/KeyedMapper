@@ -10,6 +10,14 @@
 		75BC66811D7691520041B0CA /* KeyedMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 75BC66801D7691520041B0CA /* KeyedMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75BC66881D7691520041B0CA /* KeyedMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BC667D1D7691520041B0CA /* KeyedMapper.framework */; };
 		75BC668D1D7691520041B0CA /* KeyedMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC668C1D7691520041B0CA /* KeyedMapperTests.swift */; };
+		75BC669A1D76918C0041B0CA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66991D76918C0041B0CA /* Dictionary.swift */; };
+		75BC669D1D7691AB0041B0CA /* Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC669C1D7691AB0041B0CA /* Convertible.swift */; };
+		75BC66A01D7691FD0041B0CA /* MapperError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC669F1D7691FD0041B0CA /* MapperError.swift */; };
+		75BC66A21D76924E0041B0CA /* JSONKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66A11D76924E0041B0CA /* JSONKey.swift */; };
+		75BC66A81D7692D20041B0CA /* ReverseMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66A71D7692D20041B0CA /* ReverseMappable.swift */; };
+		75BC66AA1D7692FD0041B0CA /* KeyedMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66A91D7692FD0041B0CA /* KeyedMapper.swift */; };
+		75BC66B11D7697F40041B0CA /* DefaultConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66B01D7697F40041B0CA /* DefaultConvertible.swift */; };
+		75BC66B31D769D270041B0CA /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66B21D769D270041B0CA /* NSDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +37,15 @@
 		75BC66871D7691520041B0CA /* KeyedMapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyedMapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75BC668C1D7691520041B0CA /* KeyedMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedMapperTests.swift; sourceTree = "<group>"; };
 		75BC668E1D7691520041B0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75BC66991D76918C0041B0CA /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		75BC669C1D7691AB0041B0CA /* Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convertible.swift; sourceTree = "<group>"; };
+		75BC669F1D7691FD0041B0CA /* MapperError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperError.swift; sourceTree = "<group>"; };
+		75BC66A11D76924E0041B0CA /* JSONKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONKey.swift; sourceTree = "<group>"; };
+		75BC66A71D7692D20041B0CA /* ReverseMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseMappable.swift; sourceTree = "<group>"; };
+		75BC66A91D7692FD0041B0CA /* KeyedMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedMapper.swift; sourceTree = "<group>"; };
+		75BC66AE1D7694C40041B0CA /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
+		75BC66B01D7697F40041B0CA /* DefaultConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultConvertible.swift; sourceTree = "<group>"; };
+		75BC66B21D769D270041B0CA /* NSDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +73,7 @@
 				75BC667F1D7691520041B0CA /* KeyedMapper */,
 				75BC668B1D7691520041B0CA /* KeyedMapperTests */,
 				75BC667E1D7691520041B0CA /* Products */,
+				75BC66AE1D7694C40041B0CA /* Gemfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,8 +89,10 @@
 		75BC667F1D7691520041B0CA /* KeyedMapper */ = {
 			isa = PBXGroup;
 			children = (
-				75BC66801D7691520041B0CA /* KeyedMapper.h */,
-				75BC66821D7691520041B0CA /* Info.plist */,
+				75BC66971D76916C0041B0CA /* Extensions */,
+				75BC669E1D7691F00041B0CA /* Objects */,
+				75BC669B1D76919F0041B0CA /* Protocols */,
+				75BC66AB1D7694580041B0CA /* Supporting Files */,
 			);
 			path = KeyedMapper;
 			sourceTree = "<group>";
@@ -80,10 +100,56 @@
 		75BC668B1D7691520041B0CA /* KeyedMapperTests */ = {
 			isa = PBXGroup;
 			children = (
-				75BC668C1D7691520041B0CA /* KeyedMapperTests.swift */,
 				75BC668E1D7691520041B0CA /* Info.plist */,
+				75BC668C1D7691520041B0CA /* KeyedMapperTests.swift */,
 			);
 			path = KeyedMapperTests;
+			sourceTree = "<group>";
+		};
+		75BC66971D76916C0041B0CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				75BC66981D76917F0041B0CA /* Foundation */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		75BC66981D76917F0041B0CA /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				75BC66991D76918C0041B0CA /* Dictionary.swift */,
+				75BC66B21D769D270041B0CA /* NSDictionary.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		75BC669B1D76919F0041B0CA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				75BC669C1D7691AB0041B0CA /* Convertible.swift */,
+				75BC66B01D7697F40041B0CA /* DefaultConvertible.swift */,
+				75BC66A11D76924E0041B0CA /* JSONKey.swift */,
+				75BC66A71D7692D20041B0CA /* ReverseMappable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		75BC669E1D7691F00041B0CA /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				75BC66A91D7692FD0041B0CA /* KeyedMapper.swift */,
+				75BC669F1D7691FD0041B0CA /* MapperError.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		75BC66AB1D7694580041B0CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				75BC66821D7691520041B0CA /* Info.plist */,
+				75BC66801D7691520041B0CA /* KeyedMapper.h */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +216,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 5FU3YAJNJH;
 						DevelopmentTeamName = "Blair McArthur (Personal Team)";
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					75BC66861D7691520041B0CA = {
@@ -200,6 +267,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75BC669A1D76918C0041B0CA /* Dictionary.swift in Sources */,
+				75BC66A01D7691FD0041B0CA /* MapperError.swift in Sources */,
+				75BC66AA1D7692FD0041B0CA /* KeyedMapper.swift in Sources */,
+				75BC669D1D7691AB0041B0CA /* Convertible.swift in Sources */,
+				75BC66B11D7697F40041B0CA /* DefaultConvertible.swift in Sources */,
+				75BC66A21D76924E0041B0CA /* JSONKey.swift in Sources */,
+				75BC66B31D769D270041B0CA /* NSDictionary.swift in Sources */,
+				75BC66A81D7692D20041B0CA /* ReverseMappable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -306,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -320,16 +395,18 @@
 		75BC66921D7691520041B0CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = KeyedMapper/Info.plist;
+				INFOPLIST_FILE = "KeyedMapper/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.KeyedMapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -337,11 +414,12 @@
 		75BC66931D7691520041B0CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = KeyedMapper/Info.plist;
+				INFOPLIST_FILE = "KeyedMapper/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.KeyedMapper;
@@ -392,6 +470,7 @@
 				75BC66931D7691520041B0CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		75BC66941D7691520041B0CA /* Build configuration list for PBXNativeTarget "KeyedMapperTests" */ = {
 			isa = XCConfigurationList;
@@ -400,6 +479,7 @@
 				75BC66961D7691520041B0CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
