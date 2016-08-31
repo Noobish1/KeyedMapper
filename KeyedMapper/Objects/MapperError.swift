@@ -1,10 +1,5 @@
 import Foundation
 
-public struct ConvertibleError: Error {
-    public let value: AnyObject?
-    public let type: Any.Type
-}
-
 public enum MapperError<Object: Mappable>: Error {
     case customError(field: String?, message: String)
     case invalidRawValueError(field: Object.Key, forType: Object.Type, value: Any, expectedType: Any.Type)

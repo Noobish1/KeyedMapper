@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75905ED31D7713D200F29920 /* ConvertibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75905ED21D7713D200F29920 /* ConvertibleError.swift */; };
 		75BC66811D7691520041B0CA /* KeyedMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 75BC66801D7691520041B0CA /* KeyedMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75BC66881D7691520041B0CA /* KeyedMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BC667D1D7691520041B0CA /* KeyedMapper.framework */; };
 		75BC668D1D7691520041B0CA /* KeyedMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC668C1D7691520041B0CA /* KeyedMapperTests.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		75905ED21D7713D200F29920 /* ConvertibleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertibleError.swift; sourceTree = "<group>"; };
 		75BC667D1D7691520041B0CA /* KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75BC66801D7691520041B0CA /* KeyedMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyedMapper.h; sourceTree = "<group>"; };
 		75BC66821D7691520041B0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				75BC66A91D7692FD0041B0CA /* KeyedMapper.swift */,
 				75BC669F1D7691FD0041B0CA /* MapperError.swift */,
+				75905ED21D7713D200F29920 /* ConvertibleError.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				75BC669A1D76918C0041B0CA /* Dictionary.swift in Sources */,
 				75BC66A01D7691FD0041B0CA /* MapperError.swift in Sources */,
 				75BC66AA1D7692FD0041B0CA /* KeyedMapper.swift in Sources */,
+				75905ED31D7713D200F29920 /* ConvertibleError.swift in Sources */,
 				75BC669D1D7691AB0041B0CA /* Convertible.swift in Sources */,
 				75BC66B11D7697F40041B0CA /* DefaultConvertible.swift in Sources */,
 				75BC66A21D76924E0041B0CA /* JSONKey.swift in Sources */,
