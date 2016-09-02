@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74A6E5F0F99FC4A0B93CBE76 /* Pods_KeyedMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372B003C4512F244A93D6964 /* Pods_KeyedMapper.framework */; };
 		75905ED31D7713D200F29920 /* ConvertibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75905ED21D7713D200F29920 /* ConvertibleError.swift */; };
 		75BC66811D7691520041B0CA /* KeyedMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 75BC66801D7691520041B0CA /* KeyedMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75BC66881D7691520041B0CA /* KeyedMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BC667D1D7691520041B0CA /* KeyedMapper.framework */; };
@@ -19,6 +20,7 @@
 		75BC66AA1D7692FD0041B0CA /* KeyedMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66A91D7692FD0041B0CA /* KeyedMapper.swift */; };
 		75BC66B11D7697F40041B0CA /* DefaultConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66B01D7697F40041B0CA /* DefaultConvertible.swift */; };
 		75BC66B31D769D270041B0CA /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66B21D769D270041B0CA /* NSDictionary.swift */; };
+		8800A761C99290A96C4E825B /* Pods_KeyedMapperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C32F4E25B088BD6632AAC3 /* Pods_KeyedMapperTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06C32F4E25B088BD6632AAC3 /* Pods_KeyedMapperTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyedMapperTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		372B003C4512F244A93D6964 /* Pods_KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75905ED21D7713D200F29920 /* ConvertibleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertibleError.swift; sourceTree = "<group>"; };
 		75BC667D1D7691520041B0CA /* KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75BC66801D7691520041B0CA /* KeyedMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyedMapper.h; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		75BC66B01D7697F40041B0CA /* DefaultConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultConvertible.swift; sourceTree = "<group>"; };
 		75BC66B21D769D270041B0CA /* NSDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDictionary.swift; sourceTree = "<group>"; };
 		75FEE68C1D793D3B002DBF7D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		81850D351B0273CE18721439 /* Pods-KeyedMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapper/Pods-KeyedMapper.debug.xcconfig"; sourceTree = "<group>"; };
+		BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests.release.xcconfig"; sourceTree = "<group>"; };
+		C150585CAB34957D3A5CC39E /* Pods-KeyedMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapper/Pods-KeyedMapper.release.xcconfig"; sourceTree = "<group>"; };
+		D934EE6EF597E359A078575A /* Pods-KeyedMapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74A6E5F0F99FC4A0B93CBE76 /* Pods_KeyedMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,18 +73,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				75BC66881D7691520041B0CA /* KeyedMapper.framework in Frameworks */,
+				8800A761C99290A96C4E825B /* Pods_KeyedMapperTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		353873040D7AFC6C2A4F7360 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				372B003C4512F244A93D6964 /* Pods_KeyedMapper.framework */,
+				06C32F4E25B088BD6632AAC3 /* Pods_KeyedMapperTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		75BC66731D7691520041B0CA = {
 			isa = PBXGroup;
 			children = (
 				75BC667F1D7691520041B0CA /* KeyedMapper */,
 				75BC668B1D7691520041B0CA /* KeyedMapperTests */,
 				75BC667E1D7691520041B0CA /* Products */,
+				D9366B1DDEF738C46C747711 /* Pods */,
+				353873040D7AFC6C2A4F7360 /* Frameworks */,
 				75BC66AE1D7694C40041B0CA /* Gemfile */,
 				75FEE68C1D793D3B002DBF7D /* .gitignore */,
 			);
@@ -157,6 +178,17 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D9366B1DDEF738C46C747711 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				81850D351B0273CE18721439 /* Pods-KeyedMapper.debug.xcconfig */,
+				C150585CAB34957D3A5CC39E /* Pods-KeyedMapper.release.xcconfig */,
+				D934EE6EF597E359A078575A /* Pods-KeyedMapperTests.debug.xcconfig */,
+				BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -175,10 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75BC66911D7691520041B0CA /* Build configuration list for PBXNativeTarget "KeyedMapper" */;
 			buildPhases = (
+				4DECC995E343B8C8966F793C /* 📦 Check Pods Manifest.lock */,
 				75BC66781D7691520041B0CA /* Sources */,
 				75BC66791D7691520041B0CA /* Frameworks */,
 				75BC667A1D7691520041B0CA /* Headers */,
 				75BC667B1D7691520041B0CA /* Resources */,
+				306D90C05E59557E424C086D /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,9 +227,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75BC66941D7691520041B0CA /* Build configuration list for PBXNativeTarget "KeyedMapperTests" */;
 			buildPhases = (
+				8C130226DC5A0A01A6C057EA /* 📦 Check Pods Manifest.lock */,
 				75BC66831D7691520041B0CA /* Sources */,
 				75BC66841D7691520041B0CA /* Frameworks */,
 				75BC66851D7691520041B0CA /* Resources */,
+				73CFC402A8BB49CA9F0EE13D /* 📦 Embed Pods Frameworks */,
+				E52B57AD625DB686A0067E51 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,6 +303,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		306D90C05E59557E424C086D /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyedMapper/Pods-KeyedMapper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4DECC995E343B8C8966F793C /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		73CFC402A8BB49CA9F0EE13D /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C130226DC5A0A01A6C057EA /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E52B57AD625DB686A0067E51 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		75BC66781D7691520041B0CA /* Sources */ = {
@@ -400,6 +515,7 @@
 		};
 		75BC66921D7691520041B0CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81850D351B0273CE18721439 /* Pods-KeyedMapper.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -419,6 +535,7 @@
 		};
 		75BC66931D7691520041B0CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C150585CAB34957D3A5CC39E /* Pods-KeyedMapper.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -437,6 +554,7 @@
 		};
 		75BC66951D7691520041B0CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D934EE6EF597E359A078575A /* Pods-KeyedMapperTests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = KeyedMapperTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -448,6 +566,7 @@
 		};
 		75BC66961D7691520041B0CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = KeyedMapperTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
