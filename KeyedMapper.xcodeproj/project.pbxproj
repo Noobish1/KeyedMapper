@@ -53,6 +53,7 @@
 		75BC66B01D7697F40041B0CA /* DefaultConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultConvertible.swift; sourceTree = "<group>"; };
 		75BC66B21D769D270041B0CA /* NSDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDictionary.swift; sourceTree = "<group>"; };
 		75FEE68C1D793D3B002DBF7D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		75FEE68D1D793D3B002DBF7D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		81850D351B0273CE18721439 /* Pods-KeyedMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapper/Pods-KeyedMapper.debug.xcconfig"; sourceTree = "<group>"; };
 		BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests.release.xcconfig"; sourceTree = "<group>"; };
 		C150585CAB34957D3A5CC39E /* Pods-KeyedMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapper/Pods-KeyedMapper.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 				353873040D7AFC6C2A4F7360 /* Frameworks */,
 				75BC66AE1D7694C40041B0CA /* Gemfile */,
 				75FEE68C1D793D3B002DBF7D /* .gitignore */,
+				75FEE68D1D793D3B002DBF7D /* .swiftlint.yml */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,6 +210,7 @@
 			buildConfigurationList = 75BC66911D7691520041B0CA /* Build configuration list for PBXNativeTarget "KeyedMapper" */;
 			buildPhases = (
 				4DECC995E343B8C8966F793C /* 📦 Check Pods Manifest.lock */,
+				75FEE6901D793F5D002DBF7D /* ShellScript */,
 				75BC66781D7691520041B0CA /* Sources */,
 				75BC66791D7691520041B0CA /* Frameworks */,
 				75BC667A1D7691520041B0CA /* Headers */,
@@ -349,6 +352,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		75FEE6901D793F5D002DBF7D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint lint --quiet\nelse\n    echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		8C130226DC5A0A01A6C057EA /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
