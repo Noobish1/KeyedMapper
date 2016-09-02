@@ -48,6 +48,7 @@
 		75BC66AE1D7694C40041B0CA /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
 		75BC66B01D7697F40041B0CA /* DefaultConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultConvertible.swift; sourceTree = "<group>"; };
 		75BC66B21D769D270041B0CA /* NSDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDictionary.swift; sourceTree = "<group>"; };
+		75FEE68C1D793D3B002DBF7D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +77,7 @@
 				75BC668B1D7691520041B0CA /* KeyedMapperTests */,
 				75BC667E1D7691520041B0CA /* Products */,
 				75BC66AE1D7694C40041B0CA /* Gemfile */,
+				75FEE68C1D793D3B002DBF7D /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
