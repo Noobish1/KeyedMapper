@@ -1,0 +1,9 @@
+language: objective-c
+osx_image: xcode8
+
+install:
+    - bundle install
+    - bundle exec pod install
+
+script:
+ - xcodebuild clean build test -scheme KeyedMapper -sdk iphonesimulator | xcpretty && exit ${PIPESTATUS[0]}
