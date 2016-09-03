@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		74A6E5F0F99FC4A0B93CBE76 /* Pods_KeyedMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372B003C4512F244A93D6964 /* Pods_KeyedMapper.framework */; };
+		750C74D31D7A7A5A00B9AB51 /* DictionarySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */; };
 		75905ED31D7713D200F29920 /* ConvertibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75905ED21D7713D200F29920 /* ConvertibleError.swift */; };
 		75BC66811D7691520041B0CA /* KeyedMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 75BC66801D7691520041B0CA /* KeyedMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75BC66881D7691520041B0CA /* KeyedMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BC667D1D7691520041B0CA /* KeyedMapper.framework */; };
-		75BC668D1D7691520041B0CA /* KeyedMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC668C1D7691520041B0CA /* KeyedMapperTests.swift */; };
 		75BC669A1D76918C0041B0CA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66991D76918C0041B0CA /* Dictionary.swift */; };
 		75BC669D1D7691AB0041B0CA /* Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC669C1D7691AB0041B0CA /* Convertible.swift */; };
 		75BC66A01D7691FD0041B0CA /* MapperError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC669F1D7691FD0041B0CA /* MapperError.swift */; };
@@ -36,12 +36,12 @@
 /* Begin PBXFileReference section */
 		06C32F4E25B088BD6632AAC3 /* Pods_KeyedMapperTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyedMapperTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		372B003C4512F244A93D6964 /* Pods_KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySpec.swift; sourceTree = "<group>"; };
 		75905ED21D7713D200F29920 /* ConvertibleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertibleError.swift; sourceTree = "<group>"; };
 		75BC667D1D7691520041B0CA /* KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75BC66801D7691520041B0CA /* KeyedMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyedMapper.h; sourceTree = "<group>"; };
 		75BC66821D7691520041B0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75BC66871D7691520041B0CA /* KeyedMapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyedMapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		75BC668C1D7691520041B0CA /* KeyedMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedMapperTests.swift; sourceTree = "<group>"; };
 		75BC668E1D7691520041B0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75BC66991D76918C0041B0CA /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		75BC669C1D7691AB0041B0CA /* Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convertible.swift; sourceTree = "<group>"; };
@@ -90,6 +90,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		750C74D01D7A7A3700B9AB51 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				75BC668E1D7691520041B0CA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		750C74D11D7A7A3F00B9AB51 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		75BC66731D7691520041B0CA = {
 			isa = PBXGroup;
 			children = (
@@ -127,8 +143,8 @@
 		75BC668B1D7691520041B0CA /* KeyedMapperTests */ = {
 			isa = PBXGroup;
 			children = (
-				75BC668E1D7691520041B0CA /* Info.plist */,
-				75BC668C1D7691520041B0CA /* KeyedMapperTests.swift */,
+				750C74D11D7A7A3F00B9AB51 /* Extensions */,
+				750C74D01D7A7A3700B9AB51 /* Supporting Files */,
 			);
 			path = KeyedMapperTests;
 			sourceTree = "<group>";
@@ -419,7 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75BC668D1D7691520041B0CA /* KeyedMapperTests.swift in Sources */,
+				750C74D31D7A7A5A00B9AB51 /* DictionarySpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
