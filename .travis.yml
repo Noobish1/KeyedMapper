@@ -8,4 +8,4 @@ before_install:
     - bundle exec pod install
 
 script:
- - xcodebuild build-for-testing test-without-building -scheme KeyedMapper -workspace KeyedMapper.xcworkspace -sdk iphonesimulator -destination "name=iPhone SE" | xcpretty
+ - xcodebuild build-for-testing test-without-building -scheme KeyedMapper -workspace KeyedMapper.xcworkspace -sdk iphonesimulator -destination "name=iPhone SE" | xcpretty && exit ${PIPESTATUS[0]}
