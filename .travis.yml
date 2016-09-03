@@ -8,4 +8,4 @@ before_install:
     - bundle exec pod install
 
 script:
- - xcodebuild clean build test -scheme KeyedMapper -sdk iphonesimulator | xcpretty && exit ${PIPESTATUS[0]}
+ - xcodebuild clean build test -scheme KeyedMapper -sdk iphonesimulator -destination "id=9793E592-F0FF-4C4A-BEEF-FDD50A67E8C1" | xcpretty && exit ${PIPESTATUS[0]}
