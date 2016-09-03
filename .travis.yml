@@ -1,5 +1,7 @@
 language: objective-c
 osx_image: xcode8
+rvm:
+ - 2.3.0p0
 
 install:
     - bundle install
