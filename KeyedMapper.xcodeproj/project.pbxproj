@@ -13,6 +13,7 @@
 		75182DF21D7BDAD100AEAD44 /* KeyedMapper+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DF11D7BDAD100AEAD44 /* KeyedMapper+RawRepresentable.swift */; };
 		75182DF41D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DF31D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift */; };
 		75182DF61D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */; };
+		75182DFB1D7BE1C200AEAD44 /* KeyedMapperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */; };
 		75905ED31D7713D200F29920 /* ConvertibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75905ED21D7713D200F29920 /* ConvertibleError.swift */; };
 		75BC66811D7691520041B0CA /* KeyedMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 75BC66801D7691520041B0CA /* KeyedMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75BC66881D7691520041B0CA /* KeyedMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BC667D1D7691520041B0CA /* KeyedMapper.framework */; };
@@ -46,6 +47,7 @@
 		75182DF11D7BDAD100AEAD44 /* KeyedMapper+RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+RawRepresentable.swift"; sourceTree = "<group>"; };
 		75182DF31D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Mappable.swift"; sourceTree = "<group>"; };
 		75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Convertible.swift"; sourceTree = "<group>"; };
+		75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyedMapperSpec.swift; path = Objects/KeyedMapperSpec.swift; sourceTree = "<group>"; };
 		75905ED21D7713D200F29920 /* ConvertibleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertibleError.swift; sourceTree = "<group>"; };
 		75BC667D1D7691520041B0CA /* KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75BC66801D7691520041B0CA /* KeyedMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyedMapper.h; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 			path = KeyedMapper;
 			sourceTree = "<group>";
 		};
+		75182DF71D7BE17400AEAD44 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		75BC66731D7691520041B0CA = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +174,7 @@
 		75BC668B1D7691520041B0CA /* KeyedMapperTests */ = {
 			isa = PBXGroup;
 			children = (
+				75182DF71D7BE17400AEAD44 /* Objects */,
 				750C74D11D7A7A3F00B9AB51 /* Extensions */,
 				750C74D01D7A7A3700B9AB51 /* Supporting Files */,
 			);
@@ -460,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75182DFB1D7BE1C200AEAD44 /* KeyedMapperSpec.swift in Sources */,
 				750C74D31D7A7A5A00B9AB51 /* DictionarySpec.swift in Sources */,
 				750C74D71D7BC34800B9AB51 /* NSDictionarySpec.swift in Sources */,
 			);
