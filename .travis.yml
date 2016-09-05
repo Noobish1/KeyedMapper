@@ -1,14 +1,17 @@
 language: objective-c
 osx_image: xcode8
 rvm:
- - 2.3.0
+    - 2.3.0
 cache:
-- bundler
-- cocoapods
+    - bundler
+    - cocoapods
 
 before_install:
     - bundle install
     - bundle exec pod install
 
 script:
- - xcodebuild build-for-testing test-without-building -scheme KeyedMapper -workspace KeyedMapper.xcworkspace -sdk iphonesimulator -destination "name=iPhone SE" | xcpretty && exit ${PIPESTATUS[0]}
+    - xcodebuild build-for-testing test-without-building -scheme KeyedMapper -workspace KeyedMapper.xcworkspace -sdk iphonesimulator -destination "name=iPhone SE" | xcpretty && exit ${PIPESTATUS[0]}
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
