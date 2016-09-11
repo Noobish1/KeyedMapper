@@ -66,6 +66,17 @@ class KeyedMapperSpec: QuickSpec {
                     }
                 }
             }
+            
+            describe("from<T>") {
+                it("should use the given transform on the returned object") {
+                    let expectedValue = "transformedValue"
+                    let dict: NSDictionary = ["stringProperty" : expectedValue]
+                    let mapper = KeyedMapper<ModelWithStringProperty>(JSON: dict, type: ModelWithStringProperty.self)
+                    let result = mapper.from(.stringProperty, transformation: { _ in expectedValue })
+                    
+                    expect(result) == expectedValue
+                }
+            }
         }
     }
 }
