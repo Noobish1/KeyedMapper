@@ -35,8 +35,8 @@ public struct KeyedMapper<Object: Mappable> {
         return try transformation(try self.JSONFromField(field))
     }
     
-    public func optionalFrom<T>(_ field: Object.Key, transformation: (AnyObject?) throws -> T?) -> T? {
-        return (try? transformation(try? self.JSONFromField(field))).flatMap { $0 }
+    public func optionalFrom<T>(_ field: Object.Key, transformation: (AnyObject) throws -> T) rethrows -> T? {
+        return try (try? self.JSONFromField(field)).map(transformation)
     }
     
     //MARK: Retrieving JSON from a field
