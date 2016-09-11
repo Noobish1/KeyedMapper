@@ -31,8 +31,8 @@ public struct KeyedMapper<Object: Mappable> {
     }
     
     //MARK: Transformations
-    public func from<T>(_ field: Object.Key, transformation: (AnyObject?) throws -> T) rethrows -> T {
-        return try transformation(try? self.JSONFromField(field))
+    public func from<T>(_ field: Object.Key, transformation: (AnyObject) throws -> T) throws -> T {
+        return try transformation(try self.JSONFromField(field))
     }
     
     public func optionalFrom<T>(_ field: Object.Key, transformation: (AnyObject?) throws -> T?) -> T? {
