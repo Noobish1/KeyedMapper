@@ -2,11 +2,11 @@ import Foundation
 
 public extension KeyedMapper {
     public func from<T: Convertible>(_ field: Object.Key) throws -> T where T == T.ConvertedType {
-        return try self.from(field: field, transformation: T.fromMap)
+        return try self.from(field, transformation: T.fromMap)
     }
     
     public func from<T: Convertible>(_ field: Object.Key) throws -> T? where T == T.ConvertedType {
-        return try self.from(field: field, transformation: T.fromMap)
+        return try self.from(field, transformation: T.fromMap)
     }
     
     public func from<T: Convertible>(_ field: Object.Key) throws -> [T] where T == T.ConvertedType {
@@ -19,7 +19,7 @@ public extension KeyedMapper {
     }
     
     public func optionalFrom<T: Convertible>(_ field: Object.Key) -> T? where T == T.ConvertedType {
-        return try? self.from(field: field, transformation: T.fromMap)
+        return try? self.from(field, transformation: T.fromMap)
     }
     
     public func optionalFrom<T: Convertible>(_ field: Object.Key) -> [T]? where T == T.ConvertedType {
