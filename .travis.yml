@@ -6,8 +6,8 @@ cache:
     - bundler
     - cocoapods
 
-before_install:
-    - bundle install
+install:
+    - bundle install --path vendor/bundle
     - bundle exec pod install
 
 script:
