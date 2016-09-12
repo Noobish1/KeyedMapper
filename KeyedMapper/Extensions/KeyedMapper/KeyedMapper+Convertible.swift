@@ -11,11 +11,12 @@ public extension KeyedMapper {
     
     public func from<T: Convertible>(_ field: Object.Key) throws -> [T] where T == T.ConvertedType {
         let value = try self.JSONFromField(field)
-        if let JSON = value as? [AnyObject] {
-            return try JSON.map(T.fromMap)
+        
+        guard let JSON = value as? [AnyObject] else {
+            throw MapperError.typeMismatchError(field: field, forType: Object.self, value: value, expectedType: [AnyObject].self)
         }
         
-        throw MapperError.typeMismatchError(field: field, forType: Object.self, value: value, expectedType: [AnyObject].self)
+        return try JSON.map(T.fromMap)
     }
     
     public func optionalFrom<T: Convertible>(_ field: Object.Key) -> T? where T == T.ConvertedType {
