@@ -2,18 +2,6 @@ import Quick
 import Nimble
 @testable import KeyedMapper
 
-private struct ModelWithDictionaryProperty: Mappable {
-    fileprivate let property: NSDictionary
-    
-    fileprivate enum Key: String, JSONKey {
-        case property = ""
-    }
-    
-    fileprivate init(map: KeyedMapper<ModelWithDictionaryProperty>) throws {
-        try self.property = map.from(.property)
-    }
-}
-
 private struct ModelWithStringProperty: Mappable {
     fileprivate let stringProperty: String
     
@@ -32,18 +20,6 @@ private func == (lhs: ModelWithStringProperty, rhs: ModelWithStringProperty) -> 
     return lhs.stringProperty == rhs.stringProperty
 }
 
-private struct ModelWithOptionalStringProperty: Mappable {
-    fileprivate let stringProperty: String?
-    
-    fileprivate enum Key: String, JSONKey {
-        case stringProperty = "stringProperty"
-    }
-    
-    fileprivate init(map: KeyedMapper<ModelWithOptionalStringProperty>) throws {
-        self.stringProperty = map.optionalFrom(.stringProperty)
-    }
-}
-
 class MappableSpec: QuickSpec {
     override func spec() {
         describe("Mappable") {
@@ -53,9 +29,9 @@ class MappableSpec: QuickSpec {
                         let JSON: NSArray = [1]
                         
                         do {
-                            _ = try ModelWithDictionaryProperty.from(JSON: JSON)
-                        } catch let error as MapperError<ModelWithDictionaryProperty> {
-                            expect(error) == MapperError.rootTypeMismatchError(forType: ModelWithDictionaryProperty.self, value: JSON, expectedType: [NSDictionary].self)
+                            _ = try ModelWithStringProperty.from(JSON: JSON)
+                        } catch let error as MapperError<ModelWithStringProperty> {
+                            expect(error) == MapperError.rootTypeMismatchError(forType: ModelWithStringProperty.self, value: JSON, expectedType: [NSDictionary].self)
                         } catch {
                             XCTFail("Error thrown from from(JSON: NSArray) was not a MapperError")
                         }
