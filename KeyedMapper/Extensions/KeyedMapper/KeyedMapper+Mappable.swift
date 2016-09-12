@@ -26,14 +26,4 @@ public extension KeyedMapper {
     public func optionalFrom<T: Mappable>(_ field: Object.Key) -> [T]? {
         return try? self.from(field)
     }
-    
-    public func optionalFrom<T: Mappable>(_ fields: [Object.Key]) -> T? {
-        for field in fields {
-            if let value: T = try? self.from(field) {
-                return value
-            }
-        }
-        
-        return nil
-    }
 }
