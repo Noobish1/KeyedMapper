@@ -26,6 +26,18 @@ private struct ModelWithStringProperty: Mappable {
     }
 }
 
+private struct ModelWithOptionalStringProperty: Mappable {
+    fileprivate let stringProperty: String?
+    
+    fileprivate enum Key: String, JSONKey {
+        case stringProperty = "stringProperty"
+    }
+    
+    fileprivate init(map: KeyedMapper<ModelWithOptionalStringProperty>) throws {
+        self.stringProperty = map.optionalFrom(.stringProperty)
+    }
+}
+
 class KeyedMapperSpec: QuickSpec {
     override func spec() {
         describe("KeyedMapper") {
@@ -69,12 +81,36 @@ class KeyedMapperSpec: QuickSpec {
             
             describe("from<T>") {
                 it("should use the given transform on the returned object") {
-                    let expectedValue = "transformedValue"
-                    let dict: NSDictionary = ["stringProperty" : expectedValue]
+                    let transformedValue = "transformedValue"
+                    let dict: NSDictionary = ["stringProperty" : "notTheExpectedValue"]
                     let mapper = KeyedMapper<ModelWithStringProperty>(JSON: dict, type: ModelWithStringProperty.self)
-                    let result = try! mapper.from(.stringProperty, transformation: { _ in expectedValue })
+                    let result = try! mapper.from(.stringProperty, transformation: { _ in transformedValue })
                     
-                    expect(result) == expectedValue
+                    expect(result) == transformedValue
+                }
+            }
+            
+            describe("optionalFrom<T>") {
+                context("when the field does not exist in the given JSON") {
+                    it("should return nil") {
+                        let expectedValue = "notTheExpectedValue"
+                        let dict: NSDictionary = [:]
+                        let mapper = KeyedMapper<ModelWithOptionalStringProperty>(JSON: dict, type: ModelWithOptionalStringProperty.self)
+                        let result = mapper.optionalFrom(.stringProperty, transformation: { _ in expectedValue })
+                        
+                        expect(result).to(beNil())
+                    }
+                }
+                
+                context("when the field exists in the given JSON") {
+                    it("should return the transformed value") {
+                        let transformedValue = "transformedValue"
+                        let dict: NSDictionary = ["stringProperty" : "notTheExpectedValue"]
+                        let mapper = KeyedMapper<ModelWithOptionalStringProperty>(JSON: dict, type: ModelWithOptionalStringProperty.self)
+                        let result = mapper.optionalFrom(.stringProperty, transformation: { _ in transformedValue })
+                        
+                        expect(result) == transformedValue
+                    }
                 }
             }
         }
