@@ -15,11 +15,11 @@ public extension Mappable {
     }
     
     public static func from(JSON: NSArray) throws -> [Self] {
-        if let array = JSON as? [NSDictionary] {
-            return try array.map { try self.init(map: KeyedMapper(JSON: $0, type: self)) }
-        } else {
+        guard let array = JSON as? [NSDictionary] else {
             throw MapperError.rootTypeMismatchError(forType: self, value: JSON, expectedType: [NSDictionary].self)
         }
+        
+        return try array.map { try self.init(map: KeyedMapper(JSON: $0, type: self)) }
     }
 }
 
