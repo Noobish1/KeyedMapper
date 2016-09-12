@@ -72,7 +72,7 @@ class KeyedMapperSpec: QuickSpec {
                     let expectedValue = "transformedValue"
                     let dict: NSDictionary = ["stringProperty" : expectedValue]
                     let mapper = KeyedMapper<ModelWithStringProperty>(JSON: dict, type: ModelWithStringProperty.self)
-                    let result = mapper.from(.stringProperty, transformation: { _ in expectedValue })
+                    let result = try! mapper.from(.stringProperty, transformation: { _ in expectedValue })
                     
                     expect(result) == expectedValue
                 }
