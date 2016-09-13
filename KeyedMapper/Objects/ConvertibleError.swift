@@ -1,7 +1,7 @@
 import Foundation
 
 public struct ConvertibleError: Error {
-    public let value: AnyObject?
+    public let value: Any?
     public let type: Any.Type
     
     public var failureReason: String {

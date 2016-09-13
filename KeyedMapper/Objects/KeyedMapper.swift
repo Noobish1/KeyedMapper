@@ -31,20 +31,20 @@ public struct KeyedMapper<Object: Mappable> {
     }
     
     //MARK: Transformations
-    public func from<T>(_ field: Object.Key, transformation: (AnyObject) throws -> T) throws -> T {
+    public func from<T>(_ field: Object.Key, transformation: (Any) throws -> T) throws -> T {
         return try transformation(try self.JSONFromField(field))
     }
     
-    public func optionalFrom<T>(_ field: Object.Key, transformation: (AnyObject) throws -> T) rethrows -> T? {
+    public func optionalFrom<T>(_ field: Object.Key, transformation: (Any) throws -> T) rethrows -> T? {
         return try (try? self.JSONFromField(field)).map(transformation)
     }
     
     //MARK: Retrieving JSON from a field
-    public func JSONFromField(_ field: Object.Key) throws -> AnyObject {
+    public func JSONFromField(_ field: Object.Key) throws -> Any {
         guard let value = field.stringValue.isEmpty ? self.JSON : self.JSON.safeValueForKeyPath(field.stringValue) else {
             throw MapperError.missingFieldError(field: field, forType: Object.self)
         }
         
-        return value as AnyObject
+        return value
     }
 }

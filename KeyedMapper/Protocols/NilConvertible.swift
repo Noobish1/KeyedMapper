@@ -17,5 +17,5 @@ public protocol NilConvertible {
      
      - returns: The successfully created value from the given input
      */
-    static func fromMap(_ value: AnyObject?) throws -> ConvertedType
+    static func fromMap(_ value: Any?) throws -> ConvertedType
 }

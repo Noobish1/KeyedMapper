@@ -4,8 +4,8 @@ public enum MapperError<Object: Mappable>: Error {
     case customError(field: Object.Key?, message: String)
     case invalidRawValueError(field: Object.Key, forType: Object.Type, value: Any, expectedType: Any.Type)
     case missingFieldError(field: Object.Key, forType: Object.Type)
-    case typeMismatchError(field: Object.Key, forType: Object.Type, value: AnyObject, expectedType: Any.Type)
-    case rootTypeMismatchError(forType: Object.Type, value: AnyObject, expectedType: Any.Type)
+    case typeMismatchError(field: Object.Key, forType: Object.Type, value: Any, expectedType: Any.Type)
+    case rootTypeMismatchError(forType: Object.Type, value: Any, expectedType: Any.Type)
     
     public var failureReason: String {
         switch self {
