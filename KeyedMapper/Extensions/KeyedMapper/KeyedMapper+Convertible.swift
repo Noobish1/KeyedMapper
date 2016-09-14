@@ -16,7 +16,7 @@ public extension KeyedMapper {
     }
     
     public func optionalFrom<T: Convertible>(_ field: Object.Key) -> T? where T == T.ConvertedType {
-        return try? self.from(field, transformation: T.fromMap)
+        return try? self.from(field)
     }
     
     public func optionalFrom<T: Convertible>(_ field: Object.Key) -> [T]? where T == T.ConvertedType {
