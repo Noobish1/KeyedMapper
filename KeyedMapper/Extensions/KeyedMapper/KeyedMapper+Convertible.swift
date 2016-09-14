@@ -5,10 +5,6 @@ public extension KeyedMapper {
         return try self.from(field, transformation: T.fromMap)
     }
     
-    public func from<T: Convertible>(_ field: Object.Key) throws -> T? where T == T.ConvertedType {
-        return try self.from(field, transformation: T.fromMap)
-    }
-    
     public func from<T: Convertible>(_ field: Object.Key) throws -> [T] where T == T.ConvertedType {
         let value = try self.JSONFromField(field)
         
