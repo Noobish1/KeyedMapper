@@ -58,6 +58,7 @@
 		75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Convertible.swift"; sourceTree = "<group>"; };
 		75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedMapperSpec.swift; sourceTree = "<group>"; };
 		7562CA871D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "KeyedMapper+RawRepresentableSpec.swift"; path = "../Objects/KeyedMapper+RawRepresentableSpec.swift"; sourceTree = "<group>"; };
+		7562CA8B1D88E59700430687 /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codebeatignore; sourceTree = "<group>"; };
 		7566673A1D864A2800AFFE02 /* NilConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NilConvertible.swift; sourceTree = "<group>"; };
 		7566673C1D864A6D00AFFE02 /* KeyedMapper+NilConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+NilConvertible.swift"; sourceTree = "<group>"; };
 		757073361D8658F4006C5D7F /* MappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableSpec.swift; sourceTree = "<group>"; };
@@ -202,6 +203,7 @@
 				D9366B1DDEF738C46C747711 /* Pods */,
 				75BC667E1D7691520041B0CA /* Products */,
 				75FEE68C1D793D3B002DBF7D /* .gitignore */,
+				7562CA8B1D88E59700430687 /* .codebeatignore */,
 				75FEE68D1D793D3B002DBF7D /* .swiftlint.yml */,
 				750C74D41D7A83B000B9AB51 /* .travis.yml */,
 				75BC66AE1D7694C40041B0CA /* Gemfile */,
