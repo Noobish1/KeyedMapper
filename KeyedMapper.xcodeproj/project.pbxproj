@@ -57,7 +57,7 @@
 		75182DF31D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Mappable.swift"; sourceTree = "<group>"; };
 		75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Convertible.swift"; sourceTree = "<group>"; };
 		75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedMapperSpec.swift; sourceTree = "<group>"; };
-		7562CA871D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "KeyedMapper+RawRepresentableSpec.swift"; path = "../Objects/KeyedMapper+RawRepresentableSpec.swift"; sourceTree = "<group>"; };
+		7562CA871D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+RawRepresentableSpec.swift"; sourceTree = "<group>"; };
 		7562CA8B1D88E59700430687 /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codebeatignore; sourceTree = "<group>"; };
 		7566673A1D864A2800AFFE02 /* NilConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NilConvertible.swift; sourceTree = "<group>"; };
 		7566673C1D864A6D00AFFE02 /* KeyedMapper+NilConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+NilConvertible.swift"; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		757073381D866C95006C5D7F /* DefaultConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultConvertibleSpec.swift; sourceTree = "<group>"; };
 		7570733B1D86743A006C5D7F /* ConvertibleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertibleError.swift; sourceTree = "<group>"; };
 		7570733D1D867458006C5D7F /* MapperError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperError.swift; sourceTree = "<group>"; };
-		7578B9B91D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "KeyedMapper+NilConvertibleSpec.swift"; path = "../Objects/KeyedMapper+NilConvertibleSpec.swift"; sourceTree = "<group>"; };
+		7578B9B91D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+NilConvertibleSpec.swift"; sourceTree = "<group>"; };
 		7578B9BB1D87AC840009A143 /* ReverseMappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseMappableSpec.swift; sourceTree = "<group>"; };
 		75905ED21D7713D200F29920 /* ConvertibleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertibleError.swift; sourceTree = "<group>"; };
 		75BC667D1D7691520041B0CA /* KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,8 +132,8 @@
 		750C74D11D7A7A3F00B9AB51 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7562CA8A1D88CE7A00430687 /* KeyedMapper */,
 				7562CA891D88CE7200430687 /* Foundation */,
+				7562CA8A1D88CE7A00430687 /* KeyedMapper */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -163,7 +163,7 @@
 				750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */,
 				750C74D61D7BC34800B9AB51 /* NSDictionarySpec.swift */,
 			);
-			name = Foundation;
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		7562CA8A1D88CE7A00430687 /* KeyedMapper */ = {
@@ -172,14 +172,14 @@
 				7578B9B91D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift */,
 				7562CA871D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift */,
 			);
-			name = KeyedMapper;
+			path = KeyedMapper;
 			sourceTree = "<group>";
 		};
 		757073351D8658DF006C5D7F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				757073361D8658F4006C5D7F /* MappableSpec.swift */,
 				757073381D866C95006C5D7F /* DefaultConvertibleSpec.swift */,
+				757073361D8658F4006C5D7F /* MappableSpec.swift */,
 				7578B9BB1D87AC840009A143 /* ReverseMappableSpec.swift */,
 			);
 			path = Protocols;
@@ -191,7 +191,7 @@
 				7570733B1D86743A006C5D7F /* ConvertibleError.swift */,
 				7570733D1D867458006C5D7F /* MapperError.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		75BC66731D7691520041B0CA = {
@@ -202,8 +202,8 @@
 				75BC668B1D7691520041B0CA /* KeyedMapperTests */,
 				D9366B1DDEF738C46C747711 /* Pods */,
 				75BC667E1D7691520041B0CA /* Products */,
-				75FEE68C1D793D3B002DBF7D /* .gitignore */,
 				7562CA8B1D88E59700430687 /* .codebeatignore */,
+				75FEE68C1D793D3B002DBF7D /* .gitignore */,
 				75FEE68D1D793D3B002DBF7D /* .swiftlint.yml */,
 				750C74D41D7A83B000B9AB51 /* .travis.yml */,
 				75BC66AE1D7694C40041B0CA /* Gemfile */,
