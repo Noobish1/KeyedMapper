@@ -41,7 +41,7 @@ fileprivate struct Model: Mappable {
     }
 }
 
-class KeyedMapperNilConvertibleSpec: QuickSpec {
+class KeyedMapper_NilConvertibleSpec: QuickSpec {
     override func spec() {
         describe("KeyedMapper+NilConvertible") {
             describe("from<T: NilConvertible>") {
