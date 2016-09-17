@@ -54,8 +54,6 @@
 		7500471B1D8D0C83000C0779 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySpec.swift; sourceTree = "<group>"; };
 		750C74D41D7A83B000B9AB51 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
-		75106DF01D8D1597008E1D6D /* NilConvertible.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = NilConvertible.playground; sourceTree = "<group>"; };
-		75106DF11D8D167A008E1D6D /* Convertible.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Convertible.playground; sourceTree = "<group>"; };
 		75182DF11D7BDAD100AEAD44 /* KeyedMapper+RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+RawRepresentable.swift"; sourceTree = "<group>"; };
 		75182DF31D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Mappable.swift"; sourceTree = "<group>"; };
 		75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Convertible.swift"; sourceTree = "<group>"; };
@@ -74,6 +72,7 @@
 		7570733D1D867458006C5D7F /* MapperError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperError.swift; sourceTree = "<group>"; };
 		7578B9B91D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+NilConvertibleSpec.swift"; sourceTree = "<group>"; };
 		7578B9BB1D87AC840009A143 /* ReverseMappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseMappableSpec.swift; sourceTree = "<group>"; };
+		75A985711D8DF43C00109E0A /* KeyedMapper.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KeyedMapper.playground; sourceTree = "<group>"; };
 		75BC667D1D7691520041B0CA /* KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75BC66801D7691520041B0CA /* KeyedMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyedMapper.h; sourceTree = "<group>"; };
 		75BC66821D7691520041B0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -146,8 +145,7 @@
 		75106DEF1D8D1597008E1D6D /* Playgrounds */ = {
 			isa = PBXGroup;
 			children = (
-				75106DF01D8D1597008E1D6D /* NilConvertible.playground */,
-				75106DF11D8D167A008E1D6D /* Convertible.playground */,
+				75A985711D8DF43C00109E0A /* KeyedMapper.playground */,
 			);
 			path = Playgrounds;
 			sourceTree = "<group>";
