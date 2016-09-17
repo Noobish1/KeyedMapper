@@ -47,7 +47,7 @@ class KeyedMapper_NilConvertibleSpec: QuickSpec {
             describe("from<T: NilConvertible>") {
                 context("when the given JSON does not contain the value") {
                     it("should map correctly to the nothing case") {
-                        let JSON: NSDictionary = [:]
+                        let JSON: [AnyHashable : Any] = [:]
                         let model = try! Model.from(JSON: JSON)
                         
                         expect(model.enumProperty) == NilConvertibleEnum.nothing
@@ -56,7 +56,7 @@ class KeyedMapper_NilConvertibleSpec: QuickSpec {
                 
                 context("when the given JSON does contain the value") {
                     it("should map correctly to the something case") {
-                        let JSON: NSDictionary = ["enumProperty": ""]
+                        let JSON: [AnyHashable : Any] = ["enumProperty": ""]
                         let model = try! Model.from(JSON: JSON)
                         
                         expect(model.enumProperty) == NilConvertibleEnum.something

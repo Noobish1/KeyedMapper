@@ -32,26 +32,26 @@ fileprivate struct Model: Mappable {
 class KeyedMapper_MappableSpec: QuickSpec {
     override func spec() {
         describe("from<T: Mappable> -> T") {
-            context("when the value in the JSON is not an NSDictionary") {
+            context("when the value in the JSON is not an Dictionary") {
                 it("should throw a typeMismatchError") {
                     let expectedValue = 2
-                    let dict: NSDictionary = ["mappableProperty" : expectedValue]
+                    let dict: [AnyHashable : Any] = ["mappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     
                     do {
                         let _: SubModel = try mapper.from(.mappableProperty)
                     } catch let error as MapperError {
-                        expect(error) == MapperError.typeMismatchError(field: Model.Key.mappableProperty.stringValue, forType: Model.self, value: expectedValue, expectedType: NSDictionary.self)
+                        expect(error) == MapperError.typeMismatchError(field: Model.Key.mappableProperty.stringValue, forType: Model.self, value: expectedValue, expectedType: [AnyHashable : Any].self)
                     } catch {
                         XCTFail("Error thrown from KeyedMapper<T: Mappable>.from was not a MapperError")
                     }
                 }
             }
             
-            context("when the value in the JSON is an NSDictionary") {
+            context("when the value in the JSON is an Dictionary") {
                 it("should map correctly") {
                     let expectedValue = ["stringProperty" : ""]
-                    let dict: NSDictionary = ["mappableProperty" : expectedValue]
+                    let dict: [AnyHashable : Any] = ["mappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let model: SubModel = try! mapper.from(.mappableProperty)
                     
@@ -61,27 +61,27 @@ class KeyedMapper_MappableSpec: QuickSpec {
         }
         
         describe("from<T: Mappable> -> [T]") {
-            context("when the value in the JSON is not an array of NSDictionaries") {
+            context("when the value in the JSON is not an array of Dictionaries") {
                 it("should throw a typeMismatchError") {
                     let expectedValue = 2
-                    let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
+                    let dict: [AnyHashable : Any] = ["arrayMappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let field = Model.Key.arrayMappableProperty
                     
                     do {
                         let _: [SubModel] = try mapper.from(field)
                     } catch let error as MapperError {
-                        expect(error) == MapperError.typeMismatchError(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: [NSDictionary].self)
+                        expect(error) == MapperError.typeMismatchError(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: [[AnyHashable : Any]].self)
                     } catch {
                         XCTFail("Error thrown from KeyedMapper<T: Mappable>.from was not a MapperError")
                     }
                 }
             }
             
-            context("when the value in the JSON is an array of NSDictionaries") {
+            context("when the value in the JSON is an array of Dictionaries") {
                 it("should map correctly") {
                     let expectedValue = [["stringProperty" : ""]]
-                    let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
+                    let dict: [AnyHashable : Any] = ["arrayMappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let models: [SubModel] = try! mapper.from(.arrayMappableProperty)
                     
@@ -92,10 +92,10 @@ class KeyedMapper_MappableSpec: QuickSpec {
         }
         
         describe("optionalFrom<T: Mappable> -> T?") {
-            context("when the value in the JSON is not an NSDictionary") {
+            context("when the value in the JSON is not an Dictionary") {
                 it("should throw a typeMismatchError") {
                     let expectedValue = 2
-                    let dict: NSDictionary = ["mappableProperty" : expectedValue]
+                    let dict: [AnyHashable : Any] = ["mappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let model: SubModel? = mapper.optionalFrom(.mappableProperty)
                     
@@ -103,10 +103,10 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 }
             }
             
-            context("when the value in the JSON is an NSDictionary") {
+            context("when the value in the JSON is an Dictionary") {
                 it("should map correctly") {
                     let expectedValue = ["stringProperty" : ""]
-                    let dict: NSDictionary = ["mappableProperty" : expectedValue]
+                    let dict: [AnyHashable : Any] = ["mappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let model: SubModel? = mapper.optionalFrom(.mappableProperty)
                     
@@ -116,10 +116,10 @@ class KeyedMapper_MappableSpec: QuickSpec {
         }
         
         describe("from<T: Mappable> -> [T]") {
-            context("when the value in the JSON is not an array of NSDictionaries") {
+            context("when the value in the JSON is not an array of Dictionaries") {
                 it("should throw a typeMismatchError") {
                     let expectedValue = 2
-                    let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
+                    let dict: [AnyHashable : Any] = ["arrayMappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let models: [SubModel]? = mapper.optionalFrom(.arrayMappableProperty)
                     
@@ -127,10 +127,10 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 }
             }
             
-            context("when the value in the JSON is an array of NSDictionaries") {
+            context("when the value in the JSON is an array of Dictionaries") {
                 it("should map correctly") {
                     let expectedValue = [["stringProperty" : ""]]
-                    let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
+                    let dict: [AnyHashable : Any] = ["arrayMappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let models: [SubModel]? = mapper.optionalFrom(.arrayMappableProperty)
                     
