@@ -61,6 +61,7 @@
 		750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySpec.swift; sourceTree = "<group>"; };
 		750C74D41D7A83B000B9AB51 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		750C74D61D7BC34800B9AB51 /* NSDictionarySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDictionarySpec.swift; sourceTree = "<group>"; };
+		75106DF01D8D1597008E1D6D /* NilConvertible.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = NilConvertible.playground; sourceTree = "<group>"; };
 		75182DF11D7BDAD100AEAD44 /* KeyedMapper+RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+RawRepresentable.swift"; sourceTree = "<group>"; };
 		75182DF31D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Mappable.swift"; sourceTree = "<group>"; };
 		75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Convertible.swift"; sourceTree = "<group>"; };
@@ -148,6 +149,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		75106DEF1D8D1597008E1D6D /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				75106DF01D8D1597008E1D6D /* NilConvertible.playground */,
+			);
+			path = Playgrounds;
+			sourceTree = "<group>";
+		};
 		75182DF01D7BDA8C00AEAD44 /* KeyedMapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +220,7 @@
 		75BC66731D7691520041B0CA = {
 			isa = PBXGroup;
 			children = (
+				75106DEF1D8D1597008E1D6D /* Playgrounds */,
 				353873040D7AFC6C2A4F7360 /* Frameworks */,
 				75BC667F1D7691520041B0CA /* KeyedMapper */,
 				75BC668B1D7691520041B0CA /* KeyedMapperTests */,
