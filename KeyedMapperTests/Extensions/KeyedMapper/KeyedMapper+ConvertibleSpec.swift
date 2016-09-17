@@ -5,7 +5,7 @@ import Nimble
 fileprivate struct ConvertibleObject: Convertible {
     fileprivate let stringProperty: String
     
-    fileprivate static func fromMap(_ value: Any?) throws -> ConvertibleObject {
+    fileprivate static func fromMap(_ value: Any) throws -> ConvertibleObject {
         guard let string = value as? String else {
             throw ConvertibleError(value: value, type: String.self)
         }
