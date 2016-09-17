@@ -2,7 +2,7 @@ import Foundation
 
 public protocol ReverseMappable {
     associatedtype Key: JSONKey
-    
+
     func toKeyedJSON() -> [Key : Any?]
     func toJSON() -> [AnyHashable : Any]
 }

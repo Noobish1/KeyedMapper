@@ -1,13 +1,6 @@
 disabled_rules: # rule identifiers to exclude from running
   - trailing_newline
-  - trailing_whitespace
-  - variable_name
   - todo
-  - line_length
-  - cyclomatic_complexity
-  - function_parameter_count
-  - closing_brace
-  - conditional_binding_cascade
   - valid_docs
 opt_in_rules:
   - force_unwrapping

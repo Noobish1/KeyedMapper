@@ -7,7 +7,7 @@ public enum MapperError: Error {
     case typeMismatchError(field: String, forType: Any.Type, value: Any, expectedType: Any.Type)
     case rootTypeMismatchError(forType: Any.Type, value: Any, expectedType: Any.Type)
     case convertibleError(value: Any, expectedType: Any.Type)
-    
+
     public var failureReason: String {
         switch self {
             case .customError(_, message: let message):
