@@ -1,6 +1,8 @@
 import UIKit
 import KeyedMapper
 
+// Implementation
+
 enum NilConvertibleEnum {
     case something
     case nothing
@@ -15,6 +17,8 @@ extension NilConvertibleEnum: NilConvertible {
         }
     }
 }
+
+// Example usage
 
 let someEnumVariable = try NilConvertibleEnum.fromMap("")
 let nothingEnumVariable = try NilConvertibleEnum.fromMap(nil)
