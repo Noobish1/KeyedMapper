@@ -5,18 +5,18 @@ public protocol Mappable {
     
     init(map: KeyedMapper<Self>) throws
     
-    static func from(JSON: NSDictionary) throws -> Self
-    static func from(JSON: NSArray) throws -> [Self]
+    static func from(JSON: [AnyHashable : Any]) throws -> Self
+    static func from(JSON: [Any]) throws -> [Self]
 }
 
 public extension Mappable {
-    public static func from(JSON: NSDictionary) throws -> Self {
+    public static func from(JSON: [AnyHashable : Any]) throws -> Self {
         return try self.init(map: KeyedMapper(JSON: JSON, type: self))
     }
     
-    public static func from(JSON: NSArray) throws -> [Self] {
-        guard let array = JSON as? [NSDictionary] else {
-            throw MapperError.rootTypeMismatchError(forType: self, value: JSON, expectedType: [NSDictionary].self)
+    public static func from(JSON: [Any]) throws -> [Self] {
+        guard let array = JSON as? [[AnyHashable : Any]] else {
+            throw MapperError.rootTypeMismatchError(forType: self, value: JSON, expectedType: [[AnyHashable : Any]].self)
         }
         
         return try array.map { try self.init(map: KeyedMapper(JSON: $0, type: self)) }
@@ -24,9 +24,9 @@ public extension Mappable {
 }
 
 public struct KeyedMapper<Object: Mappable> {
-    public let JSON: NSDictionary
+    public let JSON: [AnyHashable : Any]
     
-    public init(JSON: NSDictionary, type: Object.Type) {
+    public init(JSON: [AnyHashable : Any], type: Object.Type) {
         self.JSON = JSON
     }
     
@@ -40,11 +40,23 @@ public struct KeyedMapper<Object: Mappable> {
     }
     
     //MARK: Retrieving JSON from a field
-    public func JSONFromField(_ field: Object.Key) throws -> Any {
-        guard let value = field.stringValue.isEmpty ? self.JSON : self.JSON.safeValueForKeyPath(field.stringValue) else {
+    internal func JSONFromField(_ field: Object.Key) throws -> Any {
+        guard let value = field.stringValue.isEmpty ? self.JSON : self.safeValueForKeyPath(field.stringValue, inDictionary: self.JSON) else {
             throw MapperError.missingFieldError(field: field.stringValue, forType: Object.self)
         }
         
         return value
+    }
+    
+    internal func safeValueForKeyPath(_ keyPath: String, inDictionary dictionary: [AnyHashable : Any]) -> Any? {
+        var object: Any? = dictionary
+        var keys = keyPath.characters.split(separator: ".").map(String.init)
+        
+        while keys.count > 0, let currentObject = object {
+            let key = keys.remove(at: 0)
+            object = (currentObject as? [AnyHashable : Any])?[key]
+        }
+        
+        return object
     }
 }

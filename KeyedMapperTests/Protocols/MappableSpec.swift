@@ -23,22 +23,22 @@ extension ModelWithStringProperty: Equatable {
 class MappableSpec: QuickSpec {
     override func spec() {
         describe("Mappable") {
-            describe("from NSArray") {
-                context("when the passed in array is not an array of NSDictionaries") {
+            describe("from Array") {
+                context("when the passed in array is not an array of Dictionaries") {
                     it("should throw a MapperError.rootTypeMismatchError") {
-                        let JSON: NSArray = [1]
+                        let JSON: [Any] = [1]
                         
                         do {
                             _ = try ModelWithStringProperty.from(JSON: JSON)
                         } catch let error as MapperError {
-                            expect(error) == MapperError.rootTypeMismatchError(forType: ModelWithStringProperty.self, value: JSON, expectedType: [NSDictionary].self)
+                            expect(error) == MapperError.rootTypeMismatchError(forType: ModelWithStringProperty.self, value: JSON, expectedType: [[AnyHashable : Any]].self)
                         } catch {
-                            XCTFail("Error thrown from from(JSON: NSArray) was not a MapperError")
+                            XCTFail("Error thrown from from(JSON: Array) was not a MapperError")
                         }
                     }
                 }
                 
-                context("when the passed in array is an array of NSDictionaries") {
+                context("when the passed in array is an array of Dictionaries") {
                     it("should map the model correctly") {
                         let model = try! ModelWithStringProperty.from(JSON: ["stringProperty": ""])
                         let models = try! ModelWithStringProperty.from(JSON: [["stringProperty": ""]])
