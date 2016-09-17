@@ -21,11 +21,3 @@ type_name:
   max_length: # warning and error
     warning: 50
     error: 60
-custom_rules:
-  no_space_between_marks:
-    name: "MARK usage"
-    regex: "//\s+MARK"
-    match_kinds:
-      - comment
-    message: "Don't place anything between the slashes and MARK"
-    severity: error

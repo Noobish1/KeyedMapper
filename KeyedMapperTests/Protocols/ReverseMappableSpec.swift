@@ -9,12 +9,12 @@ fileprivate struct Model: Mappable, ReverseMappable {
     
     fileprivate let stringProperty: String
     
-    //MARK: Mappable
+    // MARK: Mappable
     fileprivate init(map: KeyedMapper<Model>) throws {
         try self.stringProperty = map.from(.stringProperty)
     }
     
-    //MARK: ReverseMappable
+    // MARK: ReverseMappable
     fileprivate func toKeyedJSON() -> [Key : Any?] {
         return [.stringProperty : stringProperty]
     }

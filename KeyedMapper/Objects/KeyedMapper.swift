@@ -30,7 +30,7 @@ public struct KeyedMapper<Object: Mappable> {
         self.JSON = JSON
     }
 
-    //MARK: Transformations
+    // MARK: Transformations
     public func from<T>(_ field: Object.Key, transformation: (Any) throws -> T) throws -> T {
         return try transformation(try JSON(fromField: field))
     }
@@ -39,7 +39,7 @@ public struct KeyedMapper<Object: Mappable> {
         return try (try? JSON(fromField: field)).map(transformation)
     }
 
-    //MARK: Retrieving JSON from a field
+    // MARK: Retrieving JSON from a field
     internal func JSON(fromField field: Object.Key) throws -> Any {
         guard let value = field.stringValue.isEmpty ? JSON : safeValue(forKeyPath: field.stringValue, inDictionary: JSON) else {
             throw MapperError.missingFieldError(field: field.stringValue, forType: Object.self)
