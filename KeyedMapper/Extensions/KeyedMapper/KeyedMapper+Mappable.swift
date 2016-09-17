@@ -2,7 +2,7 @@ import Foundation
 
 public extension KeyedMapper {
     public func from<T: Mappable>(_ field: Object.Key) throws -> T {
-        let value = try self.JSONFromField(field)
+        let value = try self.JSON(fromField: field)
         
         guard let JSON = value as? [AnyHashable : Any] else {
             throw MapperError.typeMismatchError(field: field.stringValue, forType: Object.self, value: value, expectedType: [AnyHashable : Any].self)
@@ -12,7 +12,7 @@ public extension KeyedMapper {
     }
     
     public func from<T: Mappable>(_ field: Object.Key) throws -> [T] {
-        let value = try self.JSONFromField(field)
+        let value = try self.JSON(fromField: field)
         
         guard let JSON = value as? [[AnyHashable : Any]] else {
             throw MapperError.typeMismatchError(field: field.stringValue, forType: Object.self, value: value, expectedType: [[AnyHashable : Any]].self)

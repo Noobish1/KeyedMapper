@@ -2,7 +2,7 @@ import Foundation
 
 public extension KeyedMapper {
     public func from<T: RawRepresentable>(_ field: Object.Key) throws -> T {
-        let object = try self.JSONFromField(field)
+        let object = try self.JSON(fromField: field)
         
         guard let rawValue = object as? T.RawValue else {
             throw MapperError.typeMismatchError(field: field.stringValue, forType: Object.self, value: object, expectedType: T.RawValue.self)

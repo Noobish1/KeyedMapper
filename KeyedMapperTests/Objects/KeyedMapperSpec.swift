@@ -46,7 +46,7 @@ class KeyedMapperSpec: QuickSpec {
                     it("should return the KeyedMapper's JSON") {
                         let dict: [AnyHashable : Any] = [:]
                         let mapper = KeyedMapper<ModelWithProperty>(JSON: dict, type: ModelWithProperty.self)
-                        let result = try! mapper.JSONFromField(.property) as! [AnyHashable : Any]
+                        let result = try! mapper.JSON(fromField: .property) as! [AnyHashable : Any]
                         
                         expect((result as NSDictionary)) == (dict as NSDictionary)
                     }
@@ -57,7 +57,7 @@ class KeyedMapperSpec: QuickSpec {
                         let expectedValue = "value"
                         let dict: [AnyHashable : Any] = ["stringProperty" : expectedValue]
                         let mapper = KeyedMapper<ModelWithStringProperty>(JSON: dict, type: ModelWithStringProperty.self)
-                        let result = try! mapper.JSONFromField(.stringProperty) as! String
+                        let result = try! mapper.JSON(fromField: .stringProperty) as! String
                         
                         expect(result) == expectedValue
                     }
@@ -70,7 +70,7 @@ class KeyedMapperSpec: QuickSpec {
                         let field = ModelWithStringProperty.Key.stringProperty
                         
                         do {
-                            try _ = mapper.JSONFromField(field)
+                            try _ = mapper.JSON(fromField: field)
                         } catch let error as MapperError {
                             expect(error) == MapperError.missingFieldError(field: field.stringValue, forType: ModelWithStringProperty.self)
                         } catch {
@@ -85,7 +85,7 @@ class KeyedMapperSpec: QuickSpec {
                     it("should return the entire dictionary") {
                         let dict: [AnyHashable : Any] = ["key" : "value"]
                         let mapper = KeyedMapper<ModelWithStringProperty>(JSON: dict, type: ModelWithStringProperty.self)
-                        let value = mapper.safeValueForKeyPath("", inDictionary: dict) as! [AnyHashable : Any]
+                        let value = mapper.safeValue(forKeyPath: "", inDictionary: dict) as! [AnyHashable : Any]
                         
                         expect((value as NSDictionary)) == (dict as NSDictionary)
                     }
@@ -98,7 +98,7 @@ class KeyedMapperSpec: QuickSpec {
                             let expectedValue = "value"
                             let dict: [AnyHashable : Any] = [key : expectedValue]
                             let mapper = KeyedMapper<ModelWithStringProperty>(JSON: dict, type: ModelWithStringProperty.self)
-                            let value = mapper.safeValueForKeyPath(key, inDictionary: dict) as! String
+                            let value = mapper.safeValue(forKeyPath: key, inDictionary: dict) as! String
                             
                             expect(value) == expectedValue
                         }
@@ -109,7 +109,7 @@ class KeyedMapperSpec: QuickSpec {
                             let key = "key"
                             let dict: [AnyHashable : Any] = [:]
                             let mapper = KeyedMapper<ModelWithStringProperty>(JSON: dict, type: ModelWithStringProperty.self)
-                            let value = mapper.safeValueForKeyPath(key, inDictionary: dict) as? String
+                            let value = mapper.safeValue(forKeyPath: key, inDictionary: dict) as? String
                             
                             expect(value).to(beNil())
                         }
@@ -125,7 +125,7 @@ class KeyedMapperSpec: QuickSpec {
                             let expectedValue = "value"
                             let dict: [AnyHashable : Any] = [firstKey : [secondKey : expectedValue]]
                             let mapper = KeyedMapper<ModelWithStringProperty>(JSON: dict, type: ModelWithStringProperty.self)
-                            let value = mapper.safeValueForKeyPath(keyPath, inDictionary: dict) as! String
+                            let value = mapper.safeValue(forKeyPath: keyPath, inDictionary: dict) as! String
                             
                             expect(value) == expectedValue
                         }
@@ -138,7 +138,7 @@ class KeyedMapperSpec: QuickSpec {
                             let keyPath = "\(firstKey).\(secondKey)"
                             let dict: [AnyHashable : Any] = [firstKey : [:]]
                             let mapper = KeyedMapper<ModelWithStringProperty>(JSON: dict, type: ModelWithStringProperty.self)
-                            let value = mapper.safeValueForKeyPath(keyPath, inDictionary: dict) as? String
+                            let value = mapper.safeValue(forKeyPath: keyPath, inDictionary: dict) as? String
                             
                             expect(value).to(beNil())
                         }
