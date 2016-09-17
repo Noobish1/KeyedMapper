@@ -89,5 +89,54 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 }
             }
         }
+        
+        describe("optionalFrom<T: Mappable> -> T?") {
+            context("when the value in the JSON is not an NSDictionary") {
+                it("should throw a typeMismatchError") {
+                    let expectedValue = 2
+                    let dict: NSDictionary = ["mappableProperty" : expectedValue]
+                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let model: SubModel? = mapper.optionalFrom(.mappableProperty)
+                    
+                    expect(model).to(beNil())
+                }
+            }
+            
+            context("when the value in the JSON is an NSDictionary") {
+                it("should map correctly") {
+                    let expectedValue = ["stringProperty" : ""]
+                    let dict: NSDictionary = ["mappableProperty" : expectedValue]
+                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let model: SubModel? = mapper.optionalFrom(.mappableProperty)
+                    
+                    expect(model).toNot(beNil())
+                }
+            }
+        }
+        
+        describe("from<T: Mappable> -> [T]") {
+            context("when the value in the JSON is not an array of NSDictionaries") {
+                it("should throw a typeMismatchError") {
+                    let expectedValue = 2
+                    let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
+                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let models: [SubModel]? = mapper.optionalFrom(.arrayMappableProperty)
+                    
+                    expect(models).to(beNil())
+                }
+            }
+            
+            context("when the value in the JSON is an array of NSDictionaries") {
+                it("should map correctly") {
+                    let expectedValue = [["stringProperty" : ""]]
+                    let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
+                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let models: [SubModel]? = mapper.optionalFrom(.arrayMappableProperty)
+                    
+                    expect(models).toNot(beNil())
+                    expect(models?.count) == expectedValue.count
+                }
+            }
+        }
     }
 }
