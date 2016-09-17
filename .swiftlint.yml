@@ -5,6 +5,8 @@ disabled_rules: # rule identifiers to exclude from running
 opt_in_rules:
   - force_unwrapping
   - vertical_whitespace
+  - private_outlet
+  - conditional_returns_on_newline
 included:
   - KeyedMapper
 line_length: 160
