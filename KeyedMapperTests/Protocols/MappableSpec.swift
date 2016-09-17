@@ -30,7 +30,7 @@ class MappableSpec: QuickSpec {
                         
                         do {
                             _ = try ModelWithStringProperty.from(JSON: JSON)
-                        } catch let error as MapperError<ModelWithStringProperty> {
+                        } catch let error as MapperError {
                             expect(error) == MapperError.rootTypeMismatchError(forType: ModelWithStringProperty.self, value: JSON, expectedType: [NSDictionary].self)
                         } catch {
                             XCTFail("Error thrown from from(JSON: NSArray) was not a MapperError")

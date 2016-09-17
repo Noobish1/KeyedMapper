@@ -7,7 +7,7 @@ fileprivate struct ConvertibleObject: Convertible {
     
     fileprivate static func fromMap(_ value: Any) throws -> ConvertibleObject {
         guard let string = value as? String else {
-            throw ConvertibleError(value: value, type: String.self)
+            throw MapperError.convertibleError(value: value, expectedType: String.self)
         }
         
         return ConvertibleObject(stringProperty: string)
@@ -40,8 +40,8 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                     
                     do {
                         let _: ConvertibleObject = try mapper.from(.convertibleProperty)
-                    } catch let error as ConvertibleError {
-                        expect(error) == ConvertibleError(value: expectedValue, type: String.self)
+                    } catch let error as MapperError {
+                        expect(error) == MapperError.convertibleError(value: expectedValue, expectedType: String.self)
                     } catch {
                         XCTFail("Error thrown from from<T: Convertible> -> T was not a ConvertibleError")
                     }
@@ -65,11 +65,12 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                     let expectedValue: NSDictionary = [:]
                     let dict: NSDictionary = ["convertibleArrayProperty" : [:]]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let field = Model.Key.convertibleArrayProperty
                     
                     do {
-                        let _: [ConvertibleObject] = try mapper.from(.convertibleArrayProperty)
-                    } catch let error as MapperError<Model> {
-                        expect(error) == MapperError.typeMismatchError(field: .convertibleArrayProperty, forType: Model.self, value: expectedValue, expectedType: [Any].self)
+                        let _: [ConvertibleObject] = try mapper.from(field)
+                    } catch let error as MapperError {
+                        expect(error) == MapperError.typeMismatchError(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: [Any].self)
                     } catch {
                         XCTFail("Error thrown from from<T: Convertible> -> [T] was not a MapperError")
                     }

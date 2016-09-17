@@ -67,11 +67,12 @@ class KeyedMapperSpec: QuickSpec {
                     it("should throw a missing field error") {
                         let dict: NSDictionary = [:]
                         let mapper = KeyedMapper<ModelWithStringProperty>(JSON: dict, type: ModelWithStringProperty.self)
+                        let field = ModelWithStringProperty.Key.stringProperty
                         
                         do {
-                            try _ = mapper.JSONFromField(.stringProperty)
-                        } catch let error as MapperError<ModelWithStringProperty> {
-                            expect(error) == MapperError.missingFieldError(field: .stringProperty, forType: ModelWithStringProperty.self)
+                            try _ = mapper.JSONFromField(field)
+                        } catch let error as MapperError {
+                            expect(error) == MapperError.missingFieldError(field: field.stringValue, forType: ModelWithStringProperty.self)
                         } catch {
                             XCTFail("Error thrown from JSONFromField was not a MapperError")
                         }

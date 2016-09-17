@@ -9,7 +9,7 @@ public extension KeyedMapper {
         let value = try self.JSONFromField(field)
         
         guard let JSON = value as? [Any] else {
-            throw MapperError.typeMismatchError(field: field, forType: Object.self, value: value, expectedType: [Any].self)
+            throw MapperError.typeMismatchError(field: field.stringValue, forType: Object.self, value: value, expectedType: [Any].self)
         }
         
         return try JSON.map(T.fromMap)

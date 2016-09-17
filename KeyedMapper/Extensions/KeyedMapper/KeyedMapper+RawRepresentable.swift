@@ -5,11 +5,11 @@ public extension KeyedMapper {
         let object = try self.JSONFromField(field)
         
         guard let rawValue = object as? T.RawValue else {
-            throw MapperError.typeMismatchError(field: field, forType: Object.self, value: object, expectedType: T.RawValue.self)
+            throw MapperError.typeMismatchError(field: field.stringValue, forType: Object.self, value: object, expectedType: T.RawValue.self)
         }
         
         guard let value = T(rawValue: rawValue) else {
-            throw MapperError.invalidRawValueError(field: field, forType: Object.self, value: rawValue, expectedType: T.self)
+            throw MapperError.invalidRawValueError(field: field.stringValue, forType: Object.self, value: rawValue, expectedType: T.self)
         }
         
         return value

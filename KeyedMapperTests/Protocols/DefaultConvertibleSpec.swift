@@ -13,8 +13,8 @@ class DefaultConvertibleSpec: QuickSpec {
                         
                         do {
                             _ = try type.fromMap(value)
-                        } catch let error as ConvertibleError {
-                            expect(error) == ConvertibleError(value: value, type: type)
+                        } catch let error as MapperError {
+                            expect(error) == MapperError.convertibleError(value: value, expectedType: type)
                         } catch {
                             XCTFail("Error thrown from DefaultConvertible.fromMap was not a MapperError")
                         }

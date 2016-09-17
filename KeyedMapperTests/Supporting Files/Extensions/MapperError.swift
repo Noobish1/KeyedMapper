@@ -2,7 +2,7 @@ import Foundation
 import KeyedMapper
 
 extension MapperError: Equatable {
-    public static func == <T>(lhs: MapperError<T>, rhs: MapperError<T>) -> Bool where T: Mappable {
+    public static func == (lhs: MapperError, rhs: MapperError) -> Bool {
         switch lhs {
             case .customError(field: let lhsField, message: let lhsMessage):
                 switch rhs {
@@ -36,6 +36,13 @@ extension MapperError: Equatable {
                 switch rhs {
                     case .rootTypeMismatchError(forType: let rhsType, value: _, expectedType: let rhsExpectedType):
                         return lhsType == rhsType && lhsExpectedType == rhsExpectedType
+                    default:
+                        return false
+                }
+            case .convertibleError(value: _, expectedType: let lhsExpectedType):
+                switch rhs {
+                    case .convertibleError(value: _, expectedType: let rhsExpectedType):
+                        return lhsExpectedType == rhsExpectedType
                     default:
                         return false
                 }

@@ -26,11 +26,12 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
                     let expectedValue = 2
                     let dict: NSDictionary = ["enumProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let field = Model.Key.enumProperty
                     
                     do {
-                        let _: ModelEnum = try mapper.from(.enumProperty)
-                    } catch let error as MapperError<Model> {
-                        expect(error) == MapperError.typeMismatchError(field: .enumProperty, forType: Model.self, value: expectedValue, expectedType: ModelEnum.RawValue.self)
+                        let _: ModelEnum = try mapper.from(field)
+                    } catch let error as MapperError {
+                        expect(error) == MapperError.typeMismatchError(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: ModelEnum.RawValue.self)
                     } catch {
                         XCTFail("Error thrown from JSONFromField was not a MapperError")
                     }
@@ -42,11 +43,12 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
                     let expectedValue = "someOtherCase"
                     let dict: NSDictionary = ["enumProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let field = Model.Key.enumProperty
                     
                     do {
-                        let _: ModelEnum = try mapper.from(.enumProperty)
-                    } catch let error as MapperError<Model> {
-                        expect(error) == MapperError.invalidRawValueError(field: .enumProperty, forType: Model.self, value: expectedValue, expectedType: ModelEnum.self)
+                        let _: ModelEnum = try mapper.from(field)
+                    } catch let error as MapperError {
+                        expect(error) == MapperError.invalidRawValueError(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: ModelEnum.self)
                     } catch {
                         XCTFail("Error thrown from JSONFromField was not a MapperError")
                     }
