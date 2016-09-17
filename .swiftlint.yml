@@ -4,6 +4,7 @@ disabled_rules: # rule identifiers to exclude from running
   - valid_docs
 opt_in_rules:
   - force_unwrapping
+  - vertical_whitespace
 included:
   - KeyedMapper
 line_length: 160
