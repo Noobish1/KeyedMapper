@@ -2,7 +2,7 @@ import Quick
 import Nimble
 @testable import KeyedMapper
 
-private struct ModelWithStringProperty: Mappable {
+fileprivate struct ModelWithStringProperty: Mappable {
     fileprivate let stringProperty: String
     
     fileprivate enum Key: String, JSONKey {
@@ -14,10 +14,10 @@ private struct ModelWithStringProperty: Mappable {
     }
 }
 
-extension ModelWithStringProperty: Equatable {}
-
-private func == (lhs: ModelWithStringProperty, rhs: ModelWithStringProperty) -> Bool {
-    return lhs.stringProperty == rhs.stringProperty
+extension ModelWithStringProperty: Equatable {
+    fileprivate static func == (lhs: ModelWithStringProperty, rhs: ModelWithStringProperty) -> Bool {
+        return lhs.stringProperty == rhs.stringProperty
+    }
 }
 
 class MappableSpec: QuickSpec {

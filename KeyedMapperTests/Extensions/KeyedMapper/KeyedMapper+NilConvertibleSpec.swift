@@ -12,20 +12,20 @@ fileprivate enum NilConvertibleEnum: NilConvertible {
     }
 }
 
-extension NilConvertibleEnum: Equatable {}
-
-fileprivate func == (lhs: NilConvertibleEnum, rhs: NilConvertibleEnum) -> Bool {
-    switch lhs {
-        case .nothing:
-            switch rhs {
-                case .nothing: return true
-                case .something: return false
-            }
-        case .something:
-            switch rhs {
-                case .nothing: return false
-                case .something: return true
-            }
+extension NilConvertibleEnum: Equatable {
+    fileprivate static func == (lhs: NilConvertibleEnum, rhs: NilConvertibleEnum) -> Bool {
+        switch lhs {
+            case .nothing:
+                switch rhs {
+                    case .nothing: return true
+                    case .something: return false
+                }
+            case .something:
+                switch rhs {
+                    case .nothing: return false
+                    case .something: return true
+                }
+        }
     }
 }
 

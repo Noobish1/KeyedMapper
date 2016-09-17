@@ -20,10 +20,10 @@ fileprivate struct Model: Mappable, ReverseMappable {
     }
 }
 
-extension Model: Equatable {}
-
-fileprivate func == (lhs: Model, rhs: Model) -> Bool {
-    return lhs.stringProperty == rhs.stringProperty
+extension Model: Equatable {
+    fileprivate static func == (lhs: Model, rhs: Model) -> Bool {
+        return lhs.stringProperty == rhs.stringProperty
+    }
 }
 
 class ReverseMappableSpec: QuickSpec {
