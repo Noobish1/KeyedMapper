@@ -8,7 +8,7 @@ Swift KeyedMapper
  
 ## Convertible
  
-```
+```swift
 extension NSTimeZone: Convertible {
     public static func fromMap(_ value: Any) throws -> NSTimeZone {
         guard let name = value as? String else {
@@ -26,7 +26,7 @@ extension NSTimeZone: Convertible {
 
 ## NilConvertible
 
-```
+```swift
 enum NilConvertibleEnum {
     case something
     case nothing
@@ -45,7 +45,7 @@ extension NilConvertibleEnum: NilConvertible {
 
 ## Mappable
 
-```
+```swift
 struct SubObject {
     let property: String
 }
@@ -102,7 +102,7 @@ let object = try Object.from(JSON: JSON)
 
 ## ReverseMappable
 
-```
+```swift
 extension Object: ReverseMappable {
     func toKeyedJSON() -> [Object.Key : Any?] {
         return [.property : property,
