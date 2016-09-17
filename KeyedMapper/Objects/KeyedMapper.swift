@@ -32,16 +32,16 @@ public struct KeyedMapper<Object: Mappable> {
     
     //MARK: Transformations
     public func from<T>(_ field: Object.Key, transformation: (Any) throws -> T) throws -> T {
-        return try transformation(try self.JSON(fromField: field))
+        return try transformation(try JSON(fromField: field))
     }
     
     public func optionalFrom<T>(_ field: Object.Key, transformation: (Any) throws -> T) rethrows -> T? {
-        return try (try? self.JSON(fromField: field)).map(transformation)
+        return try (try? JSON(fromField: field)).map(transformation)
     }
     
     //MARK: Retrieving JSON from a field
     internal func JSON(fromField field: Object.Key) throws -> Any {
-        guard let value = field.stringValue.isEmpty ? self.JSON : self.safeValue(forKeyPath: field.stringValue, inDictionary: self.JSON) else {
+        guard let value = field.stringValue.isEmpty ? JSON : safeValue(forKeyPath: field.stringValue, inDictionary: JSON) else {
             throw MapperError.missingFieldError(field: field.stringValue, forType: Object.self)
         }
         

@@ -6,6 +6,6 @@ public protocol JSONKey: RawRepresentable, Hashable {
 
 extension JSONKey where Self.RawValue == String {
     public var stringValue: String {
-        return self.rawValue
+        return rawValue
     }
 }
