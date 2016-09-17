@@ -339,7 +339,7 @@
 			buildConfigurationList = 75BC66911D7691520041B0CA /* Build configuration list for PBXNativeTarget "KeyedMapper" */;
 			buildPhases = (
 				4DECC995E343B8C8966F793C /* [CP] Check Pods Manifest.lock */,
-				75FEE6901D793F5D002DBF7D /* ShellScript */,
+				75FEE6901D793F5D002DBF7D /* Swiftlint */,
 				75BC66781D7691520041B0CA /* Sources */,
 				75BC66791D7691520041B0CA /* Frameworks */,
 				75BC667A1D7691520041B0CA /* Headers */,
@@ -482,13 +482,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		75FEE6901D793F5D002DBF7D /* ShellScript */ = {
+		75FEE6901D793F5D002DBF7D /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = Swiftlint;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
