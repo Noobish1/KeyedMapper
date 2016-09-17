@@ -64,6 +64,9 @@
 		75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Convertible.swift"; sourceTree = "<group>"; };
 		75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedMapperSpec.swift; sourceTree = "<group>"; };
 		755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+MappableSpec.swift"; sourceTree = "<group>"; };
+		755ADE061D8DE91F0086C900 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = "<group>"; };
+		755ADE071D8DE91F0086C900 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		755ADE081D8DE91F0086C900 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		7562CA871D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+RawRepresentableSpec.swift"; sourceTree = "<group>"; };
 		7562CA8B1D88E59700430687 /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codebeatignore; sourceTree = "<group>"; };
 		7562CA8C1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+ConvertibleSpec.swift"; sourceTree = "<group>"; };
@@ -221,8 +224,11 @@
 				D9366B1DDEF738C46C747711 /* Pods */,
 				75BC667E1D7691520041B0CA /* Products */,
 				7562CA8B1D88E59700430687 /* .codebeatignore */,
+				755ADE061D8DE91F0086C900 /* codecov.yml */,
 				750047191D8CFF0E000C0779 /* KeyedMapper.podspec */,
 				75FEE68C1D793D3B002DBF7D /* .gitignore */,
+				755ADE081D8DE91F0086C900 /* LICENSE */,
+				755ADE071D8DE91F0086C900 /* README.md */,
 				75FEE68D1D793D3B002DBF7D /* .swiftlint.yml */,
 				7500471B1D8D0C83000C0779 /* .swift-version */,
 				750C74D41D7A83B000B9AB51 /* .travis.yml */,
