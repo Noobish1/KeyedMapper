@@ -217,10 +217,10 @@
 		75BC66731D7691520041B0CA = {
 			isa = PBXGroup;
 			children = (
-				75106DEF1D8D1597008E1D6D /* Playgrounds */,
 				353873040D7AFC6C2A4F7360 /* Frameworks */,
 				75BC667F1D7691520041B0CA /* KeyedMapper */,
 				75BC668B1D7691520041B0CA /* KeyedMapperTests */,
+				75106DEF1D8D1597008E1D6D /* Playgrounds */,
 				D9366B1DDEF738C46C747711 /* Pods */,
 				75BC667E1D7691520041B0CA /* Products */,
 				7562CA8B1D88E59700430687 /* .codebeatignore */,
