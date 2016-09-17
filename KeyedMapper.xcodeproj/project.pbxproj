@@ -160,9 +160,9 @@
 		75182DF71D7BE17400AEAD44 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				750047171D8CF90C000C0779 /* ConvertibleErrorSpec.swift */,
 				75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */,
 				750047151D8CF0DA000C0779 /* MapperErrorSpec.swift */,
-				750047171D8CF90C000C0779 /* ConvertibleErrorSpec.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -179,10 +179,10 @@
 		7562CA8A1D88CE7A00430687 /* KeyedMapper */ = {
 			isa = PBXGroup;
 			children = (
-				7578B9B91D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift */,
-				7562CA871D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift */,
 				7562CA8C1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift */,
 				755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */,
+				7578B9B91D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift */,
+				7562CA871D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift */,
 			);
 			path = KeyedMapper;
 			sourceTree = "<group>";
