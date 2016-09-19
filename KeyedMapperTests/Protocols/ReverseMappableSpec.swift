@@ -32,14 +32,14 @@ class ReverseMappableSpec: QuickSpec {
             describe("toJSON") {
                 it("should return an Dictionary that is identical to the one that was passed in originally") {
                     let expectedDict: [AnyHashable : Any] = ["stringProperty" : ""]
-                    let actualDict = try! Model.from(JSON: expectedDict).toJSON()
+                    let actualDict = try! Model.from(dictionary: expectedDict).toJSON()
                     
                     expect((actualDict as NSDictionary)) == (expectedDict as NSDictionary)
                 }
                 
                 it("should return an Dictionary that can be used to recreate the same model") {
-                    let expectedModel = try! Model.from(JSON: ["stringProperty" : ""])
-                    let actualModel = try! Model.from(JSON: expectedModel.toJSON())
+                    let expectedModel = try! Model.from(dictionary: ["stringProperty" : ""])
+                    let actualModel = try! Model.from(dictionary: expectedModel.toJSON())
                     
                     expect(actualModel) == expectedModel
                 }

@@ -5,21 +5,21 @@ public protocol Mappable {
 
     init(map: KeyedMapper<Self>) throws
 
-    static func from(JSON: [AnyHashable : Any]) throws -> Self
-    static func from(JSON: [Any]) throws -> [Self]
+    static func from(dictionary: [AnyHashable : Any]) throws -> Self
+    static func from(array: [Any]) throws -> [Self]
 }
 
 public extension Mappable {
-    public static func from(JSON: [AnyHashable : Any]) throws -> Self {
-        return try self.init(map: KeyedMapper(JSON: JSON, type: self))
+    public static func from(dictionary: [AnyHashable : Any]) throws -> Self {
+        return try self.init(map: KeyedMapper(JSON: dictionary, type: self))
     }
 
-    public static func from(JSON: [Any]) throws -> [Self] {
-        guard let array = JSON as? [[AnyHashable : Any]] else {
-            throw MapperError.rootTypeMismatchError(forType: self, value: JSON, expectedType: [[AnyHashable : Any]].self)
+    public static func from(array: [Any]) throws -> [Self] {
+        guard let dictArray = array as? [[AnyHashable : Any]] else {
+            throw MapperError.rootTypeMismatchError(forType: self, value: array, expectedType: [[AnyHashable : Any]].self)
         }
 
-        return try array.map { try self.init(map: KeyedMapper(JSON: $0, type: self)) }
+        return try dictArray.map { try self.init(map: KeyedMapper(JSON: $0, type: self)) }
     }
 }
 

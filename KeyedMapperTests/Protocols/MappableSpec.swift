@@ -29,7 +29,7 @@ class MappableSpec: QuickSpec {
                         let JSON: [Any] = [1]
                         
                         do {
-                            _ = try ModelWithStringProperty.from(JSON: JSON)
+                            _ = try ModelWithStringProperty.from(array: JSON)
                         } catch let error as MapperError {
                             expect(error) == MapperError.rootTypeMismatchError(forType: ModelWithStringProperty.self, value: JSON, expectedType: [[AnyHashable : Any]].self)
                         } catch {
@@ -40,8 +40,8 @@ class MappableSpec: QuickSpec {
                 
                 context("when the passed in array is an array of Dictionaries") {
                     it("should map the model correctly") {
-                        let model = try! ModelWithStringProperty.from(JSON: ["stringProperty": ""])
-                        let models = try! ModelWithStringProperty.from(JSON: [["stringProperty": ""]])
+                        let model = try! ModelWithStringProperty.from(dictionary: ["stringProperty": ""])
+                        let models = try! ModelWithStringProperty.from(array: [["stringProperty": ""]])
                         
                         expect(models) == [model]
                     }
