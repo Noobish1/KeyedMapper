@@ -3,7 +3,13 @@
 # KeyedMapper
 
 Swift KeyedMapper
+
+# Requirements
  
+- Xcode 8+
+- Swift 3+
+- iOS 8+
+
 # Usage
  
 ## Convertible
