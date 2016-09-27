@@ -6,8 +6,8 @@ target 'KeyedMapper' do
   target 'KeyedMapperTests' do
     inherit! :search_paths
 
-    pod 'Quick', :git => 'https://github.com/Quick/Quick.git', :branch => 'swift-3.0'
-    pod 'Nimble', :git => 'https://github.com/Quick/Nimble.git', :branch => 'swift-3.0'
+    pod 'Quick', '0.10.0'
+    pod 'Nimble', '5.0.0'
   end
 
 end
