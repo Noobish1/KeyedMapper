@@ -2,7 +2,7 @@
 
 # KeyedMapper
 
-Swift KeyedMapper
+`KeyedMapper` was inspired heavily by Lyft's [Mapper](https://github.com/lyft/mapper). I wanted something like Mapper but with enums for keys and support for things like `NilConvertible` and `ReverseMappable` so I made `KeyedMapper`. 
 
 # Requirements
  
