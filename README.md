@@ -11,9 +11,9 @@
 - iOS 8+
 
 # Usage
- 
-## Convertible
- 
+
+<details>
+<summary>## Convertible</summary>
 ```swift
 extension NSTimeZone: Convertible {
     public static func fromMap(_ value: Any) throws -> NSTimeZone {
@@ -29,9 +29,10 @@ extension NSTimeZone: Convertible {
     }
 }
 ```
+</details>
 
-## NilConvertible
-
+<details>
+<summaray>## NilConvertible</summary>
 ```swift
 enum NilConvertibleEnum {
     case something
@@ -48,9 +49,10 @@ extension NilConvertibleEnum: NilConvertible {
     }
 }
 ```
+</details>
 
-## Mappable
-
+<details>
+<summary>## Mappable</summary>
 ```swift
 struct SubObject {
     let property: String
@@ -105,8 +107,10 @@ let JSON: [AnyHashable : Any] = ["property" : "propertyValue",
 
 let object = try Object.from(JSON: JSON)
 ```
+</details>
 
-## ReverseMappable
+<details>
+<summary>## ReverseMappable</summary>
 
 ```swift
 extension Object: ReverseMappable {
@@ -124,3 +128,4 @@ extension Object: ReverseMappable {
  
 let outJSON = object.toJSON()
 ```
+</details>
