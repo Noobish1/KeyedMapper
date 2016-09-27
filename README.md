@@ -110,7 +110,7 @@ let object = try Object.from(JSON: JSON)
 </details>
 
 <details>
-<summary>everseMappable</summary>
+<summary>ReverseMappable</summary>
 
 ```swift
 extension Object: ReverseMappable {
