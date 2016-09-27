@@ -13,7 +13,7 @@
 # Usage
 
 <details>
-<summary>## Convertible</summary>
+<summary>Convertible</summary>
 ```swift
 extension NSTimeZone: Convertible {
     public static func fromMap(_ value: Any) throws -> NSTimeZone {
@@ -32,7 +32,7 @@ extension NSTimeZone: Convertible {
 </details>
 
 <details>
-<summaray>## NilConvertible</summary>
+<summary>NilConvertible</summary>
 ```swift
 enum NilConvertibleEnum {
     case something
@@ -52,7 +52,7 @@ extension NilConvertibleEnum: NilConvertible {
 </details>
 
 <details>
-<summary>## Mappable</summary>
+<summary>Mappable</summary>
 ```swift
 struct SubObject {
     let property: String
@@ -110,7 +110,7 @@ let object = try Object.from(JSON: JSON)
 </details>
 
 <details>
-<summary>## ReverseMappable</summary>
+<summary>everseMappable</summary>
 
 ```swift
 extension Object: ReverseMappable {
