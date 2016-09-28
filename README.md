@@ -105,7 +105,7 @@ let JSON: [AnyHashable : Any] = ["property" : "propertyValue",
                                  "convertibleProperty" : NSTimeZone(forSecondsFromGMT: 0).abbreviation,
                                  "arrayProperty": ["arrayPropertyValue1", "arrayPropertyValue2"]]
 
-let object = try Object.from(JSON: JSON)
+let object = try Object.from(dictionary: JSON)
 ```
 </details>
 
