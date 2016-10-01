@@ -68,6 +68,12 @@ extension SubObject: Mappable {
     }
 }
 
+extension SubObject: ReverseMappable {
+    func toKeyedJSON() -> [SubObject.Key : Any?] {
+        return [.property : property]
+    }
+}
+
 struct Object {
     let property: String
     let optionalProperty: String?
@@ -76,6 +82,8 @@ struct Object {
     let nilConvertibleProperty: NilConvertibleEnum
     let arrayProperty: [String]
     let optionalArrayProperty: [String]?
+    let mappableProperty: SubObject
+    let optionalMappableProperty: SubObject?
 }
 
 extension Object: Mappable {
@@ -87,6 +95,8 @@ extension Object: Mappable {
         case nilConvertibleProperty
         case arrayProperty
         case optionalArrayProperty
+        case mappableProperty
+        case optionalMappableProperty
     }
     
     init(map: KeyedMapper<Object>) throws {
@@ -97,13 +107,15 @@ extension Object: Mappable {
         self.nilConvertibleProperty = try map.from(.nilConvertibleProperty)
         self.arrayProperty = try map.from(.arrayProperty)
         self.optionalArrayProperty = map.optionalFrom(.optionalArrayProperty)
+        self.mappableProperty = try map.from(.mappableProperty)
+        self.optionalMappableProperty = map.optionalFrom(.optionalMappableProperty)
     }
 }
 
-
 let JSON: [AnyHashable : Any] = ["property" : "propertyValue",
                                  "convertibleProperty" : NSTimeZone(forSecondsFromGMT: 0).abbreviation,
-                                 "arrayProperty": ["arrayPropertyValue1", "arrayPropertyValue2"]]
+                                 "arrayProperty" : ["arrayPropertyValue1", "arrayPropertyValue2"],
+                                 "mappableProperty" : ["property" : "propertyValue"]]
 
 let object = try Object.from(dictionary: JSON)
 ```
@@ -121,11 +133,13 @@ extension Object: ReverseMappable {
                 .optionalConvertibleProperty : optionalConvertibleProperty,
                 .nilConvertibleProperty : nilConvertibleProperty,
                 .arrayProperty : arrayProperty,
-                .optionalArrayProperty : optionalArrayProperty
+                .optionalArrayProperty : optionalArrayProperty,
+                .mappableProperty : mappableProperty.toJSON(),
+                .optionalMappableProperty: optionalMappableProperty?.toJSON()
         ]
     }
 }
- 
+
 let outJSON = object.toJSON()
 ```
 </details>
