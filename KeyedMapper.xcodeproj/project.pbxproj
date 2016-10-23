@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		74A6E5F0F99FC4A0B93CBE76 /* Pods_KeyedMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372B003C4512F244A93D6964 /* Pods_KeyedMapper.framework */; };
 		750047161D8CF0DA000C0779 /* MapperErrorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750047151D8CF0DA000C0779 /* MapperErrorSpec.swift */; };
 		750C74D31D7A7A5A00B9AB51 /* DictionarySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */; };
 		75182DF21D7BDAD100AEAD44 /* KeyedMapper+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DF11D7BDAD100AEAD44 /* KeyedMapper+RawRepresentable.swift */; };
@@ -89,9 +88,7 @@
 		75BC66B01D7697F40041B0CA /* DefaultConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultConvertible.swift; sourceTree = "<group>"; };
 		75FEE68C1D793D3B002DBF7D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		75FEE68D1D793D3B002DBF7D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
-		81850D351B0273CE18721439 /* Pods-KeyedMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapper/Pods-KeyedMapper.debug.xcconfig"; sourceTree = "<group>"; };
 		BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests.release.xcconfig"; sourceTree = "<group>"; };
-		C150585CAB34957D3A5CC39E /* Pods-KeyedMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapper/Pods-KeyedMapper.release.xcconfig"; sourceTree = "<group>"; };
 		D934EE6EF597E359A078575A /* Pods-KeyedMapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,7 +97,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74A6E5F0F99FC4A0B93CBE76 /* Pods_KeyedMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,8 +308,6 @@
 		D9366B1DDEF738C46C747711 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				81850D351B0273CE18721439 /* Pods-KeyedMapper.debug.xcconfig */,
-				C150585CAB34957D3A5CC39E /* Pods-KeyedMapper.release.xcconfig */,
 				D934EE6EF597E359A078575A /* Pods-KeyedMapperTests.debug.xcconfig */,
 				BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */,
 			);
@@ -338,13 +332,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75BC66911D7691520041B0CA /* Build configuration list for PBXNativeTarget "KeyedMapper" */;
 			buildPhases = (
-				4DECC995E343B8C8966F793C /* [CP] Check Pods Manifest.lock */,
 				75FEE6901D793F5D002DBF7D /* Swiftlint */,
 				75BC66781D7691520041B0CA /* Sources */,
 				75BC66791D7691520041B0CA /* Frameworks */,
 				75BC667A1D7691520041B0CA /* Headers */,
 				75BC667B1D7691520041B0CA /* Resources */,
-				306D90C05E59557E424C086D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -437,36 +429,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		306D90C05E59557E424C086D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyedMapper/Pods-KeyedMapper-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4DECC995E343B8C8966F793C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		73CFC402A8BB49CA9F0EE13D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -680,7 +642,6 @@
 		};
 		75BC66921D7691520041B0CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81850D351B0273CE18721439 /* Pods-KeyedMapper.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -700,7 +661,6 @@
 		};
 		75BC66931D7691520041B0CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C150585CAB34957D3A5CC39E /* Pods-KeyedMapper.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -721,7 +681,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D934EE6EF597E359A078575A /* Pods-KeyedMapperTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "KeyedMapperTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.KeyedMapperTests;
@@ -733,7 +692,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "KeyedMapperTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.KeyedMapperTests;

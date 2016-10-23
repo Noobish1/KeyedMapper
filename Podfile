@@ -1,15 +1,11 @@
 platform :ios, '8.0'
 
-target 'KeyedMapper' do
-  use_frameworks!
-
-  target 'KeyedMapperTests' do
+target 'KeyedMapperTests' do
+    use_frameworks!
     inherit! :search_paths
 
     pod 'Quick', '0.10.0'
     pod 'Nimble', '5.0.0'
-  end
-
 end
 
 post_install do |installer|
