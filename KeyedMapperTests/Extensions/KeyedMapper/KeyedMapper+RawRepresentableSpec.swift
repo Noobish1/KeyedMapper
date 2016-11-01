@@ -24,7 +24,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
             context("when the value for the given field in the JSON cannot be converted to T's RawValue") {
                 it("should throw a typeMismatchError") {
                     let expectedValue = 2
-                    let dict: [AnyHashable : Any] = ["enumProperty" : expectedValue]
+                    let dict: NSDictionary = ["enumProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let field = Model.Key.enumProperty
                     
@@ -41,7 +41,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
             context("when the value for the given field in the JSON is not one of the valid rawValue's") {
                 it("should throw a invalidRawValueError") {
                     let expectedValue = "someOtherCase"
-                    let dict: [AnyHashable : Any] = ["enumProperty" : expectedValue]
+                    let dict: NSDictionary = ["enumProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let field = Model.Key.enumProperty
                     
@@ -58,7 +58,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
             context("when the value for the given field in the JSON is one of the valid rawValue's") {
                 it("should create the RawRepresentable value") {
                     let expectedValue = "someCase"
-                    let dict: [AnyHashable : Any] = ["enumProperty" : expectedValue]
+                    let dict: NSDictionary = ["enumProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     
                     let actualEnum: ModelEnum = try! mapper.from(.enumProperty)
@@ -71,7 +71,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
         describe("optionalFrom<T: RawRepresentable>") {
             context("when the value for the given field in the JSON cannot be converted to T's RawValue") {
                 it("should return nil") {
-                    let dict: [AnyHashable : Any] = ["enumProperty" : 2]
+                    let dict: NSDictionary = ["enumProperty" : 2]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let actualEnum: ModelEnum? = mapper.optionalFrom(.enumProperty)
                     
@@ -81,7 +81,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
             
             context("when the value for the given field in the JSON is not one of the valid rawValue's") {
                 it("should throw a invalidRawValueError") {
-                    let dict: [AnyHashable : Any] = ["enumProperty" : "someOtherCase"]
+                    let dict: NSDictionary = ["enumProperty" : "someOtherCase"]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let actualEnum: ModelEnum? = mapper.optionalFrom(.enumProperty)
                     
@@ -92,7 +92,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
             context("when the value for the given field in the JSON is one of the valid rawValue's") {
                 it("should create the RawRepresentable value") {
                     let expectedValue = "someCase"
-                    let dict: [AnyHashable : Any] = ["enumProperty" : expectedValue]
+                    let dict: NSDictionary = ["enumProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     
                     let actualEnum: ModelEnum? = mapper.optionalFrom(.enumProperty)

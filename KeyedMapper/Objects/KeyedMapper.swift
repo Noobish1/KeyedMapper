@@ -5,18 +5,18 @@ public protocol Mappable {
 
     init(map: KeyedMapper<Self>) throws
 
-    static func from(dictionary: [AnyHashable : Any]) throws -> Self
+    static func from(dictionary: NSDictionary) throws -> Self
     static func from(array: [Any]) throws -> [Self]
 }
 
 public extension Mappable {
-    public static func from(dictionary: [AnyHashable : Any]) throws -> Self {
+    public static func from(dictionary: NSDictionary) throws -> Self {
         return try self.init(map: KeyedMapper(JSON: dictionary, type: self))
     }
 
     public static func from(array: [Any]) throws -> [Self] {
-        guard let dictArray = array as? [[AnyHashable : Any]] else {
-            throw MapperError.rootTypeMismatchError(forType: self, value: array, expectedType: [[AnyHashable : Any]].self)
+        guard let dictArray = array as? [NSDictionary] else {
+            throw MapperError.rootTypeMismatchError(forType: self, value: array, expectedType: [NSDictionary].self)
         }
 
         return try dictArray.map { try self.init(map: KeyedMapper(JSON: $0, type: self)) }
@@ -24,9 +24,9 @@ public extension Mappable {
 }
 
 public struct KeyedMapper<Object: Mappable> {
-    public let JSON: [AnyHashable : Any]
+    public let JSON: NSDictionary
 
-    public init(JSON: [AnyHashable : Any], type: Object.Type) {
+    public init(JSON: NSDictionary, type: Object.Type) {
         self.JSON = JSON
     }
 
@@ -48,13 +48,13 @@ public struct KeyedMapper<Object: Mappable> {
         return value
     }
 
-    internal func safeValue(forKeyPath keyPath: String, inDictionary dictionary: [AnyHashable : Any]) -> Any? {
+    internal func safeValue(forKeyPath keyPath: String, inDictionary dictionary: NSDictionary) -> Any? {
         var object: Any? = dictionary
         var keys = keyPath.characters.split(separator: ".").map(String.init)
 
         while keys.count > 0, let currentObject = object {
             let key = keys.remove(at: 0)
-            object = (currentObject as? [AnyHashable : Any])?[key]
+            object = (currentObject as? NSDictionary)?[key]
         }
 
         return object

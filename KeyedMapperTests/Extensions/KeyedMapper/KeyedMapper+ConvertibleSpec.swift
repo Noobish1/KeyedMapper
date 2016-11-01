@@ -35,7 +35,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             context("when the fromMap implementation throws an error") {
                 it("should throw an error") {
                     let expectedValue = 2
-                    let dict: [AnyHashable : Any] = ["convertibleProperty" : expectedValue]
+                    let dict: NSDictionary = ["convertibleProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     
                     do {
@@ -50,7 +50,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             
             context("when the fromMap implementation does not throw an error") {
                 it("should correctly map") {
-                    let dict: [AnyHashable : Any] = ["convertibleProperty" : ""]
+                    let dict: NSDictionary = ["convertibleProperty" : ""]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let convertibleThing: ConvertibleObject = try! mapper.from(.convertibleProperty)
                     
@@ -62,8 +62,8 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
         describe("from<T: Convertible> -> [T]") {
             context("when the value cannot be casted to an array of Any") {
                 it("should throw a typeMismatchError") {
-                    let expectedValue: [AnyHashable : Any] = [:]
-                    let dict: [AnyHashable : Any] = ["convertibleArrayProperty" : [:]]
+                    let expectedValue: NSDictionary = [:]
+                    let dict: NSDictionary = ["convertibleArrayProperty" : [:]]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let field = Model.Key.convertibleArrayProperty
                     
@@ -80,7 +80,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             context("when the value can be casted to an array of Any") {
                 it("should map correctly") {
                     let expectedValue = [""]
-                    let dict: [AnyHashable : Any] = ["convertibleArrayProperty" : expectedValue]
+                    let dict: NSDictionary = ["convertibleArrayProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let convertibleArray: [ConvertibleObject] = try! mapper.from(.convertibleArrayProperty)
                     
@@ -93,7 +93,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             context("when the fromMap implementation throws an error") {
                 it("should return nil") {
                     let expectedValue = 2
-                    let dict: [AnyHashable : Any] = ["convertibleProperty" : expectedValue]
+                    let dict: NSDictionary = ["convertibleProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let convertibleThing: ConvertibleObject? = mapper.optionalFrom(.convertibleProperty)
                     
@@ -103,7 +103,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             
             context("when the fromMap implementation does not throw an error") {
                 it("should correctly map") {
-                    let dict: [AnyHashable : Any] = ["convertibleProperty" : ""]
+                    let dict: NSDictionary = ["convertibleProperty" : ""]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let convertibleThing: ConvertibleObject? = mapper.optionalFrom(.convertibleProperty)
                     
@@ -115,7 +115,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
         describe("from<T: Convertible> -> [T]?") {
             context("when the value cannot be casted to an array of Any") {
                 it("should return nil") {
-                    let dict: [AnyHashable : Any] = ["convertibleArrayProperty" : [:]]
+                    let dict: NSDictionary = ["convertibleArrayProperty" : [:]]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let convertibleArray: [ConvertibleObject]? = mapper.optionalFrom(.convertibleArrayProperty)
                     
@@ -126,7 +126,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             context("when the value can be casted to an array of Any") {
                 it("should map correctly") {
                     let expectedValue = [""]
-                    let dict: [AnyHashable : Any] = ["convertibleArrayProperty" : expectedValue]
+                    let dict: NSDictionary = ["convertibleArrayProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let convertibleArray: [ConvertibleObject]? = mapper.optionalFrom(.convertibleArrayProperty)
                     
