@@ -9,7 +9,17 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>KeyedMapperTests.xcscheme</key>
+		<key>KeyedMapperTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>PerformanceTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>TestModels.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
@@ -23,6 +33,16 @@
 			<true/>
 		</dict>
 		<key>75BC66861D7691520041B0CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75CCE8B61DC8D6C80023D8B4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75CCE8C81DC8D7DC0023D8B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
