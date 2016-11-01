@@ -13,7 +13,6 @@
 		75182DF61D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */; };
 		75182DFB1D7BE1C200AEAD44 /* KeyedMapperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */; };
 		755470BA1D8A554100472173 /* KeyedMapper+MappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */; };
-		7562CA881D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562CA871D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift */; };
 		7562CA8D1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562CA8C1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift */; };
 		7566673B1D864A2800AFFE02 /* NilConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566673A1D864A2800AFFE02 /* NilConvertible.swift */; };
 		7566673D1D864A6D00AFFE02 /* KeyedMapper+NilConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566673C1D864A6D00AFFE02 /* KeyedMapper+NilConvertible.swift */; };
@@ -87,7 +86,6 @@
 		755ADE061D8DE91F0086C900 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = "<group>"; };
 		755ADE071D8DE91F0086C900 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		755ADE081D8DE91F0086C900 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		7562CA871D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+RawRepresentableSpec.swift"; sourceTree = "<group>"; };
 		7562CA8B1D88E59700430687 /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codebeatignore; sourceTree = "<group>"; };
 		7562CA8C1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+ConvertibleSpec.swift"; sourceTree = "<group>"; };
 		7566673A1D864A2800AFFE02 /* NilConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NilConvertible.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 				7562CA8C1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift */,
 				755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */,
 				7578B9B91D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift */,
-				7562CA871D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift */,
 			);
 			path = KeyedMapper;
 			sourceTree = "<group>";
@@ -497,7 +494,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Noobish1;
 				TargetAttributes = {
 					75BC667C1D7691520041B0CA = {
@@ -669,7 +666,6 @@
 				750C74D31D7A7A5A00B9AB51 /* DictionarySpec.swift in Sources */,
 				7562CA8D1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift in Sources */,
 				7578B9BC1D87AC840009A143 /* ReverseMappableSpec.swift in Sources */,
-				7562CA881D88CDD400430687 /* KeyedMapper+RawRepresentableSpec.swift in Sources */,
 				7578B9BA1D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift in Sources */,
 				757073391D866C95006C5D7F /* DefaultConvertibleSpec.swift in Sources */,
 				7570733E1D867458006C5D7F /* MapperError.swift in Sources */,
