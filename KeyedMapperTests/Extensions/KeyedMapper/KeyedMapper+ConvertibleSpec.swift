@@ -89,7 +89,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             }
         }
         
-        describe("from<T: Convertible> -> T?") {
+        describe("optionalFrom<T: Convertible> -> T?") {
             context("when the fromMap implementation throws an error") {
                 it("should return nil") {
                     let expectedValue = 2
@@ -112,7 +112,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             }
         }
         
-        describe("from<T: Convertible> -> [T]?") {
+        describe("optionalFrom<T: Convertible> -> [T]?") {
             context("when the value cannot be casted to an array of Any") {
                 it("should return nil") {
                     let dict: NSDictionary = ["convertibleArrayProperty" : [:]]
