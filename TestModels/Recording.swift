@@ -2,14 +2,14 @@ import Foundation
 import KeyedMapper
 
 public struct Recording {
-    enum Status: String {
+    enum Status: String, DefaultConvertible {
         case None = "0"
         case Recorded = "-3"
         case Recording = "-2"
         case Unknown
     }
 
-    enum RecGroup: String {
+    enum RecGroup: String, DefaultConvertible {
         case Deleted = "Deleted"
         case Default = "Default"
         case LiveTV = "LiveTV"
