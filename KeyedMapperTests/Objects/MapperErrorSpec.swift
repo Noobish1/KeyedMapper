@@ -18,7 +18,7 @@ class MapperErrorSpec: QuickSpec {
     override func spec() {
         describe("failureReason") {
             context("when the error is") {
-                context("a customError") {
+                context("a custom error") {
                     it("should return the message associated value") {
                         let expectedValue = "message"
                         let error = MapperError.customError(field: nil, message: expectedValue)
@@ -27,7 +27,7 @@ class MapperErrorSpec: QuickSpec {
                     }
                 }
                 
-                context("a invalidRawValueError") {
+                context("a invalidRawValue error") {
                     it("should return the correct message") {
                         let field: Model.Key = .stringProperty
                         let type = Model.self
@@ -40,7 +40,7 @@ class MapperErrorSpec: QuickSpec {
                     }
                 }
                 
-                context("a missingFieldError") {
+                context("a missingField error") {
                     it("should return the correct message") {
                         let field: Model.Key = .stringProperty
                         let type = Model.self
@@ -51,7 +51,7 @@ class MapperErrorSpec: QuickSpec {
                     }
                 }
                 
-                context("a typeMismatchError") {
+                context("a typeMismatch error") {
                     it("should return the correct message") {
                         let field: Model.Key = .stringProperty
                         let type = Model.self
@@ -64,7 +64,7 @@ class MapperErrorSpec: QuickSpec {
                     }
                 }
                 
-                context("a rootTypeMismatchError") {
+                context("a rootTypeMismatch error") {
                     it("should return the correct message") {
                         let type = Model.self
                         let value = ""
@@ -76,7 +76,7 @@ class MapperErrorSpec: QuickSpec {
                     }
                 }
                 
-                context("a convertibleError") {
+                context("a convertible error") {
                     it("should return the correct message") {
                         let value = ""
                         let expectedType = NSDictionary.self
