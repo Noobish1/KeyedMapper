@@ -7,14 +7,14 @@ class DefaultConvertibleSpec: QuickSpec {
         describe("DefaultConvertible") {
             describe("fromMap") {
                 context("when the given value cannot be cast to the ConvertedType") {
-                    it("should throw a ConvertibleError") {
+                    it("should throw a convertible error") {
                         let value = "" as AnyObject
                         let type = Int.self
                         
                         do {
                             _ = try type.fromMap(value)
                         } catch let error as MapperError {
-                            expect(error) == MapperError.convertibleError(value: value, expectedType: type)
+                            expect(error) == MapperError.convertible(value: value, expectedType: type)
                         } catch {
                             XCTFail("Error thrown from DefaultConvertible.fromMap was not a MapperError")
                         }

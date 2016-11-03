@@ -22,7 +22,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
     override func spec() {
         describe("from<T: RawRepresentable>") {
             context("when the value for the given field in the JSON cannot be converted to T's RawValue") {
-                it("should throw a typeMismatchError") {
+                it("should throw a typeMismatch error") {
                     let expectedValue = 2
                     let dict: NSDictionary = ["enumProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
@@ -31,7 +31,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
                     do {
                         let _: ModelEnum = try mapper.from(field)
                     } catch let error as MapperError {
-                        expect(error) == MapperError.typeMismatchError(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: ModelEnum.RawValue.self)
+                        expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: ModelEnum.RawValue.self)
                     } catch {
                         XCTFail("Error thrown from JSONFromField was not a MapperError")
                     }
@@ -39,7 +39,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
             }
             
             context("when the value for the given field in the JSON is not one of the valid rawValue's") {
-                it("should throw a invalidRawValueError") {
+                it("should throw a invalidRawValue") {
                     let expectedValue = "someOtherCase"
                     let dict: NSDictionary = ["enumProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
@@ -48,7 +48,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
                     do {
                         let _: ModelEnum = try mapper.from(field)
                     } catch let error as MapperError {
-                        expect(error) == MapperError.invalidRawValueError(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: ModelEnum.self)
+                        expect(error) == MapperError.invalidRawValue(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: ModelEnum.self)
                     } catch {
                         XCTFail("Error thrown from JSONFromField was not a MapperError")
                     }
@@ -80,7 +80,7 @@ class KeyedMapper_RawRepresentableSpec: QuickSpec {
             }
             
             context("when the value for the given field in the JSON is not one of the valid rawValue's") {
-                it("should throw a invalidRawValueError") {
+                it("should throw a invalidRawValue") {
                     let dict: NSDictionary = ["enumProperty" : "someOtherCase"]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let actualEnum: ModelEnum? = mapper.optionalFrom(.enumProperty)

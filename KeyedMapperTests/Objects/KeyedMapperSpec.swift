@@ -72,7 +72,7 @@ class KeyedMapperSpec: QuickSpec {
                         do {
                             try _ = mapper.JSON(fromField: field)
                         } catch let error as MapperError {
-                            expect(error) == MapperError.missingFieldError(field: field.stringValue, forType: ModelWithStringProperty.self)
+                            expect(error) == MapperError.missingField(field: field.stringValue, forType: ModelWithStringProperty.self)
                         } catch {
                             XCTFail("Error thrown from JSONFromField was not a MapperError")
                         }

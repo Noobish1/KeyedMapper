@@ -25,13 +25,13 @@ class MappableSpec: QuickSpec {
         describe("Mappable") {
             describe("from Array") {
                 context("when the passed in array is not an array of Dictionaries") {
-                    it("should throw a MapperError.rootTypeMismatchError") {
+                    it("should throw a MapperError.rootTypeMismatch") {
                         let JSON: [Any] = [1]
                         
                         do {
                             _ = try ModelWithStringProperty.from(array: JSON)
                         } catch let error as MapperError {
-                            expect(error) == MapperError.rootTypeMismatchError(forType: ModelWithStringProperty.self, value: JSON, expectedType: [NSDictionary].self)
+                            expect(error) == MapperError.rootTypeMismatch(forType: ModelWithStringProperty.self, value: JSON, expectedType: [NSDictionary].self)
                         } catch {
                             XCTFail("Error thrown from from(JSON: Array) was not a MapperError")
                         }

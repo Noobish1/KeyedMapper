@@ -13,7 +13,7 @@ public protocol NilConvertible {
      - parameter value: Any value (probably from the data source's value for the given field) to create
      the expected object with
 
-     - throws: Any error from your custom implementation, MapperError.ConvertibleError is recommended
+     - throws: Any error from your custom implementation, MapperError.convertible is recommended
 
      - returns: The successfully created value from the given input
      */

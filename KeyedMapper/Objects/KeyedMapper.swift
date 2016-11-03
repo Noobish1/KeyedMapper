@@ -16,7 +16,7 @@ public extension Mappable {
 
     public static func from(array: [Any]) throws -> [Self] {
         guard let dictArray = array as? [NSDictionary] else {
-            throw MapperError.rootTypeMismatchError(forType: self, value: array, expectedType: [NSDictionary].self)
+            throw MapperError.rootTypeMismatch(forType: self, value: array, expectedType: [NSDictionary].self)
         }
 
         return try dictArray.map { try self.init(map: KeyedMapper(JSON: $0, type: self)) }
@@ -42,7 +42,7 @@ public struct KeyedMapper<Object: Mappable> {
     // MARK: Retrieving JSON from a field
     internal func JSON(fromField field: Object.Key) throws -> Any {
         guard let value = field.stringValue.isEmpty ? JSON : safeValue(forKeyPath: field.stringValue, inDictionary: JSON) else {
-            throw MapperError.missingFieldError(field: field.stringValue, forType: Object.self)
+            throw MapperError.missingField(field: field.stringValue, forType: Object.self)
         }
 
         return value

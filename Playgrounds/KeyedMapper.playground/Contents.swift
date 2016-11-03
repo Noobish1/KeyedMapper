@@ -6,11 +6,11 @@ import KeyedMapper
 extension NSTimeZone: Convertible {
     public static func fromMap(_ value: Any) throws -> NSTimeZone {
         guard let name = value as? String else {
-            throw MapperError.convertibleError(value: value, expectedType: String.self)
+            throw MapperError.convertible(value: value, expectedType: String.self)
         }
         
         guard let timeZone = self.init(name: name) else {
-            throw MapperError.customError(field: nil, message: "Unsupported timezone \(name)")
+            throw MapperError.custom(field: nil, message: "Unsupported timezone \(name)")
         }
         
         return timeZone
@@ -95,9 +95,9 @@ extension Object: Mappable {
 }
 
 let JSON: NSDictionary = ["property" : "propertyValue",
-                                 "convertibleProperty" : NSTimeZone(forSecondsFromGMT: 0).abbreviation,
-                                 "arrayProperty" : ["arrayPropertyValue1", "arrayPropertyValue2"],
-                                 "mappableProperty" : ["property" : "propertyValue"]]
+                         "convertibleProperty" : NSTimeZone(forSecondsFromGMT: 0).abbreviation as Any,
+                         "arrayProperty" : ["arrayPropertyValue1", "arrayPropertyValue2"],
+                         "mappableProperty" : ["property" : "propertyValue"]]
 
 let object = try Object.from(dictionary: JSON)
 

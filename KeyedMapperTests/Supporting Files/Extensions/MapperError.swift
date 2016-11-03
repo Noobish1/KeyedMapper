@@ -4,44 +4,44 @@ import KeyedMapper
 extension MapperError: Equatable {
     public static func == (lhs: MapperError, rhs: MapperError) -> Bool {
         switch lhs {
-            case .customError(field: let lhsField, message: let lhsMessage):
+            case .custom(field: let lhsField, message: let lhsMessage):
                 switch rhs {
-                    case .customError(field: let rhsField, message: let rhsMessage):
+                    case .custom(field: let rhsField, message: let rhsMessage):
                         return lhsField == rhsField && lhsMessage == rhsMessage
                     default:
                         return false
                 }
-            case .invalidRawValueError(field: let lhsField, forType: let lhsType, value: _, expectedType: let lhsExpectedType):
+            case .invalidRawValue(field: let lhsField, forType: let lhsType, value: _, expectedType: let lhsExpectedType):
                 switch rhs {
-                    case .invalidRawValueError(field: let rhsField, forType: let rhsType, value: _, expectedType: let rhsExpectedType):
+                    case .invalidRawValue(field: let rhsField, forType: let rhsType, value: _, expectedType: let rhsExpectedType):
                         return lhsField == rhsField && lhsType == rhsType && lhsExpectedType == rhsExpectedType
                     default:
                         return false
                 }
-            case .missingFieldError(field: let lhsField, forType: let lhsType):
+            case .missingField(field: let lhsField, forType: let lhsType):
                 switch rhs {
-                    case .missingFieldError(field: let rhsField, forType: let rhsType):
+                    case .missingField(field: let rhsField, forType: let rhsType):
                         return lhsField == rhsField && lhsType == rhsType
                     default:
                         return false
                 }
-            case .typeMismatchError(field: let lhsField, forType: let lhsType, value: _, expectedType: let lhsExpectedType):
+            case .typeMismatch(field: let lhsField, forType: let lhsType, value: _, expectedType: let lhsExpectedType):
                 switch rhs {
-                    case .typeMismatchError(field: let rhsField, forType: let rhsType, value: _, expectedType: let rhsExpectedType):
+                    case .typeMismatch(field: let rhsField, forType: let rhsType, value: _, expectedType: let rhsExpectedType):
                         return lhsField == rhsField && lhsType == rhsType && lhsExpectedType == rhsExpectedType
                     default:
                         return false
                 }
-            case .rootTypeMismatchError(forType: let lhsType, value: _, expectedType: let lhsExpectedType):
+            case .rootTypeMismatch(forType: let lhsType, value: _, expectedType: let lhsExpectedType):
                 switch rhs {
-                    case .rootTypeMismatchError(forType: let rhsType, value: _, expectedType: let rhsExpectedType):
+                    case .rootTypeMismatch(forType: let rhsType, value: _, expectedType: let rhsExpectedType):
                         return lhsType == rhsType && lhsExpectedType == rhsExpectedType
                     default:
                         return false
                 }
-            case .convertibleError(value: _, expectedType: let lhsExpectedType):
+            case .convertible(value: _, expectedType: let lhsExpectedType):
                 switch rhs {
-                    case .convertibleError(value: _, expectedType: let rhsExpectedType):
+                    case .convertible(value: _, expectedType: let rhsExpectedType):
                         return lhsExpectedType == rhsExpectedType
                     default:
                         return false

@@ -18,11 +18,11 @@
 extension NSTimeZone: Convertible {
     public static func fromMap(_ value: Any) throws -> NSTimeZone {
         guard let name = value as? String else {
-            throw MapperError.convertibleError(value: value, expectedType: String.self)
+            throw MapperError.convertible(value: value, expectedType: String.self)
         }
         
         guard let timeZone = self.init(name: name) else {
-            throw MapperError.customError(field: nil, message: "Unsupported timezone \(name)")
+            throw MapperError.custom(field: nil, message: "Unsupported timezone \(name)")
         }
         
         return timeZone

@@ -33,7 +33,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
     override func spec() {
         describe("from<T: Mappable> -> T") {
             context("when the value in the JSON is not an Dictionary") {
-                it("should throw a typeMismatchError") {
+                it("should throw a typeMismatch error") {
                     let expectedValue = 2
                     let dict: NSDictionary = ["mappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
@@ -41,7 +41,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                     do {
                         let _: SubModel = try mapper.from(.mappableProperty)
                     } catch let error as MapperError {
-                        expect(error) == MapperError.typeMismatchError(field: Model.Key.mappableProperty.stringValue, forType: Model.self, value: expectedValue, expectedType: NSDictionary.self)
+                        expect(error) == MapperError.typeMismatch(field: Model.Key.mappableProperty.stringValue, forType: Model.self, value: expectedValue, expectedType: NSDictionary.self)
                     } catch {
                         XCTFail("Error thrown from KeyedMapper<T: Mappable>.from was not a MapperError")
                     }
@@ -62,7 +62,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
         
         describe("from<T: Mappable> -> [T]") {
             context("when the value in the JSON is not an array of Dictionaries") {
-                it("should throw a typeMismatchError") {
+                it("should throw a typeMismatch error") {
                     let expectedValue = 2
                     let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
@@ -71,7 +71,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                     do {
                         let _: [SubModel] = try mapper.from(field)
                     } catch let error as MapperError {
-                        expect(error) == MapperError.typeMismatchError(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: [NSDictionary].self)
+                        expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: [NSDictionary].self)
                     } catch {
                         XCTFail("Error thrown from KeyedMapper<T: Mappable>.from was not a MapperError")
                     }
@@ -93,7 +93,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
         
         describe("optionalFrom<T: Mappable> -> T?") {
             context("when the value in the JSON is not an Dictionary") {
-                it("should throw a typeMismatchError") {
+                it("should throw a typeMismatch error") {
                     let expectedValue = 2
                     let dict: NSDictionary = ["mappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
@@ -117,7 +117,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
         
         describe("from<T: Mappable> -> [T]") {
             context("when the value in the JSON is not an array of Dictionaries") {
-                it("should throw a typeMismatchError") {
+                it("should throw a typeMismatch error") {
                     let expectedValue = 2
                     let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
