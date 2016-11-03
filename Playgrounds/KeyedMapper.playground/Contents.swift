@@ -95,7 +95,7 @@ extension Object: Mappable {
 }
 
 let JSON: NSDictionary = ["property" : "propertyValue",
-                                 "convertibleProperty" : NSTimeZone(forSecondsFromGMT: 0).abbreviation,
+                                 "convertibleProperty" : NSTimeZone(forSecondsFromGMT: 0).abbreviation as Any,
                                  "arrayProperty" : ["arrayPropertyValue1", "arrayPropertyValue2"],
                                  "mappableProperty" : ["property" : "propertyValue"]]
 
