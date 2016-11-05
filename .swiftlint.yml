@@ -11,6 +11,7 @@ opt_in_rules:
   - closure_spacing
   - explicit_init
   - overridden_super_call
+  - redundant_nil_coalesing
 included:
   - KeyedMapper
 line_length: 160
