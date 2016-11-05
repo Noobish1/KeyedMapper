@@ -52,6 +52,15 @@ extension NilConvertibleEnum: NilConvertible {
 </details>
 
 <details>
+<summary>DefaultConvertible</summary>
+```swift
+enum DefaultConvertibleEnum: Int, DefaultConvertible {
+    case firstCase = 0
+}
+```
+</details>
+ 
+<details>
 <summary>Mappable</summary>
 ```swift
 struct SubObject {
