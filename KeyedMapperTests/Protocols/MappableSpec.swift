@@ -6,7 +6,7 @@ fileprivate struct ModelWithStringProperty: Mappable {
     fileprivate let stringProperty: String
     
     fileprivate enum Key: String, JSONKey {
-        case stringProperty = "stringProperty"
+        case stringProperty
     }
     
     fileprivate init(map: KeyedMapper<ModelWithStringProperty>) throws {
