@@ -9,6 +9,7 @@ opt_in_rules:
   - conditional_returns_on_newline
   - empty_count
   - closure_spacing
+  - explicit_init
 included:
   - KeyedMapper
 line_length: 160
