@@ -41,16 +41,16 @@ public struct KeyedMapper<Object: Mappable> {
 
     // MARK: Retrieving JSON from a field
     internal func JSON(fromField field: Object.Key) throws -> Any {
-        guard let value = field.stringValue.isEmpty ? JSON : safeValue(forKeyPath: field.stringValue, inDictionary: JSON) else {
+        guard let value = field.stringValue.isEmpty ? JSON : safeValue(forField: field, in: JSON) else {
             throw MapperError.missingField(field: field.stringValue, forType: Object.self)
         }
 
         return value
     }
 
-    internal func safeValue(forKeyPath keyPath: String, inDictionary dictionary: NSDictionary) -> Any? {
+    internal func safeValue(forField field: Object.Key, in dictionary: NSDictionary) -> Any? {
         var object: Any? = dictionary
-        var keys = keyPath.characters.split(separator: ".").map(String.init)
+        var keys = field.stringValue.characters.split(separator: ".").map(String.init)
 
         while !keys.isEmpty, let currentObject = object {
             let key = keys.removeFirst()
