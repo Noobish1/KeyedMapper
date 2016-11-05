@@ -52,8 +52,8 @@ public struct KeyedMapper<Object: Mappable> {
         var object: Any? = dictionary
         var keys = keyPath.characters.split(separator: ".").map(String.init)
 
-        while keys.count > 0, let currentObject = object {
-            let key = keys.remove(at: 0)
+        while !keys.isEmpty, let currentObject = object {
+            let key = keys.removeFirst()
             object = (currentObject as? NSDictionary)?[key]
         }
 
