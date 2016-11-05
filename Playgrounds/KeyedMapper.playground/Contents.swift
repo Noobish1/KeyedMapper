@@ -34,6 +34,12 @@ extension NilConvertibleEnum: NilConvertible {
     }
 }
 
+// DefaultConvertible
+
+enum DefaultConvertibleEnum: Int, DefaultConvertible {
+    case firstCase = 0
+}
+
 // Mappable
 
 struct SubObject {
@@ -66,6 +72,8 @@ struct Object {
     let optionalArrayProperty: [String]?
     let mappableProperty: SubObject
     let optionalMappableProperty: SubObject?
+    let defaultConvertibleProperty: DefaultConvertibleEnum
+    let optionalDefaultConvertibleProperty: DefaultConvertibleEnum?
 }
 
 extension Object: Mappable {
@@ -79,6 +87,8 @@ extension Object: Mappable {
         case optionalArrayProperty
         case mappableProperty
         case optionalMappableProperty
+        case defaultConvertibleProperty
+        case optionalDefaultConvertibleProperty
     }
     
     init(map: KeyedMapper<Object>) throws {
@@ -91,13 +101,16 @@ extension Object: Mappable {
         self.optionalArrayProperty = map.optionalFrom(.optionalArrayProperty)
         self.mappableProperty = try map.from(.mappableProperty)
         self.optionalMappableProperty = map.optionalFrom(.optionalMappableProperty)
+        self.defaultConvertibleProperty = try map.from(.defaultConvertibleProperty)
+        self.optionalDefaultConvertibleProperty = map.optionalFrom(.optionalDefaultConvertibleProperty)
     }
 }
 
 let JSON: NSDictionary = ["property" : "propertyValue",
                          "convertibleProperty" : NSTimeZone(forSecondsFromGMT: 0).abbreviation as Any,
                          "arrayProperty" : ["arrayPropertyValue1", "arrayPropertyValue2"],
-                         "mappableProperty" : ["property" : "propertyValue"]]
+                         "mappableProperty" : ["property" : "propertyValue"],
+                         "defaultConvertibleProperty" : DefaultConvertibleEnum.firstCase.rawValue]
 
 let object = try Object.from(dictionary: JSON)
 

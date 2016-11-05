@@ -12,6 +12,20 @@ public extension DefaultConvertible {
     }
 }
 
+public extension DefaultConvertible where ConvertedType: RawRepresentable {
+    public static func fromMap(_ value: Any) throws -> ConvertedType {
+        guard let rawValue = value as? ConvertedType.RawValue else {
+            throw MapperError.convertible(value: value, expectedType: ConvertedType.RawValue.self)
+        }
+
+        guard let value = ConvertedType(rawValue: rawValue) else {
+            throw MapperError.custom(field: nil, message: "\"\(rawValue)\" is not a valid rawValue of \(self)")
+        }
+
+        return value
+    }
+}
+
 extension NSDictionary: DefaultConvertible {}
 extension NSArray: DefaultConvertible {}
 
