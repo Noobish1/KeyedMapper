@@ -10,6 +10,7 @@ opt_in_rules:
   - empty_count
   - closure_spacing
   - explicit_init
+  - overridden_super_call
 included:
   - KeyedMapper
 line_length: 160
