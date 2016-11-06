@@ -27,14 +27,13 @@ class MapperErrorSpec: QuickSpec {
                     }
                 }
                 
-                context("a invalidRawValue error") {
+                context("an invalidRawValue error") {
                     it("should return the correct message") {
-                        let field: Model.Key = .stringProperty
                         let type = Model.self
                         let value = ""
                         let expectedType = NSDictionary.self
-                        let expectedMessage = "Invalid raw value for field \(field) of type \(type), \"\(value)\" is not a valid rawValue of \(expectedType)"
-                        let error = MapperError.invalidRawValue(field: field.stringValue, forType: type, value: value, expectedType: expectedType)
+                        let expectedMessage = "Invalid raw value of type \(type), \"\(value)\" is not a valid rawValue of \(expectedType)"
+                        let error = MapperError.invalidRawValue(rawValueType: type, rawValue: value, expectedType: expectedType)
                         
                         expect(error.failureReason) == expectedMessage
                     }

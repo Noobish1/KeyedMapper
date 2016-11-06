@@ -11,10 +11,10 @@ extension MapperError: Equatable {
                     default:
                         return false
                 }
-            case .invalidRawValue(field: let lhsField, forType: let lhsType, value: _, expectedType: let lhsExpectedType):
+            case .invalidRawValue(rawValueType: let lhsRawValueType, rawValue: _, expectedType: let lhsExpectedType):
                 switch rhs {
-                    case .invalidRawValue(field: let rhsField, forType: let rhsType, value: _, expectedType: let rhsExpectedType):
-                        return lhsField == rhsField && lhsType == rhsType && lhsExpectedType == rhsExpectedType
+                    case .invalidRawValue(rawValueType: let rhsRawValueType, rawValue: _, expectedType: let rhsExpectedType):
+                        return lhsRawValueType == rhsRawValueType && lhsExpectedType == rhsExpectedType
                     default:
                         return false
                 }
