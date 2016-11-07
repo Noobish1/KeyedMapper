@@ -49,6 +49,14 @@ public struct KeyedMapper<Object: Mappable> {
     }
 
     internal func safeValue(forField field: Object.Key, in dictionary: NSDictionary) -> Any? {
+        guard !field.stringValue.isEmpty else {
+            return dictionary
+        }
+
+        guard field.stringValue.contains(".") else {
+            return dictionary[field.stringValue]
+        }
+
         var object: Any? = dictionary
         var keys = field.stringValue.characters.split(separator: ".").map(String.init)
 
