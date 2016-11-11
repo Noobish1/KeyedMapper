@@ -2,7 +2,7 @@ import Foundation
 
 public enum MapperError: Error {
     case custom(field: String?, message: String)
-    case invalidRawValue(rawValueType: Any.Type, rawValue: Any, expectedType: Any.Type)
+    case invalidRawValue(rawValue: Any, rawValueType: Any.Type)
     case missingField(field: String, forType: Any.Type)
     case typeMismatch(field: String, forType: Any.Type, value: Any, expectedType: Any.Type)
     case rootTypeMismatch(forType: Any.Type, value: Any, expectedType: Any.Type)
@@ -12,8 +12,8 @@ public enum MapperError: Error {
         switch self {
             case .custom(_, message: let message):
                 return message
-            case .invalidRawValue(rawValueType: let rawValueType, rawValue: let rawValue, expectedType: let expectedType):
-                return "Invalid raw value of type \(rawValueType), \"\(rawValue)\" is not a valid rawValue of \(expectedType)"
+            case .invalidRawValue(rawValue: let rawValue, rawValueType: let rawValueType):
+                return "\"\(rawValue)\" is not a valid rawValue of \(rawValueType)"
             case .missingField(field: let field, forType: let type):
                 return "Missing field \(field) of type \(type)"
             case .typeMismatch(field: let field, forType: let type, value: let value, expectedType: let expectedType):

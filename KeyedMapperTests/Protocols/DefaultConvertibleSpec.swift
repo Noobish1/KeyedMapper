@@ -62,7 +62,7 @@ class DefaultConvertibleSpec: QuickSpec {
                             do {
                                 _ = try type.fromMap(value)
                             } catch let error as MapperError {
-                                expect(error) == MapperError.invalidRawValue(rawValueType: type(of: value), rawValue: value, expectedType: type)
+                                expect(error) == MapperError.invalidRawValue(rawValue: value, rawValueType: type)
                             } catch {
                                 XCTFail("Error thrown from DefaultConvertible.fromMap was not a MapperError")
                             }

@@ -19,7 +19,7 @@ public extension DefaultConvertible where ConvertedType: RawRepresentable {
         }
 
         guard let value = ConvertedType(rawValue: rawValue) else {
-            throw MapperError.invalidRawValue(rawValueType: type(of: rawValue), rawValue: rawValue, expectedType: ConvertedType.self)
+            throw MapperError.invalidRawValue(rawValue: rawValue, rawValueType: ConvertedType.self)
         }
 
         return value
