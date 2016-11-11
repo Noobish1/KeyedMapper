@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name                      = "KeyedMapper"
-    s.version                   = "1.9.0"
+    s.version                   = "1.10.0"
     s.summary                   = "Swift JSON Mapper that uses enums for JSON keys"
     s.homepage                  = "https://github.com/Noobish1/KeyedMapper"
     s.license                   = "MIT"
