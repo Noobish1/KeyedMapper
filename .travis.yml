@@ -9,7 +9,6 @@ cache:
 before_install:
     - brew update && brew tap Homebrew/bundle && brew bundle
     - bundle install
-    - bundle exec pod install
 
 script:
     - set -o pipefail && xcodebuild build-for-testing test-without-building -scheme KeyedMapper -workspace KeyedMapper.xcworkspace -sdk iphonesimulator -destination "name=iPhone SE" | xcpretty
