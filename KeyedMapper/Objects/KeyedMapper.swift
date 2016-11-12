@@ -41,7 +41,7 @@ public struct KeyedMapper<Object: Mappable> {
 
     // MARK: Retrieving JSON from a field
     internal func JSON(fromField field: Object.Key) throws -> Any {
-        guard let value = field.stringValue.isEmpty ? JSON : safeValue(forField: field, in: JSON) else {
+        guard let value = safeValue(forField: field, in: JSON) else {
             throw MapperError.missingField(field: field.stringValue, forType: Object.self)
         }
 
