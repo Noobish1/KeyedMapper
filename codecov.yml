@@ -2,3 +2,6 @@ coverage:
 
   ignore:
     - KeyedMapperTests/.*
+    - Playgrounds/.*
+    - TestModels/.*
+    - PerformanceTests/.*
