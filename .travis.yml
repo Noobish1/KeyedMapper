@@ -9,7 +9,6 @@ cache:
 before_install:
     - brew update && brew tap Homebrew/bundle && brew bundle
     - bundle install
-    - bundle exec pod repo update
     - bundle exec pod install
 
 script:
