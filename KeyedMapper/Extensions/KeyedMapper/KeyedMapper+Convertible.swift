@@ -15,11 +15,34 @@ public extension KeyedMapper {
         return try JSON.map(T.fromMap)
     }
 
+    public func from<U: Convertible, T: Convertible>(_ field: Object.Key) throws -> [U: [T]] where U == U.ConvertedType, T == T.ConvertedType {
+        let object = try JSON(fromField: field)
+
+        guard let data = object as? NSDictionary else {
+            throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: object, expectedType: NSDictionary.self)
+        }
+
+        var result = [U: [T]]()
+        for (key, value) in data {
+            guard let array = value as? NSArray else {
+                throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: object, expectedType: NSArray.self)
+            }
+
+            result[try U.fromMap(key)] = try array.map { try T.fromMap($0) }
+        }
+
+        return result
+    }
+
     public func optionalFrom<T: Convertible>(_ field: Object.Key) -> T? where T == T.ConvertedType {
         return try? from(field)
     }
 
     public func optionalFrom<T: Convertible>(_ field: Object.Key) -> [T]? where T == T.ConvertedType {
+        return try? from(field)
+    }
+
+    public func optionalFrom<U: Convertible, T: Convertible>(_ field: Object.Key) -> [U: [T]]? where U == U.ConvertedType, T == T.ConvertedType {
         return try? from(field)
     }
 }

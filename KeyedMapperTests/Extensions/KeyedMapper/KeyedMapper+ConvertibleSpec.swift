@@ -2,9 +2,10 @@ import Quick
 import Nimble
 @testable import KeyedMapper
 
-fileprivate struct ConvertibleObject: Convertible {
+fileprivate struct ConvertibleObject: Convertible, Hashable, Equatable {
     fileprivate let stringProperty: String
-    
+
+    //MARK: Convertible
     fileprivate static func fromMap(_ value: Any) throws -> ConvertibleObject {
         guard let string = value as? String else {
             throw MapperError.convertible(value: value, expectedType: String.self)
@@ -12,20 +13,33 @@ fileprivate struct ConvertibleObject: Convertible {
         
         return ConvertibleObject(stringProperty: string)
     }
+
+    //MARK: Hashable
+    fileprivate var hashValue: Int {
+        return stringProperty.hashValue
+    }
+
+    //MARK: Equatable
+    fileprivate static func == (lhs: ConvertibleObject, rhs: ConvertibleObject) -> Bool {
+        return lhs.stringProperty == rhs.stringProperty
+    }
 }
 
 fileprivate struct Model: Mappable {
     fileprivate enum Key: String, JSONKey {
         case convertibleProperty
         case convertibleArrayProperty
+        case convertibleDictionaryProperty
     }
     
     fileprivate let convertibleProperty: ConvertibleObject
     fileprivate let convertibleArrayProperty: [ConvertibleObject]
+    fileprivate let convertibleDictionaryProperty: [ConvertibleObject : [ConvertibleObject]]
     
     fileprivate init(map: KeyedMapper<Model>) throws {
         try self.convertibleProperty = map.from(.convertibleProperty)
         try self.convertibleArrayProperty = map.from(.convertibleArrayProperty)
+        try self.convertibleDictionaryProperty = map.from(.convertibleDictionaryProperty)
     }
 }
 
@@ -62,15 +76,15 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
         describe("from<T: Convertible> -> [T]") {
             context("when the value cannot be casted to an array of Any") {
                 it("should throw a typeMismatch error") {
-                    let expectedValue: NSDictionary = [:]
-                    let dict: NSDictionary = ["convertibleArrayProperty" : [:]]
+                    let value: NSDictionary = [:]
+                    let dict: NSDictionary = ["convertibleArrayProperty" : value]
                     let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
                     let field = Model.Key.convertibleArrayProperty
                     
                     do {
                         let _: [ConvertibleObject] = try mapper.from(field)
                     } catch let error as MapperError {
-                        expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: [Any].self)
+                        expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: Model.self, value: value, expectedType: [Any].self)
                     } catch {
                         XCTFail("Error thrown from from<T: Convertible> -> [T] was not a MapperError")
                     }
@@ -88,7 +102,57 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                 }
             }
         }
-        
+
+        describe("from<T: Convertible> -> [U : [T]]") {
+            context("when the value cannot be casted to an NSDictionary") {
+                it("should return a typeMismatch error") {
+                    let value: NSArray = []
+                    let dict: NSDictionary = ["convertibleDictionaryProperty" : value]
+                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let field = Model.Key.convertibleDictionaryProperty
+
+                    do {
+                        let _: [ConvertibleObject : [ConvertibleObject]] = try mapper.from(field)
+                    } catch let error as MapperError {
+                        expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: Model.self, value: value, expectedType: NSDictionary.self)
+                    } catch {
+                        XCTFail("Error thrown from from<T: Convertible> -> [U : [T]] was not a MapperError")
+                    }
+                }
+            }
+
+            context("when the value can be cast to an NSDictionary") {
+                context("when one of the dictionary values cannot be cast to an NSArray") {
+                    it("should return a typeMismatch error") {
+                        let value: NSDictionary = ["" : [:]]
+                        let dict: NSDictionary = ["convertibleDictionaryProperty" : value]
+                        let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                        let field = Model.Key.convertibleDictionaryProperty
+
+                        do {
+                            let _: [ConvertibleObject : [ConvertibleObject]] = try mapper.from(field)
+                        } catch let error as MapperError {
+                            expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: Model.self, value: value, expectedType: NSArray.self)
+                        } catch {
+                            XCTFail("Error thrown from from<T: Convertible> -> [U : [T]] was not a MapperError")
+                        }
+                    }
+                }
+
+                context("when all of the dictionary values can be cast to NSArrays") {
+                    it("should return the correctly converted objects") {
+                        let field = Model.Key.convertibleDictionaryProperty
+                        let value: NSDictionary = ["" : [""]]
+                        let dict: NSDictionary = [field.stringValue : value]
+                        let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                        let convertibleDictionary: [ConvertibleObject : [ConvertibleObject]] = try! mapper.from(field)
+
+                        expect(convertibleDictionary.values.count) == value.count
+                    }
+                }
+            }
+        }
+
         describe("optionalFrom<T: Convertible> -> T?") {
             context("when the fromMap implementation throws an error") {
                 it("should return nil") {
@@ -132,6 +196,46 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                     
                     expect(convertibleArray).toNot(beNil())
                     expect(convertibleArray?.count) == expectedValue.count
+                }
+            }
+        }
+
+        describe("optionalFrom<T: Convertible> -> [U : [T]]?") {
+            context("when the value cannot be casted to an NSDictionary") {
+                it("should return a nil") {
+                    let value: NSArray = []
+                    let dict: NSDictionary = ["convertibleDictionaryProperty" : value]
+                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let field = Model.Key.convertibleDictionaryProperty
+                    let convertibleDictionary: [ConvertibleObject : [ConvertibleObject]]? = mapper.optionalFrom(field)
+
+                    expect(convertibleDictionary).to(beNil())
+                }
+            }
+
+            context("when the value can be cast to an NSDictionary") {
+                context("when one of the dictionary values cannot be cast to an NSArray") {
+                    it("should return a typeMismatch error") {
+                        let value: NSDictionary = ["" : [:]]
+                        let dict: NSDictionary = ["convertibleDictionaryProperty" : value]
+                        let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                        let field = Model.Key.convertibleDictionaryProperty
+                        let convertibleDictionary: [ConvertibleObject : [ConvertibleObject]]? = mapper.optionalFrom(field)
+
+                        expect(convertibleDictionary).to(beNil())
+                    }
+                }
+
+                context("when all of the dictionary values can be cast to NSArrays") {
+                    it("should return the correctly converted objects") {
+                        let field = Model.Key.convertibleDictionaryProperty
+                        let value: NSDictionary = ["" : [""]]
+                        let dict: NSDictionary = [field.stringValue : value]
+                        let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                        let convertibleDictionary: [ConvertibleObject : [ConvertibleObject]]? = mapper.optionalFrom(field)
+
+                        expect(convertibleDictionary?.values.count) == value.count
+                    }
                 }
             }
         }
