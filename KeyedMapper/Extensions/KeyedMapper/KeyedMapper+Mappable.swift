@@ -8,7 +8,7 @@ public extension KeyedMapper {
             throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: value, expectedType: NSDictionary.self)
         }
 
-        return try T(map: KeyedMapper<T>(JSON: JSON, type: T.self))
+        return try T.from(dictionary: JSON)
     }
 
     public func from<T: Mappable>(_ field: Object.Key) throws -> [T] {
@@ -18,7 +18,8 @@ public extension KeyedMapper {
             throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: value, expectedType: [NSDictionary].self)
         }
 
-        return try JSON.map { try T(map: KeyedMapper<T>(JSON: $0, type: T.self)) }
+        return try [T].fromMap(JSON)
+    }
 
     public func from<T: Mappable>(_ field: Object.Key) throws -> [[T]] {
         let value = try JSON(fromField: field)
