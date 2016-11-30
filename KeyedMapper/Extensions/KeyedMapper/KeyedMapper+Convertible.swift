@@ -12,7 +12,7 @@ public extension KeyedMapper {
             throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: value, expectedType: [Any].self)
         }
 
-        return try JSON.map(T.fromMap)
+        return try [T].fromMap(JSON)
     }
 
     public func from<U: Convertible, T: Convertible>(_ field: Object.Key) throws -> [U: [T]] where U == U.ConvertedType, T == T.ConvertedType {
@@ -28,7 +28,7 @@ public extension KeyedMapper {
                 throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: object, expectedType: NSArray.self)
             }
 
-            result[try U.fromMap(key)] = try array.map { try T.fromMap($0) }
+            result[try U.fromMap(key)] = try [T].fromMap(array)
         }
 
         return result
