@@ -26,8 +26,12 @@ public extension DefaultConvertible where ConvertedType: RawRepresentable {
     }
 }
 
-extension NSDictionary: DefaultConvertible {}
-extension NSArray: DefaultConvertible {}
+extension NSDictionary: DefaultConvertible {
+    public typealias ConvertedType = NSDictionary
+}
+extension NSArray: DefaultConvertible {
+    public typealias ConvertedType = NSArray
+}
 
 extension String: DefaultConvertible {}
 extension Int: DefaultConvertible {}
