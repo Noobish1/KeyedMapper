@@ -15,6 +15,16 @@ public extension KeyedMapper {
         return try [T].fromMap(JSON)
     }
 
+    public func from<T: Convertible>(_ field: Object.Key) throws -> [[T]] where T == T.ConvertedType {
+        let value = try JSON(fromField: field)
+
+        guard let JSON = value as? [[Any]] else {
+            throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: value, expectedType: [[Any]].self)
+        }
+
+        return try JSON.map { try [T].fromMap($0) }
+    }
+
     public func from<U: Convertible, T: Convertible>(_ field: Object.Key) throws -> [U: [T]] where U == U.ConvertedType, T == T.ConvertedType {
         let object = try JSON(fromField: field)
 
