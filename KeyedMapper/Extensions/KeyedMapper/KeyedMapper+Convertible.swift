@@ -24,7 +24,7 @@ public extension KeyedMapper {
 
         var result = [U: [T]]()
         for (key, value) in data {
-            guard let array = value as? NSArray else {
+            guard let array = value as? [Any] else {
                 throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: object, expectedType: NSArray.self)
             }
 
