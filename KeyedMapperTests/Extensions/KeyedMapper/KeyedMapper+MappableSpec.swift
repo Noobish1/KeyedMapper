@@ -112,6 +112,37 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 }
             }
         }
+
+        describe("from<T: Mappable> -> [[T]]") {
+            context("when the value in the JSON is not a two d array of Dictionaries") {
+                it("should throw a typeMismatch error") {
+                    let expectedValue = 2
+                    let field = ModelWithTwoDArrayProperty.Key.twoDArrayMappableProperty
+                    let dict: NSDictionary = [field.rawValue : expectedValue]
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+
+                    do {
+                        let _: [[SubModel]] = try mapper.from(field)
+                    } catch let error as MapperError {
+                        expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: ModelWithTwoDArrayProperty.self, value: expectedValue, expectedType: [[NSDictionary]].self)
+                    } catch {
+                        XCTFail("Error thrown from KeyedMapper<T: Mappable>.from was not a MapperError")
+                    }
+                }
+            }
+
+            context("when the value in the JSON is an array of Dictionaries") {
+                it("should map correctly") {
+                    let expectedValue = [[SubModel.Key.stringProperty.rawValue : ""]]
+                    let dict: NSDictionary = [ModelWithTwoDArrayProperty.Key.twoDArrayMappableProperty.rawValue : expectedValue]
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+                    let models: [SubModel] = try! mapper.from(.twoDArrayMappableProperty)
+
+                    expect(models).toNot(beNil())
+                    expect(models.count) == expectedValue.count
+                }
+            }
+        }
         
         describe("optionalFrom<T: Mappable> -> T?") {
             context("when the value in the JSON is not an Dictionary") {
