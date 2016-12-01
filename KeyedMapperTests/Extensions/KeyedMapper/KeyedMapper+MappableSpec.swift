@@ -17,15 +17,37 @@ fileprivate struct SubModel: Mappable {
 fileprivate struct Model: Mappable {
     fileprivate enum Key: String, JSONKey {
         case mappableProperty
-        case arrayMappableProperty
     }
     
     fileprivate let mappableProperty: SubModel
-    fileprivate let arrayMappableProperty: [SubModel]
     
     fileprivate init(map: KeyedMapper<Model>) throws {
         try self.mappableProperty = map.from(.mappableProperty)
+    }
+}
+
+fileprivate struct ModelWithArrayProperty: Mappable {
+    fileprivate enum Key: String, JSONKey {
+        case arrayMappableProperty
+    }
+
+    fileprivate let arrayMappableProperty: [SubModel]
+
+    fileprivate init(map: KeyedMapper<ModelWithArrayProperty>) throws {
         try self.arrayMappableProperty = map.from(.arrayMappableProperty)
+    }
+}
+
+
+fileprivate struct ModelWithTwoDArrayProperty: Mappable {
+    fileprivate enum Key: String, JSONKey {
+        case twoDArrayMappableProperty
+    }
+
+    fileprivate let twoDArrayMappableProperty: [[SubModel]]
+
+    fileprivate init(map: KeyedMapper<ModelWithTwoDArrayProperty>) throws {
+        try self.twoDArrayMappableProperty = map.from(.twoDArrayMappableProperty)
     }
 }
 
@@ -65,13 +87,13 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 it("should throw a typeMismatch error") {
                     let expectedValue = 2
                     let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
-                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
-                    let field = Model.Key.arrayMappableProperty
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
+                    let field = ModelWithArrayProperty.Key.arrayMappableProperty
                     
                     do {
                         let _: [SubModel] = try mapper.from(field)
                     } catch let error as MapperError {
-                        expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: Model.self, value: expectedValue, expectedType: [NSDictionary].self)
+                        expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: ModelWithArrayProperty.self, value: expectedValue, expectedType: [NSDictionary].self)
                     } catch {
                         XCTFail("Error thrown from KeyedMapper<T: Mappable>.from was not a MapperError")
                     }
@@ -82,7 +104,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 it("should map correctly") {
                     let expectedValue = [["stringProperty" : ""]]
                     let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
-                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
                     let models: [SubModel] = try! mapper.from(.arrayMappableProperty)
                     
                     expect(models).toNot(beNil())
@@ -120,7 +142,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 it("should throw a typeMismatch error") {
                     let expectedValue = 2
                     let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
-                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
                     let models: [SubModel]? = mapper.optionalFrom(.arrayMappableProperty)
                     
                     expect(models).to(beNil())
@@ -131,7 +153,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 it("should map correctly") {
                     let expectedValue = [["stringProperty" : ""]]
                     let dict: NSDictionary = ["arrayMappableProperty" : expectedValue]
-                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
                     let models: [SubModel]? = mapper.optionalFrom(.arrayMappableProperty)
                     
                     expect(models).toNot(beNil())
