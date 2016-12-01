@@ -122,7 +122,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             }
 
             context("when the value can be cast to an NSDictionary") {
-                context("when one of the dictionary values cannot be cast to an NSArray") {
+                context("when one of the dictionary values cannot be cast to an [Any]") {
                     it("should return a typeMismatch error") {
                         let value: NSDictionary = ["" : [:]]
                         let dict: NSDictionary = ["convertibleDictionaryProperty" : value]
@@ -132,7 +132,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                         do {
                             let _: [ConvertibleObject : [ConvertibleObject]] = try mapper.from(field)
                         } catch let error as MapperError {
-                            expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: Model.self, value: value, expectedType: NSArray.self)
+                            expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: Model.self, value: value, expectedType: [Any].self)
                         } catch {
                             XCTFail("Error thrown from from<T: Convertible> -> [U : [T]] was not a MapperError")
                         }
