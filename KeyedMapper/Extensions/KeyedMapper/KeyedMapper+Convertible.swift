@@ -52,7 +52,7 @@ public extension KeyedMapper {
         return try? from(field)
     }
 
-    public func from<T: Convertible>(_ field: Object.Key) throws -> [[T]]? where T == T.ConvertedType {
+    public func optionalFrom<T: Convertible>(_ field: Object.Key) throws -> [[T]]? where T == T.ConvertedType {
         return try? from(field)
     }
 
