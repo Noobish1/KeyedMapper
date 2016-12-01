@@ -168,7 +168,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
             }
         }
         
-        describe("from<T: Mappable> -> [T]") {
+        describe("optionalFrom<T: Mappable> -> [T]?") {
             context("when the value in the JSON is not an array of Dictionaries") {
                 it("should throw a typeMismatch error") {
                     let expectedValue = 2
