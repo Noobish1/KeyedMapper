@@ -12,7 +12,17 @@ public extension KeyedMapper {
             throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: value, expectedType: [Any].self)
         }
 
-        return try JSON.map(T.fromMap)
+        return try [T].fromMap(JSON)
+    }
+
+    public func from<T: Convertible>(_ field: Object.Key) throws -> [[T]] where T == T.ConvertedType {
+        let value = try JSON(fromField: field)
+
+        guard let JSON = value as? [[Any]] else {
+            throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: value, expectedType: [[Any]].self)
+        }
+
+        return try JSON.map { try [T].fromMap($0) }
     }
 
     public func from<U: Convertible, T: Convertible>(_ field: Object.Key) throws -> [U: [T]] where U == U.ConvertedType, T == T.ConvertedType {
@@ -24,11 +34,11 @@ public extension KeyedMapper {
 
         var result = [U: [T]]()
         for (key, value) in data {
-            guard let array = value as? NSArray else {
-                throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: object, expectedType: NSArray.self)
+            guard let array = value as? [Any] else {
+                throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: object, expectedType: [Any].self)
             }
 
-            result[try U.fromMap(key)] = try array.map { try T.fromMap($0) }
+            result[try U.fromMap(key)] = try [T].fromMap(array)
         }
 
         return result
@@ -39,6 +49,10 @@ public extension KeyedMapper {
     }
 
     public func optionalFrom<T: Convertible>(_ field: Object.Key) -> [T]? where T == T.ConvertedType {
+        return try? from(field)
+    }
+
+    public func optionalFrom<T: Convertible>(_ field: Object.Key) -> [[T]]? where T == T.ConvertedType {
         return try? from(field)
     }
 

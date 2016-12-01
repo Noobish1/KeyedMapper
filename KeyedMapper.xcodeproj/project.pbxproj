@@ -12,6 +12,8 @@
 		75182DF41D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DF31D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift */; };
 		75182DF61D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */; };
 		75182DFB1D7BE1C200AEAD44 /* KeyedMapperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */; };
+		752518B61DF0C6B000B72977 /* Sequence+MappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */; };
+		752518B81DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752518B71DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift */; };
 		755470BA1D8A554100472173 /* KeyedMapper+MappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */; };
 		7562CA8D1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562CA8C1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift */; };
 		7566673B1D864A2800AFFE02 /* NilConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566673A1D864A2800AFFE02 /* NilConvertible.swift */; };
@@ -21,6 +23,8 @@
 		7570733E1D867458006C5D7F /* MapperError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7570733D1D867458006C5D7F /* MapperError.swift */; };
 		7578B9BA1D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578B9B91D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift */; };
 		7578B9BC1D87AC840009A143 /* ReverseMappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578B9BB1D87AC840009A143 /* ReverseMappableSpec.swift */; };
+		757BFE471DEF892800FC861C /* Sequence+Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757BFE461DEF892800FC861C /* Sequence+Mappable.swift */; };
+		757BFE491DEF895500FC861C /* Sequence+Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757BFE481DEF895500FC861C /* Sequence+Convertible.swift */; };
 		75BC66811D7691520041B0CA /* KeyedMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 75BC66801D7691520041B0CA /* KeyedMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75BC66881D7691520041B0CA /* KeyedMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BC667D1D7691520041B0CA /* KeyedMapper.framework */; };
 		75BC669A1D76918C0041B0CA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC66991D76918C0041B0CA /* Dictionary.swift */; };
@@ -82,6 +86,8 @@
 		75182DF31D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Mappable.swift"; sourceTree = "<group>"; };
 		75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Convertible.swift"; sourceTree = "<group>"; };
 		75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedMapperSpec.swift; sourceTree = "<group>"; };
+		752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+MappableSpec.swift"; sourceTree = "<group>"; };
+		752518B71DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ConvertibleSpec.swift"; sourceTree = "<group>"; };
 		755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+MappableSpec.swift"; sourceTree = "<group>"; };
 		755ADE061D8DE91F0086C900 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = "<group>"; };
 		755ADE071D8DE91F0086C900 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -95,6 +101,8 @@
 		7570733D1D867458006C5D7F /* MapperError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperError.swift; sourceTree = "<group>"; };
 		7578B9B91D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+NilConvertibleSpec.swift"; sourceTree = "<group>"; };
 		7578B9BB1D87AC840009A143 /* ReverseMappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseMappableSpec.swift; sourceTree = "<group>"; };
+		757BFE461DEF892800FC861C /* Sequence+Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Mappable.swift"; sourceTree = "<group>"; };
+		757BFE481DEF895500FC861C /* Sequence+Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Convertible.swift"; sourceTree = "<group>"; };
 		759B4F181D8E085C00241624 /* Brewfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Brewfile; sourceTree = "<group>"; };
 		75A985711D8DF43C00109E0A /* KeyedMapper.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KeyedMapper.playground; sourceTree = "<group>"; };
 		75BC667D1D7691520041B0CA /* KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */,
+				752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */,
+				752518B71DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -322,6 +332,8 @@
 			isa = PBXGroup;
 			children = (
 				75BC66991D76918C0041B0CA /* Dictionary.swift */,
+				757BFE461DEF892800FC861C /* Sequence+Mappable.swift */,
+				757BFE481DEF895500FC861C /* Sequence+Convertible.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -644,6 +656,7 @@
 			files = (
 				75BC669A1D76918C0041B0CA /* Dictionary.swift in Sources */,
 				75BC66A01D7691FD0041B0CA /* MapperError.swift in Sources */,
+				757BFE471DEF892800FC861C /* Sequence+Mappable.swift in Sources */,
 				75BC66AA1D7692FD0041B0CA /* KeyedMapper.swift in Sources */,
 				75182DF41D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift in Sources */,
 				75BC669D1D7691AB0041B0CA /* Convertible.swift in Sources */,
@@ -651,6 +664,7 @@
 				75BC66B11D7697F40041B0CA /* DefaultConvertible.swift in Sources */,
 				75182DF61D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift in Sources */,
 				75BC66A21D76924E0041B0CA /* JSONKey.swift in Sources */,
+				757BFE491DEF895500FC861C /* Sequence+Convertible.swift in Sources */,
 				75BC66A81D7692D20041B0CA /* ReverseMappable.swift in Sources */,
 				7566673D1D864A6D00AFFE02 /* KeyedMapper+NilConvertible.swift in Sources */,
 			);
@@ -664,10 +678,12 @@
 				750047161D8CF0DA000C0779 /* MapperErrorSpec.swift in Sources */,
 				75182DFB1D7BE1C200AEAD44 /* KeyedMapperSpec.swift in Sources */,
 				750C74D31D7A7A5A00B9AB51 /* DictionarySpec.swift in Sources */,
+				752518B61DF0C6B000B72977 /* Sequence+MappableSpec.swift in Sources */,
 				7562CA8D1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift in Sources */,
 				7578B9BC1D87AC840009A143 /* ReverseMappableSpec.swift in Sources */,
 				7578B9BA1D87A7890009A143 /* KeyedMapper+NilConvertibleSpec.swift in Sources */,
 				757073391D866C95006C5D7F /* DefaultConvertibleSpec.swift in Sources */,
+				752518B81DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift in Sources */,
 				7570733E1D867458006C5D7F /* MapperError.swift in Sources */,
 				757073371D8658F4006C5D7F /* MappableSpec.swift in Sources */,
 			);
