@@ -39,7 +39,7 @@ public extension KeyedMapper {
         return try? from(field)
     }
 
-    public func from<T: Mappable>(_ field: Object.Key) throws -> [[T]]? {
+    public func optionalFrom<T: Mappable>(_ field: Object.Key) -> [[T]]? {
         return try? from(field)
     }
 }
