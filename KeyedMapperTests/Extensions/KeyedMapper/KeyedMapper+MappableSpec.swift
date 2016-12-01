@@ -58,7 +58,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 it("should throw a typeMismatch error") {
                     let expectedValue = 2
                     let dict: NSDictionary = ["mappableProperty" : expectedValue]
-                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let mapper = KeyedMapper(JSON: dict, type: Model.self)
                     
                     do {
                         let _: SubModel = try mapper.from(.mappableProperty)
@@ -74,7 +74,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 it("should map correctly") {
                     let expectedValue = ["stringProperty" : ""]
                     let dict: NSDictionary = ["mappableProperty" : expectedValue]
-                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let mapper = KeyedMapper(JSON: dict, type: Model.self)
                     let model: SubModel = try! mapper.from(.mappableProperty)
                     
                     expect(model).toNot(beNil())
@@ -118,7 +118,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 it("should throw a typeMismatch error") {
                     let expectedValue = 2
                     let dict: NSDictionary = ["mappableProperty" : expectedValue]
-                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let mapper = KeyedMapper(JSON: dict, type: Model.self)
                     let model: SubModel? = mapper.optionalFrom(.mappableProperty)
                     
                     expect(model).to(beNil())
@@ -129,7 +129,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 it("should map correctly") {
                     let expectedValue = ["stringProperty" : ""]
                     let dict: NSDictionary = ["mappableProperty" : expectedValue]
-                    let mapper = KeyedMapper<Model>(JSON: dict, type: Model.self)
+                    let mapper = KeyedMapper(JSON: dict, type: Model.self)
                     let model: SubModel? = mapper.optionalFrom(.mappableProperty)
                     
                     expect(model).toNot(beNil())
