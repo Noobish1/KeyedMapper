@@ -192,5 +192,32 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 }
             }
         }
+
+        describe("optionalFrom<T: Mappable> -> [[T]]?") {
+            context("when the value in the JSON is not a two d array of Dictionaries") {
+                it("should return nil") {
+                    let expectedValue = 2
+                    let field = ModelWithTwoDArrayProperty.Key.twoDArrayMappableProperty
+                    let dict: NSDictionary = [field.rawValue : expectedValue]
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+
+                    let model: [[SubModel]]? = mapper.optionalFrom(field)
+
+                    expect(model).to(beNil())
+                }
+            }
+
+            context("when the value in the JSON is an array of Dictionaries") {
+                it("should map correctly") {
+                    let expectedValue = [[SubModel.Key.stringProperty.rawValue : ""]]
+                    let dict: NSDictionary = [ModelWithTwoDArrayProperty.Key.twoDArrayMappableProperty.rawValue : expectedValue]
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+                    let models: [SubModel] = try! mapper.from(.twoDArrayMappableProperty)
+
+                    expect(models).toNot(beNil())
+                    expect(models.count) == expectedValue.count
+                }
+            }
+        }
     }
 }
