@@ -260,6 +260,32 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             }
         }
 
+        describe("optionalFrom<T: Convertible> -> [[T]]?") {
+            context("when the value cannot be casted to a two dimensional array of Any") {
+                it("should return nil") {
+                    let value: NSDictionary = [:]
+                    let dict: NSDictionary = ["convertibleTwoDArrayProperty" : value]
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+                    let field = ModelWithTwoDArrayProperty.Key.convertibleTwoDArrayProperty
+
+                    let models: [[ConvertibleObject]]? = mapper.optionalFrom(field)
+
+                    expect(models).to(beNil())
+                }
+            }
+
+            context("when the value can be casted to an array of Any") {
+                it("should map correctly") {
+                    let expectedValue = [""]
+                    let dict: NSDictionary = ["convertibleTwoDArrayProperty" : [expectedValue]]
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+                    let convertibleArray: [[ConvertibleObject]]? = mapper.optionalFrom(.convertibleTwoDArrayProperty)
+
+                    expect(convertibleArray?.count) == expectedValue.count
+                }
+            }
+        }
+
         describe("optionalFrom<T: Convertible> -> [U : [T]]?") {
             context("when the value cannot be casted to an NSDictionary") {
                 it("should return a nil") {
