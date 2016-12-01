@@ -133,10 +133,10 @@ class KeyedMapper_MappableSpec: QuickSpec {
 
             context("when the value in the JSON is an array of Dictionaries") {
                 it("should map correctly") {
-                    let expectedValue = [[SubModel.Key.stringProperty.rawValue : ""]]
+                    let expectedValue = [[[SubModel.Key.stringProperty.rawValue : ""]]]
                     let dict: NSDictionary = [ModelWithTwoDArrayProperty.Key.twoDArrayMappableProperty.rawValue : expectedValue]
                     let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
-                    let models: [SubModel] = try! mapper.from(.twoDArrayMappableProperty)
+                    let models: [[SubModel]] = try! mapper.from(.twoDArrayMappableProperty)
 
                     expect(models).toNot(beNil())
                     expect(models.count) == expectedValue.count
@@ -209,13 +209,13 @@ class KeyedMapper_MappableSpec: QuickSpec {
 
             context("when the value in the JSON is an array of Dictionaries") {
                 it("should map correctly") {
-                    let expectedValue = [[SubModel.Key.stringProperty.rawValue : ""]]
+                    let expectedValue = [[[SubModel.Key.stringProperty.rawValue : ""]]]
                     let dict: NSDictionary = [ModelWithTwoDArrayProperty.Key.twoDArrayMappableProperty.rawValue : expectedValue]
                     let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
-                    let models: [SubModel] = try! mapper.from(.twoDArrayMappableProperty)
+                    let models: [[SubModel]]? = mapper.optionalFrom(.twoDArrayMappableProperty)
 
                     expect(models).toNot(beNil())
-                    expect(models.count) == expectedValue.count
+                    expect(models?.count) == expectedValue.count
                 }
             }
         }
