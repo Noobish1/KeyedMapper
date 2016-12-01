@@ -61,6 +61,18 @@ fileprivate struct ModelWithDictionaryProperty: Mappable {
     }
 }
 
+fileprivate struct ModelWithTwoDArrayProperty: Mappable {
+    fileprivate enum Key: String, JSONKey {
+        case convertibleTwoDArrayProperty
+    }
+
+    fileprivate let convertibleTwoDArrayProperty: [[ConvertibleObject]]
+
+    fileprivate init(map: KeyedMapper<ModelWithTwoDArrayProperty>) throws {
+        try self.convertibleTwoDArrayProperty = map.from(.convertibleTwoDArrayProperty)
+    }
+}
+
 class KeyedMapper_ConvertibleSpec: QuickSpec {
     override func spec() {
         describe("from<T: Convertible> -> T") {
@@ -116,6 +128,36 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                     let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
                     let convertibleArray: [ConvertibleObject] = try! mapper.from(.convertibleArrayProperty)
                     
+                    expect(convertibleArray.count) == expectedValue.count
+                }
+            }
+        }
+
+        describe("from<T: Convertible> -> [[T]]") {
+            context("when the value cannot be casted to a two dimensional array of Any") {
+                it("should throw a typeMismatch error") {
+                    let value: NSDictionary = [:]
+                    let dict: NSDictionary = ["convertibleTwoDArrayProperty" : value]
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+                    let field = ModelWithTwoDArrayProperty.Key.convertibleTwoDArrayProperty
+
+                    do {
+                        let _: [[ConvertibleObject]] = try mapper.from(field)
+                    } catch let error as MapperError {
+                        expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: ModelWithTwoDArrayProperty.self, value: value, expectedType: [[Any]].self)
+                    } catch {
+                        XCTFail("Error thrown from from<T: Convertible> -> [T] was not a MapperError")
+                    }
+                }
+            }
+
+            context("when the value can be casted to an array of Any") {
+                it("should map correctly") {
+                    let expectedValue = [""]
+                    let dict: NSDictionary = ["convertibleTwoDArrayProperty" : [expectedValue]]
+                    let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+                    let convertibleArray: [[ConvertibleObject]] = try! mapper.from(.convertibleTwoDArrayProperty)
+
                     expect(convertibleArray.count) == expectedValue.count
                 }
             }
