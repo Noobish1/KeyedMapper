@@ -56,7 +56,7 @@ class KeyedMapper_NilConvertibleSpec: QuickSpec {
                 
                 context("when the given JSON does contain the value") {
                     it("should map correctly to the something case") {
-                        let JSON: NSDictionary = ["enumProperty": ""]
+                        let JSON: NSDictionary = [Model.Key.enumProperty.stringValue : ""]
                         let model = try! Model.from(dictionary: JSON)
                         
                         expect(model.enumProperty) == NilConvertibleEnum.something
