@@ -54,6 +54,8 @@ class KeyedMapperSpec: QuickSpec {
     override func spec() {
         describe("KeyedMapper") {
             describe("JSONFromField") {
+                let field = ModelWithStringProperty.Key.stringProperty
+
                 context("when given an empty string") {
                     it("should return the KeyedMapper's JSON") {
                         let dict: NSDictionary = [:]
@@ -67,9 +69,9 @@ class KeyedMapperSpec: QuickSpec {
                 context("when given a valid key") {
                     it("should return the value for that key") {
                         let expectedValue = "value"
-                        let dict: NSDictionary = ["stringProperty" : expectedValue]
+                        let dict: NSDictionary = [field.stringValue : expectedValue]
                         let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
-                        let result = try! mapper.JSON(fromField: .stringProperty) as! String
+                        let result = try! mapper.JSON(fromField: field) as! String
                         
                         expect(result) == expectedValue
                     }
@@ -79,7 +81,6 @@ class KeyedMapperSpec: QuickSpec {
                     it("should throw a missing field error") {
                         let dict: NSDictionary = [:]
                         let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
-                        let field = ModelWithStringProperty.Key.stringProperty
                         
                         do {
                             try _ = mapper.JSON(fromField: field)
@@ -104,13 +105,14 @@ class KeyedMapperSpec: QuickSpec {
                 }
                 
                 context("when given an single key") {
+                    let field = ModelWithStringProperty.Key.stringProperty
+
                     context("when the value exists for the given key") {
                         it("should return the value for the given key") {
-                            let key = ModelWithStringProperty.Key.stringProperty
                             let expectedValue = "value"
-                            let dict: NSDictionary = [key.stringValue : expectedValue]
+                            let dict: NSDictionary = [field.stringValue : expectedValue]
                             let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
-                            let value = mapper.safeValue(forField: key, in: dict) as! String
+                            let value = mapper.safeValue(forField: field, in: dict) as! String
                             
                             expect(value) == expectedValue
                         }
@@ -118,10 +120,9 @@ class KeyedMapperSpec: QuickSpec {
                     
                     context("when the value does not exist for the given key") {
                         it("should return nil") {
-                            let key = ModelWithStringProperty.Key.stringProperty
                             let dict: NSDictionary = [:]
                             let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
-                            let value = mapper.safeValue(forField: key, in: dict) as? String
+                            let value = mapper.safeValue(forField: field, in: dict) as? String
                             
                             expect(value).to(beNil())
                         }
@@ -129,10 +130,11 @@ class KeyedMapperSpec: QuickSpec {
                 }
 
                 context("when given a two part keypath") {
+                    let keyPath = ModelWithInnerModelProperty.Key.modelProperty
+                    let firstKey = String(keyPath.rawValue.characters.split(separator: ".").first!)
+
                     context("when the value exists for the given keypath") {
                         it("should return the value for the given keypath") {
-                            let keyPath = ModelWithInnerModelProperty.Key.modelProperty
-                            let firstKey = String(keyPath.rawValue.characters.split(separator: ".").first!)
                             let secondKey = String(keyPath.rawValue.characters.split(separator: ".")[1])
                             let expectedValue = "value"
                             let dict: NSDictionary = [firstKey : [secondKey : expectedValue]]
@@ -145,8 +147,6 @@ class KeyedMapperSpec: QuickSpec {
                     
                     context("when the value does not exist for the given keypath") {
                         it("should return nil") {
-                            let keyPath = ModelWithInnerModelProperty.Key.modelProperty
-                            let firstKey = String(keyPath.rawValue.characters.split(separator: ".").first!)
                             let dict: NSDictionary = [firstKey : [:]]
                             let mapper = KeyedMapper(JSON: dict, type: ModelWithInnerModelProperty.self)
                             let value = mapper.safeValue(forField: keyPath, in: dict) as? String
@@ -160,7 +160,7 @@ class KeyedMapperSpec: QuickSpec {
             describe("from<T>") {
                 it("should use the given transform on the returned object") {
                     let transformedValue = "transformedValue"
-                    let dict: NSDictionary = ["stringProperty" : "notTheExpectedValue"]
+                    let dict: NSDictionary = [ModelWithStringProperty.Key.stringProperty.stringValue : "notTheExpectedValue"]
                     let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
                     let result = try! mapper.from(.stringProperty, transformation: { _ in transformedValue })
                     
@@ -169,12 +169,14 @@ class KeyedMapperSpec: QuickSpec {
             }
             
             describe("optionalFrom<T>") {
+                let field = ModelWithOptionalStringProperty.Key.stringProperty
+
                 context("when the field does not exist in the given JSON") {
                     it("should return nil") {
                         let expectedValue = "notTheExpectedValue"
                         let dict: NSDictionary = [:]
                         let mapper = KeyedMapper(JSON: dict, type: ModelWithOptionalStringProperty.self)
-                        let result = mapper.optionalFrom(.stringProperty, transformation: { _ in expectedValue })
+                        let result = mapper.optionalFrom(field, transformation: { _ in expectedValue })
                         
                         expect(result).to(beNil())
                     }
@@ -183,9 +185,9 @@ class KeyedMapperSpec: QuickSpec {
                 context("when the field exists in the given JSON") {
                     it("should return the transformed value") {
                         let transformedValue = "transformedValue"
-                        let dict: NSDictionary = ["stringProperty" : "notTheExpectedValue"]
+                        let dict: NSDictionary = [field.stringValue : "notTheExpectedValue"]
                         let mapper = KeyedMapper(JSON: dict, type: ModelWithOptionalStringProperty.self)
-                        let result = mapper.optionalFrom(.stringProperty, transformation: { _ in transformedValue })
+                        let result = mapper.optionalFrom(field, transformation: { _ in transformedValue })
                         
                         expect(result) == transformedValue
                     }
