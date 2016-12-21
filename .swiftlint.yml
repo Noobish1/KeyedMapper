@@ -12,6 +12,10 @@ opt_in_rules:
   - explicit_init
   - overridden_super_call
   - redundant_nil_coalesing
+  - nimble_operator
+  - attributes
+  - file_header
+  - prohibited_super_call
 included:
   - KeyedMapper
 line_length: 160
