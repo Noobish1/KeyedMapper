@@ -506,7 +506,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Noobish1;
 				TargetAttributes = {
 					75BC667C1D7691520041B0CA = {
@@ -875,6 +875,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D934EE6EF597E359A078575A /* Pods-KeyedMapperTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "KeyedMapperTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.KeyedMapperTests;
@@ -886,6 +887,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "KeyedMapperTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.KeyedMapperTests;
