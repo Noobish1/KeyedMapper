@@ -1,6 +1,7 @@
 import Foundation
 import KeyedMapper
 
+// swiftlint:disable cyclomatic_complexity
 extension MapperError: Equatable {
     public static func == (lhs: MapperError, rhs: MapperError) -> Bool {
         switch lhs {
@@ -49,3 +50,4 @@ extension MapperError: Equatable {
         }
     }
 }
+// swiftlint:enable cyclomatic_complexity

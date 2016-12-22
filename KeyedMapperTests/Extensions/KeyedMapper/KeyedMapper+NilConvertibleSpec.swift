@@ -6,7 +6,7 @@ import Nimble
 fileprivate enum NilConvertibleEnum: NilConvertible {
     case nothing
     case something
-    
+
     fileprivate static func fromMap(_ value: Any?) throws -> NilConvertibleEnum {
         return value.map { _ in .something } ?? .nothing
     }
@@ -33,9 +33,9 @@ fileprivate struct Model: Mappable {
     fileprivate enum Key: String, JSONKey {
         case enumProperty
     }
-    
+
     fileprivate let enumProperty: NilConvertibleEnum
-    
+
     fileprivate init(map: KeyedMapper<Model>) throws {
         try self.enumProperty = map.from(.enumProperty)
     }
@@ -49,16 +49,16 @@ class KeyedMapper_NilConvertibleSpec: QuickSpec {
                     it("should map correctly to the nothing case") {
                         let JSON: NSDictionary = [:]
                         let model = try! Model.from(dictionary: JSON)
-                        
+
                         expect(model.enumProperty) == NilConvertibleEnum.nothing
                     }
                 }
-                
+
                 context("when the given JSON does contain the value") {
                     it("should map correctly to the something case") {
                         let JSON: NSDictionary = [Model.Key.enumProperty.stringValue : ""]
                         let model = try! Model.from(dictionary: JSON)
-                        
+
                         expect(model.enumProperty) == NilConvertibleEnum.something
                     }
                 }

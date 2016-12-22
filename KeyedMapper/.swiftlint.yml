@@ -1,0 +1,33 @@
+disabled_rules: # rule identifiers to exclude from running
+  - trailing_newline
+  - todo
+  - valid_docs
+opt_in_rules:
+  - force_unwrapping
+  - vertical_whitespace
+  - private_outlet
+  - conditional_returns_on_newline
+  - empty_count
+  - closure_spacing
+  - explicit_init
+  - overridden_super_call
+  - redundant_nil_coalesing
+  - nimble_operator
+  - attributes
+  - file_header
+  - prohibited_super_call
+line_length: 160
+file_length:
+  - 400 # warning
+  - 500 # error
+function_body_length:
+  - 100 # warning
+  - 200 # error
+type_body_length:
+  - 300 # warning
+  - 400 # error
+type_name:
+  min_length: 2 # only warning
+  max_length: # warning and error
+    warning: 50
+    error: 60

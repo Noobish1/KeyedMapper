@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		750047161D8CF0DA000C0779 /* MapperErrorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750047151D8CF0DA000C0779 /* MapperErrorSpec.swift */; };
+		7509D0981E0C23D700550FDA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7509D0971E0C23D700550FDA /* .swiftlint.yml */; };
 		750C74D31D7A7A5A00B9AB51 /* DictionarySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */; };
 		75182DF41D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DF31D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift */; };
 		75182DF61D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DF51D7BDB5B00AEAD44 /* KeyedMapper+Convertible.swift */; };
 		75182DFB1D7BE1C200AEAD44 /* KeyedMapperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */; };
 		752518B61DF0C6B000B72977 /* Sequence+MappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */; };
 		752518B81DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752518B71DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift */; };
+		7533AF4F1E0C3A2400A7BBB3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7533AF4E1E0C3A2400A7BBB3 /* .swiftlint.yml */; };
 		755470BA1D8A554100472173 /* KeyedMapper+MappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */; };
 		7562CA8D1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562CA8C1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift */; };
 		7566673B1D864A2800AFFE02 /* NilConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566673A1D864A2800AFFE02 /* NilConvertible.swift */; };
@@ -81,6 +83,7 @@
 		750047151D8CF0DA000C0779 /* MapperErrorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperErrorSpec.swift; sourceTree = "<group>"; };
 		750047191D8CFF0E000C0779 /* KeyedMapper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KeyedMapper.podspec; sourceTree = "<group>"; };
 		7500471B1D8D0C83000C0779 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
+		7509D0971E0C23D700550FDA /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySpec.swift; sourceTree = "<group>"; };
 		750C74D41D7A83B000B9AB51 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		75182DF31D7BDB1F00AEAD44 /* KeyedMapper+Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+Mappable.swift"; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 		75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedMapperSpec.swift; sourceTree = "<group>"; };
 		752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+MappableSpec.swift"; sourceTree = "<group>"; };
 		752518B71DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ConvertibleSpec.swift"; sourceTree = "<group>"; };
+		7533AF4E1E0C3A2400A7BBB3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+MappableSpec.swift"; sourceTree = "<group>"; };
 		755ADE061D8DE91F0086C900 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = "<group>"; };
 		755ADE071D8DE91F0086C900 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 		75BC667F1D7691520041B0CA /* KeyedMapper */ = {
 			isa = PBXGroup;
 			children = (
+				7509D0971E0C23D700550FDA /* .swiftlint.yml */,
 				75BC66971D76916C0041B0CA /* Extensions */,
 				75BC669E1D7691F00041B0CA /* Objects */,
 				75BC669B1D76919F0041B0CA /* Protocols */,
@@ -311,6 +316,7 @@
 		75BC668B1D7691520041B0CA /* KeyedMapperTests */ = {
 			isa = PBXGroup;
 			children = (
+				7533AF4E1E0C3A2400A7BBB3 /* .swiftlint.yml */,
 				750C74D11D7A7A3F00B9AB51 /* Extensions */,
 				75182DF71D7BE17400AEAD44 /* Objects */,
 				757073351D8658DF006C5D7F /* Protocols */,
@@ -560,6 +566,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7509D0981E0C23D700550FDA /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +574,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7533AF4F1E0C3A2400A7BBB3 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

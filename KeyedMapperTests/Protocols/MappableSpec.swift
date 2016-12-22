@@ -4,11 +4,11 @@ import Nimble
 
 fileprivate struct ModelWithStringProperty: Mappable {
     fileprivate let stringProperty: String
-    
+
     fileprivate enum Key: String, JSONKey {
         case stringProperty
     }
-    
+
     fileprivate init(map: KeyedMapper<ModelWithStringProperty>) throws {
         try self.stringProperty = map.from(.stringProperty)
     }
@@ -27,7 +27,7 @@ class MappableSpec: QuickSpec {
                 context("when the passed in array is not an array of Dictionaries") {
                     it("should throw a MapperError.rootTypeMismatch") {
                         let JSON: [Any] = [1]
-                        
+
                         do {
                             _ = try ModelWithStringProperty.from(array: JSON)
                         } catch let error as MapperError {
@@ -37,12 +37,12 @@ class MappableSpec: QuickSpec {
                         }
                     }
                 }
-                
+
                 context("when the passed in array is an array of Dictionaries") {
                     it("should map the model correctly") {
                         let model = try! ModelWithStringProperty.from(dictionary: ["stringProperty": ""])
                         let models = try! ModelWithStringProperty.from(array: [["stringProperty": ""]])
-                        
+
                         expect(models) == [model]
                     }
                 }

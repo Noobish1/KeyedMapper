@@ -1,8 +1,13 @@
 disabled_rules:
+  - force_try
+  - type_name
+  - force_cast
+  - mark
+  - function_body_length
 included:
   - KeyedMapper
   - KeyedMapperTests
-line_length: 160
+line_length: 200
 file_length:
   - 400 # warning
   - 500 # error
