@@ -74,6 +74,8 @@ struct Object {
     let optionalMappableProperty: SubObject?
     let defaultConvertibleProperty: DefaultConvertibleEnum
     let optionalDefaultConvertibleProperty: DefaultConvertibleEnum?
+    let twoDArrayProperty: [[String]]
+    let optionalTwoDArrayProperty: [[String]]?
 }
 
 extension Object: Mappable {
@@ -89,6 +91,8 @@ extension Object: Mappable {
         case optionalMappableProperty
         case defaultConvertibleProperty
         case optionalDefaultConvertibleProperty
+        case twoDArrayProperty
+        case optionalTwoDArrayProperty
     }
     
     init(map: KeyedMapper<Object>) throws {
@@ -103,6 +107,8 @@ extension Object: Mappable {
         self.optionalMappableProperty = map.optionalFrom(.optionalMappableProperty)
         self.defaultConvertibleProperty = try map.from(.defaultConvertibleProperty)
         self.optionalDefaultConvertibleProperty = map.optionalFrom(.optionalDefaultConvertibleProperty)
+        self.twoDArrayProperty = try map.from(.twoDArrayProperty)
+        self.optionalTwoDArrayProperty = map.optionalFrom(.optionalTwoDArrayProperty)
     }
 }
 
@@ -110,7 +116,8 @@ let JSON: NSDictionary = ["property" : "propertyValue",
                          "convertibleProperty" : NSTimeZone(forSecondsFromGMT: 0).abbreviation as Any,
                          "arrayProperty" : ["arrayPropertyValue1", "arrayPropertyValue2"],
                          "mappableProperty" : ["property" : "propertyValue"],
-                         "defaultConvertibleProperty" : DefaultConvertibleEnum.firstCase.rawValue]
+                         "defaultConvertibleProperty" : DefaultConvertibleEnum.firstCase.rawValue,
+                         "twoDArrayProperty" : [["twoDArrayPropertyValue1"], ["twoDArrayPropertyValue2"]]]
 
 let object = try Object.from(dictionary: JSON)
 
@@ -128,7 +135,11 @@ extension Object: ReverseMappable {
                 .arrayProperty : arrayProperty,
                 .optionalArrayProperty : optionalArrayProperty,
                 .mappableProperty : mappableProperty.toJSON(),
-                .optionalMappableProperty: optionalMappableProperty?.toJSON()
+                .optionalMappableProperty : optionalMappableProperty?.toJSON(),
+                .defaultConvertibleProperty : defaultConvertibleProperty,
+                .optionalDefaultConvertibleProperty : optionalDefaultConvertibleProperty,
+                .twoDArrayProperty : twoDArrayProperty,
+                .optionalTwoDArrayProperty : optionalTwoDArrayProperty
         ]
     }
 }
