@@ -3,7 +3,11 @@ import Foundation
 internal final class JSON {
     private let dictionary: NSDictionary
 
-    internal init(dictionary: NSDictionary) {
+    internal init(value: Any, forObject object: Any.Type) throws {
+        guard let dictionary = value as? NSDictionary else {
+            throw MapperError.rootTypeMismatch(forType: object, value: value, expectedType: NSDictionary.self)
+        }
+
         self.dictionary = dictionary
     }
 

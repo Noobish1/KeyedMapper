@@ -57,7 +57,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 let field = Model.Key.mappableProperty
                 let expectedValue = [SubModel.Key.stringProperty.stringValue : ""]
                 let dict: NSDictionary = [field.stringValue : expectedValue]
-                let mapper = KeyedMapper(JSON: dict, type: Model.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: Model.self)
                 let model: SubModel = try! mapper.from(field)
 
                 expect(model).toNot(beNil())
@@ -69,7 +69,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 let field = ModelWithArrayProperty.Key.arrayMappableProperty
                 let expectedValue = [[SubModel.Key.stringProperty.stringValue : ""]]
                 let dict: NSDictionary = [field.stringValue : expectedValue]
-                let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
                 let models: [SubModel] = try! mapper.from(field)
 
                 expect(models).toNot(beNil())
@@ -82,7 +82,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 let field = ModelWithTwoDArrayProperty.Key.twoDArrayMappableProperty
                 let expectedValue = [[[SubModel.Key.stringProperty.rawValue : ""]]]
                 let dict: NSDictionary = [field.stringValue : expectedValue]
-                let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
                 let models: [[SubModel]] = try! mapper.from(field)
 
                 expect(models).toNot(beNil())
@@ -95,7 +95,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 let field = Model.Key.mappableProperty
                 let expectedValue = [SubModel.Key.stringProperty.stringValue : ""]
                 let dict: NSDictionary = [field.rawValue : expectedValue]
-                let mapper = KeyedMapper(JSON: dict, type: Model.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: Model.self)
                 let model: SubModel? = mapper.optionalFrom(field)
 
                 expect(model).toNot(beNil())
@@ -107,7 +107,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 let field = ModelWithArrayProperty.Key.arrayMappableProperty
                 let expectedValue = [[SubModel.Key.stringProperty.stringValue : ""]]
                 let dict: NSDictionary = [field.stringValue : expectedValue]
-                let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
                 let models: [SubModel]? = mapper.optionalFrom(field)
 
                 expect(models).toNot(beNil())
@@ -120,7 +120,7 @@ class KeyedMapper_MappableSpec: QuickSpec {
                 let field = ModelWithTwoDArrayProperty.Key.twoDArrayMappableProperty
                 let expectedValue = [[[SubModel.Key.stringProperty.stringValue : ""]]]
                 let dict: NSDictionary = [field.stringValue : expectedValue]
-                let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
                 let models: [[SubModel]]? = mapper.optionalFrom(field)
 
                 expect(models).toNot(beNil())

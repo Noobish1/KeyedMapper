@@ -79,7 +79,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             it("should correctly map") {
                 let field = Model.Key.convertibleProperty
                 let dict: NSDictionary = [field.stringValue : ""]
-                let mapper = KeyedMapper(JSON: dict, type: Model.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: Model.self)
                 let convertibleThing: ConvertibleObject = try! mapper.from(field)
 
                 expect(convertibleThing).toNot(beNil())
@@ -91,7 +91,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                 let field = ModelWithArrayProperty.Key.convertibleArrayProperty
                 let expectedValue = [""]
                 let dict: NSDictionary = [field.stringValue : expectedValue]
-                let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
                 let convertibleArray: [ConvertibleObject] = try! mapper.from(field)
 
                 expect(convertibleArray.count) == expectedValue.count
@@ -103,7 +103,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                 let field = ModelWithTwoDArrayProperty.Key.convertibleTwoDArrayProperty
                 let expectedValue = [""]
                 let dict: NSDictionary = [field.stringValue : [expectedValue]]
-                let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
                 let convertibleArray: [[ConvertibleObject]] = try! mapper.from(field)
 
                 expect(convertibleArray.count) == expectedValue.count
@@ -117,7 +117,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                 it("should return a typeMismatch error") {
                     let value: NSDictionary = ["" : [:]]
                     let dict: NSDictionary = [field.stringValue : value]
-                    let mapper = KeyedMapper(JSON: dict, type: ModelWithDictionaryProperty.self)
+                    let mapper = try! KeyedMapper(JSON: dict, type: ModelWithDictionaryProperty.self)
 
                     do {
                         let _: [ConvertibleObject : [ConvertibleObject]] = try mapper.from(field)
@@ -133,7 +133,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                 it("should return the correctly converted objects") {
                     let value: NSDictionary = ["" : [""]]
                     let dict: NSDictionary = [field.stringValue : value]
-                    let mapper = KeyedMapper(JSON: dict, type: ModelWithDictionaryProperty.self)
+                    let mapper = try! KeyedMapper(JSON: dict, type: ModelWithDictionaryProperty.self)
                     let convertibleDictionary: [ConvertibleObject : [ConvertibleObject]] = try! mapper.from(field)
 
                     expect(convertibleDictionary.values.count) == value.count
@@ -145,7 +145,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
             it("should correctly map") {
                 let field = Model.Key.convertibleProperty
                 let dict: NSDictionary = [field.stringValue : ""]
-                let mapper = KeyedMapper(JSON: dict, type: Model.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: Model.self)
                 let convertibleThing: ConvertibleObject? = mapper.optionalFrom(field)
 
                 expect(convertibleThing).toNot(beNil())
@@ -157,7 +157,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                 let field = ModelWithArrayProperty.Key.convertibleArrayProperty
                 let expectedValue = [""]
                 let dict: NSDictionary = [field.stringValue : expectedValue]
-                let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
                 let convertibleArray: [ConvertibleObject]? = mapper.optionalFrom(field)
 
                 expect(convertibleArray).toNot(beNil())
@@ -170,7 +170,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                 let field = ModelWithTwoDArrayProperty.Key.convertibleTwoDArrayProperty
                 let expectedValue = [""]
                 let dict: NSDictionary = [field.stringValue : [expectedValue]]
-                let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
                 let convertibleArray: [[ConvertibleObject]]? = mapper.optionalFrom(field)
 
                 expect(convertibleArray?.count) == expectedValue.count
@@ -182,7 +182,7 @@ class KeyedMapper_ConvertibleSpec: QuickSpec {
                 let field = ModelWithDictionaryProperty.Key.convertibleDictionaryProperty
                 let value: NSDictionary = ["" : [""]]
                 let dict: NSDictionary = [field.stringValue : value]
-                let mapper = KeyedMapper(JSON: dict, type: ModelWithDictionaryProperty.self)
+                let mapper = try! KeyedMapper(JSON: dict, type: ModelWithDictionaryProperty.self)
                 let convertibleDictionary: [ConvertibleObject : [ConvertibleObject]]? = mapper.optionalFrom(field)
 
                 expect(convertibleDictionary?.values.count) == value.count

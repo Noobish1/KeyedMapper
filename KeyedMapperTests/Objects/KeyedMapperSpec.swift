@@ -33,7 +33,7 @@ class KeyedMapperSpec: QuickSpec {
                 it("should use the given transform on the returned object") {
                     let transformedValue = "transformedValue"
                     let dict: NSDictionary = [ModelWithStringProperty.Key.stringProperty.stringValue : "notTheExpectedValue"]
-                    let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
+                    let mapper = try! KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
                     let result = try! mapper.from(.stringProperty, transformation: { _ in transformedValue })
 
                     expect(result) == transformedValue
@@ -47,7 +47,7 @@ class KeyedMapperSpec: QuickSpec {
                     it("should return nil") {
                         let expectedValue = "notTheExpectedValue"
                         let dict: NSDictionary = [:]
-                        let mapper = KeyedMapper(JSON: dict, type: ModelWithOptionalStringProperty.self)
+                        let mapper = try! KeyedMapper(JSON: dict, type: ModelWithOptionalStringProperty.self)
                         let result = mapper.optionalFrom(field, transformation: { _ in expectedValue })
 
                         expect(result).to(beNil())
@@ -58,7 +58,7 @@ class KeyedMapperSpec: QuickSpec {
                     it("should return the transformed value") {
                         let transformedValue = "transformedValue"
                         let dict: NSDictionary = [field.stringValue : "notTheExpectedValue"]
-                        let mapper = KeyedMapper(JSON: dict, type: ModelWithOptionalStringProperty.self)
+                        let mapper = try! KeyedMapper(JSON: dict, type: ModelWithOptionalStringProperty.self)
                         let result = mapper.optionalFrom(field, transformation: { _ in transformedValue })
 
                         expect(result) == transformedValue
