@@ -10,9 +10,7 @@ public extension KeyedMapper {
     }
 
     public func from<T: Mappable>(_ field: Object.Key) throws -> [[T]] {
-        let value: [[NSDictionary]] = try json.value(fromField: field.stringValue, forObject: Object.self)
-
-        return try value.map { try [T].fromMap($0) }
+        return try [[T]].fromMap(try json.value(fromField: field.stringValue, forObject: Object.self))
     }
 
     public func optionalFrom<T: Mappable>(_ field: Object.Key) -> T? {

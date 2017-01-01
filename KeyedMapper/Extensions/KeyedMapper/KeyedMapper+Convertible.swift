@@ -10,9 +10,7 @@ public extension KeyedMapper {
     }
 
     public func from<T: Convertible>(_ field: Object.Key) throws -> [[T]] where T == T.ConvertedType {
-        let value: [[Any]] = try json.value(fromField: field.stringValue, forObject: Object.self)
-
-        return try value.map { try [T].fromMap($0) }
+        return try [[T]].fromMap(try json.value(fromField: field.stringValue, forObject: Object.self))
     }
 
     public func from<U: Convertible, T: Convertible>(_ field: Object.Key) throws -> [U: [T]] where U == U.ConvertedType, T == T.ConvertedType {
