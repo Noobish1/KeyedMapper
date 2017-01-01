@@ -19,7 +19,7 @@ public extension Mappable {
             throw MapperError.rootTypeMismatch(forType: self, value: array, expectedType: [NSDictionary].self)
         }
 
-        return try dictArray.map { try self.init(map: KeyedMapper(JSON: $0, type: self)) }
+        return try dictArray.map(from)
     }
 }
 
