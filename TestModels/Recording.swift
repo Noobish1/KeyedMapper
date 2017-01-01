@@ -10,9 +10,9 @@ public struct Recording {
     }
 
     enum RecGroup: String, DefaultConvertible {
-        case Deleted = "Deleted"
-        case Default = "Default"
-        case LiveTV = "LiveTV"
+        case Deleted
+        case Default
+        case LiveTV
         case Unknown
     }
 
