@@ -21,7 +21,6 @@ public struct KeyedMapper<Object: Mappable> {
         self.json = try JSON(value: value, forObject: type)
     }
 
-    // MARK: Transformations
     public func from<T>(_ field: Object.Key, transformation: (Any) throws -> T) throws -> T {
         let value: Any = try json.value(fromField: field.stringValue, forObject: Object.self)
 

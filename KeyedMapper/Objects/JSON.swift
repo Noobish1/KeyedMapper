@@ -11,7 +11,6 @@ internal final class JSON {
         self.dictionary = dictionary
     }
 
-    // MARK: Retrieving JSON from a field
     internal func value<T>(fromField field: String, forObject object: Any.Type) throws -> T {
         guard let rawValue = safeValue(fromField: field, in: dictionary) else {
             throw MapperError.missingField(field: field, forType: object)
