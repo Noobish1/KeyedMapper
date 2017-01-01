@@ -2,33 +2,17 @@ import Foundation
 
 public extension KeyedMapper {
     public func from<T: Mappable>(_ field: Object.Key) throws -> T {
-        let value = try JSON(fromField: field)
-
-        guard let JSON = value as? NSDictionary else {
-            throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: value, expectedType: NSDictionary.self)
-        }
-
-        return try T.from(dictionary: JSON)
+        return try T.from(dictionary: try JSONValue(fromField: field))
     }
 
     public func from<T: Mappable>(_ field: Object.Key) throws -> [T] {
-        let value = try JSON(fromField: field)
-
-        guard let JSON = value as? [NSDictionary] else {
-            throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: value, expectedType: [NSDictionary].self)
-        }
-
-        return try [T].fromMap(JSON)
+        return try [T].fromMap(try JSONValue(fromField: field))
     }
 
     public func from<T: Mappable>(_ field: Object.Key) throws -> [[T]] {
-        let value = try JSON(fromField: field)
+        let value: [[NSDictionary]] = try JSONValue(fromField: field)
 
-        guard let JSON = value as? [[NSDictionary]] else {
-            throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: value, expectedType: [[NSDictionary]].self)
-        }
-
-        return try JSON.map { try [T].fromMap($0) }
+        return try value.map { try [T].fromMap($0) }
     }
 
     public func optionalFrom<T: Mappable>(_ field: Object.Key) -> T? {

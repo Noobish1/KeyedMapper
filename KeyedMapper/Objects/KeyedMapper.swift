@@ -40,7 +40,7 @@ public struct KeyedMapper<Object: Mappable> {
     }
 
     // MARK: Retrieving JSON from a field
-    internal func JSON(fromField field: Object.Key) throws -> Any {
+    private func JSON(fromField field: Object.Key) throws -> Any {
         guard let value = safeValue(forField: field, in: JSON) else {
             throw MapperError.missingField(field: field.stringValue, forType: Object.self)
         }
@@ -48,7 +48,17 @@ public struct KeyedMapper<Object: Mappable> {
         return value
     }
 
-    internal func safeValue(forField field: Object.Key, in dictionary: NSDictionary) -> Any? {
+    internal func JSONValue<T>(fromField field: Object.Key) throws -> T {
+        let rawValue = try JSON(fromField: field)
+
+        guard let value = rawValue as? T else {
+            throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: rawValue, expectedType: T.self)
+        }
+
+        return value
+    }
+
+    private func safeValue(forField field: Object.Key, in dictionary: NSDictionary) -> Any? {
         guard !field.stringValue.isEmpty else {
             return dictionary
         }
