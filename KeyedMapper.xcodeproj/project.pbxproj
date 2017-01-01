@@ -225,9 +225,9 @@
 		75182DF71D7BE17400AEAD44 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				7539FA381E18B92B0041593C /* JSONSpec.swift */,
 				75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */,
 				750047151D8CF0DA000C0779 /* MapperErrorSpec.swift */,
-				7539FA381E18B92B0041593C /* JSONSpec.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -236,8 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				750C74D21D7A7A5A00B9AB51 /* DictionarySpec.swift */,
-				752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */,
 				752518B71DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift */,
+				752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -273,25 +273,25 @@
 		75BC66731D7691520041B0CA = {
 			isa = PBXGroup;
 			children = (
-				75CCE8B81DC8D6C80023D8B4 /* TestModels */,
-				75CCE8CA1DC8D7DC0023D8B4 /* PerformanceTests */,
 				353873040D7AFC6C2A4F7360 /* Frameworks */,
 				75BC667F1D7691520041B0CA /* KeyedMapper */,
 				75BC668B1D7691520041B0CA /* KeyedMapperTests */,
+				75CCE8CA1DC8D7DC0023D8B4 /* PerformanceTests */,
 				75106DEF1D8D1597008E1D6D /* Playgrounds */,
 				D9366B1DDEF738C46C747711 /* Pods */,
 				75BC667E1D7691520041B0CA /* Products */,
-				759B4F181D8E085C00241624 /* Brewfile */,
+				75CCE8B81DC8D6C80023D8B4 /* TestModels */,
 				7562CA8B1D88E59700430687 /* .codebeatignore */,
-				755ADE061D8DE91F0086C900 /* codecov.yml */,
-				750047191D8CFF0E000C0779 /* KeyedMapper.podspec */,
 				75FEE68C1D793D3B002DBF7D /* .gitignore */,
+				7500471B1D8D0C83000C0779 /* .swift-version */,
+				75FEE68D1D793D3B002DBF7D /* .swiftlint.yml */,
+				750C74D41D7A83B000B9AB51 /* .travis.yml */,
+				759B4F181D8E085C00241624 /* Brewfile */,
+				75BC66AE1D7694C40041B0CA /* Gemfile */,
+				750047191D8CFF0E000C0779 /* KeyedMapper.podspec */,
 				755ADE081D8DE91F0086C900 /* LICENSE */,
 				755ADE071D8DE91F0086C900 /* README.md */,
-				75FEE68D1D793D3B002DBF7D /* .swiftlint.yml */,
-				7500471B1D8D0C83000C0779 /* .swift-version */,
-				750C74D41D7A83B000B9AB51 /* .travis.yml */,
-				75BC66AE1D7694C40041B0CA /* Gemfile */,
+				755ADE061D8DE91F0086C900 /* codecov.yml */,
 			);
 			sourceTree = "<group>";
 		};
@@ -309,11 +309,11 @@
 		75BC667F1D7691520041B0CA /* KeyedMapper */ = {
 			isa = PBXGroup;
 			children = (
-				7509D0971E0C23D700550FDA /* .swiftlint.yml */,
 				75BC66971D76916C0041B0CA /* Extensions */,
 				75BC669E1D7691F00041B0CA /* Objects */,
 				75BC669B1D76919F0041B0CA /* Protocols */,
 				75BC66AB1D7694580041B0CA /* Supporting Files */,
+				7509D0971E0C23D700550FDA /* .swiftlint.yml */,
 			);
 			path = KeyedMapper;
 			sourceTree = "<group>";
@@ -321,11 +321,11 @@
 		75BC668B1D7691520041B0CA /* KeyedMapperTests */ = {
 			isa = PBXGroup;
 			children = (
-				7533AF4E1E0C3A2400A7BBB3 /* .swiftlint.yml */,
 				750C74D11D7A7A3F00B9AB51 /* Extensions */,
 				75182DF71D7BE17400AEAD44 /* Objects */,
 				757073351D8658DF006C5D7F /* Protocols */,
 				750C74D01D7A7A3700B9AB51 /* Supporting Files */,
+				7533AF4E1E0C3A2400A7BBB3 /* .swiftlint.yml */,
 			);
 			path = KeyedMapperTests;
 			sourceTree = "<group>";
@@ -343,8 +343,8 @@
 			isa = PBXGroup;
 			children = (
 				75BC66991D76918C0041B0CA /* Dictionary.swift */,
-				757BFE461DEF892800FC861C /* Sequence+Mappable.swift */,
 				757BFE481DEF895500FC861C /* Sequence+Convertible.swift */,
+				757BFE461DEF892800FC861C /* Sequence+Mappable.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -364,9 +364,9 @@
 		75BC669E1D7691F00041B0CA /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				7539FA361E18B8CE0041593C /* JSON.swift */,
 				75BC66A91D7692FD0041B0CA /* KeyedMapper.swift */,
 				75BC669F1D7691FD0041B0CA /* MapperError.swift */,
-				7539FA361E18B8CE0041593C /* JSON.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -383,11 +383,11 @@
 		75CCE8B81DC8D6C80023D8B4 /* TestModels */ = {
 			isa = PBXGroup;
 			children = (
-				75CCE8B91DC8D6C80023D8B4 /* TestModels.h */,
 				75CCE8BA1DC8D6C80023D8B4 /* Info.plist */,
-				75CCE8BF1DC8D7150023D8B4 /* Recording.swift */,
 				75CCE8C31DC8D7790023D8B4 /* Program.swift */,
 				75CCE8D81DC8D9000023D8B4 /* ProgramList.swift */,
+				75CCE8BF1DC8D7150023D8B4 /* Recording.swift */,
+				75CCE8B91DC8D6C80023D8B4 /* TestModels.h */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -395,9 +395,9 @@
 		75CCE8CA1DC8D7DC0023D8B4 /* PerformanceTests */ = {
 			isa = PBXGroup;
 			children = (
+				75CCE8CD1DC8D7DD0023D8B4 /* Info.plist */,
 				75CCE8D61DC8D83C0023D8B4 /* Large.json */,
 				75CCE8CB1DC8D7DC0023D8B4 /* PerformanceTests.swift */,
-				75CCE8CD1DC8D7DD0023D8B4 /* Info.plist */,
 			);
 			path = PerformanceTests;
 			sourceTree = "<group>";
