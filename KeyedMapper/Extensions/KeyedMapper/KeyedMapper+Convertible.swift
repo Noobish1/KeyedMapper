@@ -2,15 +2,15 @@ import Foundation
 
 public extension KeyedMapper {
     public func from<T: Convertible>(_ field: Object.Key) throws -> T where T == T.ConvertedType {
-        return try from(field, transformation: T.fromMap)
+        return try from(field, transformation: T.from)
     }
 
     public func from<T: Convertible>(_ field: Object.Key) throws -> [T] where T == T.ConvertedType {
-        return try [T].fromMap(try json.value(fromField: field.stringValue, forObject: Object.self))
+        return try [T].from(try json.value(fromField: field.stringValue, forObject: Object.self))
     }
 
     public func from<T: Convertible>(_ field: Object.Key) throws -> [[T]] where T == T.ConvertedType {
-        return try [[T]].fromMap(try json.value(fromField: field.stringValue, forObject: Object.self))
+        return try [[T]].from(try json.value(fromField: field.stringValue, forObject: Object.self))
     }
 
     public func from<U: Convertible, T: Convertible>(_ field: Object.Key) throws -> [U: [T]] where U == U.ConvertedType, T == T.ConvertedType {
@@ -22,7 +22,7 @@ public extension KeyedMapper {
                 throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: value, expectedType: [Any].self)
             }
 
-            result[try U.fromMap(key)] = try [T].fromMap(array)
+            result[try U.from(key)] = try [T].from(array)
         }
 
         return result

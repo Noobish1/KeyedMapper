@@ -9,7 +9,7 @@ private enum DefaultConvertibleEnum: Int, DefaultConvertible {
 class DefaultConvertibleSpec: QuickSpec {
     override func spec() {
         describe("DefaultConvertible") {
-            describe("fromMap") {
+            describe("from") {
                 context("when the object is not RawRepresentable") {
                     context("when the given value cannot be cast to the ConvertedType") {
                         it("should throw a ConvertibleError") {
@@ -17,11 +17,11 @@ class DefaultConvertibleSpec: QuickSpec {
                             let type = Int.self
 
                             do {
-                                _ = try type.fromMap(value)
+                                _ = try type.from(value)
                             } catch let error as MapperError {
                                 expect(error) == MapperError.convertible(value: value, expectedType: type)
                             } catch {
-                                XCTFail("Error thrown from DefaultConvertible.fromMap was not a MapperError")
+                                XCTFail("Error thrown from DefaultConvertible.from was not a MapperError")
                             }
                         }
                     }
@@ -29,7 +29,7 @@ class DefaultConvertibleSpec: QuickSpec {
                     context("when the given value can be cast to the ConvertedType") {
                         it("should return the converted object") {
                             let expectedValue = 1
-                            let actualValue = try! Int.fromMap(expectedValue as AnyObject)
+                            let actualValue = try! Int.from(expectedValue as AnyObject)
 
                             expect(actualValue) == expectedValue
                         }
@@ -43,11 +43,11 @@ class DefaultConvertibleSpec: QuickSpec {
                             let type = DefaultConvertibleEnum.self
 
                             do {
-                                _ = try type.fromMap(value)
+                                _ = try type.from(value)
                             } catch let error as MapperError {
                                 expect(error) == MapperError.convertible(value: value, expectedType: type.RawValue.self)
                             } catch {
-                                XCTFail("Error thrown from DefaultConvertible.fromMap was not a MapperError")
+                                XCTFail("Error thrown from DefaultConvertible.from was not a MapperError")
                             }
                         }
                     }
@@ -60,11 +60,11 @@ class DefaultConvertibleSpec: QuickSpec {
                             let type = DefaultConvertibleEnum.self
 
                             do {
-                                _ = try type.fromMap(value)
+                                _ = try type.from(value)
                             } catch let error as MapperError {
                                 expect(error) == MapperError.invalidRawValue(rawValue: value, rawValueType: type)
                             } catch {
-                                XCTFail("Error thrown from DefaultConvertible.fromMap was not a MapperError")
+                                XCTFail("Error thrown from DefaultConvertible.from was not a MapperError")
                             }
                         }
                     }
@@ -73,7 +73,7 @@ class DefaultConvertibleSpec: QuickSpec {
                         it("should return the converted object") {
                             let expectedValue = DefaultConvertibleEnum.FirstCase.rawValue
                             let type = DefaultConvertibleEnum.self
-                            let actualValue = try! type.fromMap(expectedValue)
+                            let actualValue = try! type.from(expectedValue)
 
                             expect(actualValue.rawValue) == expectedValue
                         }

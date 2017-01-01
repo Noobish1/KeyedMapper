@@ -7,7 +7,7 @@ fileprivate enum NilConvertibleEnum: NilConvertible {
     case nothing
     case something
 
-    fileprivate static func fromMap(_ value: Any?) throws -> NilConvertibleEnum {
+    fileprivate static func from(_ value: Any?) throws -> NilConvertibleEnum {
         return value.map { _ in .something } ?? .nothing
     }
 }

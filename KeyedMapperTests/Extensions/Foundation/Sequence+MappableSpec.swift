@@ -16,19 +16,19 @@ fileprivate struct Model: Mappable {
 
 class Sequence_MappableSpec: QuickSpec {
     override func spec() {
-        describe("Sequence<Mappable>.fromMap") {
+        describe("Sequence<Mappable>.from") {
             it("should correctly map an array of mappable objects") {
                 let sequence: [NSDictionary] = [[Model.Key.stringProperty.rawValue : ""]]
-                let models = try! [Model].fromMap(sequence)
+                let models = try! [Model].from(sequence)
 
                 expect(models.count) == sequence.count
             }
         }
 
-        describe("Sequence<Sequence<Mappable>>.fromMap") {
+        describe("Sequence<Sequence<Mappable>>.from") {
             it("should correctly map a two dimensional array of mappable objects") {
                 let sequence: [[NSDictionary]] = [[[Model.Key.stringProperty.rawValue : ""]]]
-                let models = try! [[Model]].fromMap(sequence)
+                let models = try! [[Model]].from(sequence)
 
                 expect(models.count) == sequence.count
             }

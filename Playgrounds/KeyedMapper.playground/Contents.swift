@@ -4,7 +4,7 @@ import KeyedMapper
 // Convertible
 
 extension NSTimeZone: Convertible {
-    public static func fromMap(_ value: Any) throws -> NSTimeZone {
+    public static func from(_ value: Any) throws -> NSTimeZone {
         guard let name = value as? String else {
             throw MapperError.convertible(value: value, expectedType: String.self)
         }
@@ -25,7 +25,7 @@ enum NilConvertibleEnum {
 }
 
 extension NilConvertibleEnum: NilConvertible {
-    static func fromMap(_ value: Any?) throws -> NilConvertibleEnum {
+    static func from(_ value: Any?) throws -> NilConvertibleEnum {
         if let _ = value {
             return .something
         } else {
