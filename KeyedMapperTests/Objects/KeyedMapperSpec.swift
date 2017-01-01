@@ -53,54 +53,14 @@ private struct ModelWithInnerModelProperty: Mappable {
 class KeyedMapperSpec: QuickSpec {
     override func spec() {
         describe("KeyedMapper") {
-            describe("JSONFromField") {
-                let field = ModelWithStringProperty.Key.stringProperty
-
+            describe("JSONValue(fromField:)") {
                 context("when given an empty string") {
                     it("should return the KeyedMapper's JSON") {
                         let dict: NSDictionary = [:]
                         let mapper = KeyedMapper(JSON: dict, type: ModelWithProperty.self)
-                        let result = try! mapper.JSON(fromField: .property) as! NSDictionary
+                        let result: NSDictionary = try! mapper.JSONValue(fromField: .property)
 
                         expect((result as NSDictionary)) == (dict as NSDictionary)
-                    }
-                }
-
-                context("when given a valid key") {
-                    it("should return the value for that key") {
-                        let expectedValue = "value"
-                        let dict: NSDictionary = [field.stringValue : expectedValue]
-                        let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
-                        let result = try! mapper.JSON(fromField: field) as! String
-
-                        expect(result) == expectedValue
-                    }
-                }
-
-                context("when the json does not contain the value for the given key") {
-                    it("should throw a missing field error") {
-                        let dict: NSDictionary = [:]
-                        let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
-
-                        do {
-                            try _ = mapper.JSON(fromField: field)
-                        } catch let error as MapperError {
-                            expect(error) == MapperError.missingField(field: field.stringValue, forType: ModelWithStringProperty.self)
-                        } catch {
-                            XCTFail("Error thrown from JSONFromField was not a MapperError")
-                        }
-                    }
-                }
-            }
-
-            describe("safeValueForKeyPath(_:inDictionary:)") {
-                context("when given an empty string") {
-                    it("should return the entire dictionary") {
-                        let dict: NSDictionary = ["key" : "value"]
-                        let mapper = KeyedMapper(JSON: dict, type: ModelWithProperty.self)
-                        let value = mapper.safeValue(forField: ModelWithProperty.Key.property, in: dict) as! NSDictionary
-
-                        expect((value as NSDictionary)) == (dict as NSDictionary)
                     }
                 }
 
@@ -112,7 +72,7 @@ class KeyedMapperSpec: QuickSpec {
                             let expectedValue = "value"
                             let dict: NSDictionary = [field.stringValue : expectedValue]
                             let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
-                            let value = mapper.safeValue(forField: field, in: dict) as! String
+                            let value: String = try! mapper.JSONValue(fromField: field)
 
                             expect(value) == expectedValue
                         }
@@ -122,9 +82,14 @@ class KeyedMapperSpec: QuickSpec {
                         it("should return nil") {
                             let dict: NSDictionary = [:]
                             let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
-                            let value = mapper.safeValue(forField: field, in: dict) as? String
 
-                            expect(value).to(beNil())
+                            do {
+                                let _: String = try mapper.JSONValue(fromField: field)
+                            } catch let error as MapperError {
+                                expect(error) == MapperError.missingField(field: field.stringValue, forType: ModelWithStringProperty.self)
+                            } catch {
+                                XCTFail("Error thrown from KeyedMapper.JSONValue was not a MapperError")
+                            }
                         }
                     }
                 }
@@ -139,7 +104,7 @@ class KeyedMapperSpec: QuickSpec {
                             let expectedValue = "value"
                             let dict: NSDictionary = [firstKey : [secondKey : expectedValue]]
                             let mapper = KeyedMapper(JSON: dict, type: ModelWithInnerModelProperty.self)
-                            let value = mapper.safeValue(forField: keyPath, in: dict) as! String
+                            let value: String = try! mapper.JSONValue(fromField: keyPath)
 
                             expect(value) == expectedValue
                         }
@@ -149,9 +114,32 @@ class KeyedMapperSpec: QuickSpec {
                         it("should return nil") {
                             let dict: NSDictionary = [firstKey : [:]]
                             let mapper = KeyedMapper(JSON: dict, type: ModelWithInnerModelProperty.self)
-                            let value = mapper.safeValue(forField: keyPath, in: dict) as? String
 
-                            expect(value).to(beNil())
+                            do {
+                                let _: String = try mapper.JSONValue(fromField: keyPath)
+                            } catch let error as MapperError {
+                                expect(error) == MapperError.missingField(field: keyPath.stringValue, forType: ModelWithInnerModelProperty.self)
+                            } catch {
+                                XCTFail("Error thrown from KeyedMapper.JSONValue was not a MapperError")
+                            }
+                        }
+                    }
+                }
+
+                context("when the retrived value cannot be cast correctly") {
+                    let field = ModelWithStringProperty.Key.stringProperty
+
+                    it("should return a typeMismatch error") {
+                        let value: NSArray = []
+                        let dict: NSDictionary = [field.stringValue : value]
+                        let mapper = KeyedMapper(JSON: dict, type: ModelWithStringProperty.self)
+
+                        do {
+                            let _: String = try mapper.JSONValue(fromField: field)
+                        } catch let error as MapperError {
+                            expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: ModelWithStringProperty.self, value: value, expectedType: String.self)
+                        } catch {
+                            XCTFail("Error thrown from KeyedMapper.JSONValue was not a MapperError")
                         }
                     }
                 }
