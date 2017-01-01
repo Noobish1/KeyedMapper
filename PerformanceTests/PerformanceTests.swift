@@ -1,16 +1,6 @@
-//
-//  PerformanceTests.swift
-//  PerformanceTests
-//
-//  Created by Blair McArthur on 1/11/16.
-//  Copyright © 2016 Noobish1. All rights reserved.
-//
-
 import XCTest
 import TestModels
 import KeyedMapper
-
-fileprivate let numberOfTests = 40000
 
 class KeyedMapper_Tests: XCTestCase {
     func testDeserialization() {
