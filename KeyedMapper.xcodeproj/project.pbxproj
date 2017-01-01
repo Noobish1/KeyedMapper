@@ -16,6 +16,7 @@
 		752518B61DF0C6B000B72977 /* Sequence+MappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */; };
 		752518B81DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752518B71DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift */; };
 		7533AF4F1E0C3A2400A7BBB3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7533AF4E1E0C3A2400A7BBB3 /* .swiftlint.yml */; };
+		7539FA371E18B8CE0041593C /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7539FA361E18B8CE0041593C /* JSON.swift */; };
 		755470BA1D8A554100472173 /* KeyedMapper+MappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */; };
 		7562CA8D1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562CA8C1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift */; };
 		7566673B1D864A2800AFFE02 /* NilConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566673A1D864A2800AFFE02 /* NilConvertible.swift */; };
@@ -92,6 +93,7 @@
 		752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+MappableSpec.swift"; sourceTree = "<group>"; };
 		752518B71DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ConvertibleSpec.swift"; sourceTree = "<group>"; };
 		7533AF4E1E0C3A2400A7BBB3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		7539FA361E18B8CE0041593C /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+MappableSpec.swift"; sourceTree = "<group>"; };
 		755ADE061D8DE91F0086C900 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = "<group>"; };
 		755ADE071D8DE91F0086C900 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			children = (
 				75BC66A91D7692FD0041B0CA /* KeyedMapper.swift */,
 				75BC669F1D7691FD0041B0CA /* MapperError.swift */,
+				7539FA361E18B8CE0041593C /* JSON.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75BC669A1D76918C0041B0CA /* Dictionary.swift in Sources */,
+				7539FA371E18B8CE0041593C /* JSON.swift in Sources */,
 				75BC66A01D7691FD0041B0CA /* MapperError.swift in Sources */,
 				757BFE471DEF892800FC861C /* Sequence+Mappable.swift in Sources */,
 				75BC66AA1D7692FD0041B0CA /* KeyedMapper.swift in Sources */,

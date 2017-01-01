@@ -24,57 +24,20 @@ public extension Mappable {
 }
 
 public struct KeyedMapper<Object: Mappable> {
-    public let JSON: NSDictionary
+    internal let json: JSON
 
-    public init(JSON: NSDictionary, type: Object.Type) {
-        self.JSON = JSON
+    public init(JSON dictionary: NSDictionary, type: Object.Type) {
+        self.json = JSON(dictionary: dictionary)
     }
 
     // MARK: Transformations
     public func from<T>(_ field: Object.Key, transformation: (Any) throws -> T) throws -> T {
-        return try transformation(try JSON(fromField: field))
+        let value: Any = try json.value(fromField: field.stringValue, forObject: Object.self)
+
+        return try transformation(value)
     }
 
     public func optionalFrom<T>(_ field: Object.Key, transformation: (Any) throws -> T) rethrows -> T? {
-        return try (try? JSON(fromField: field)).map(transformation)
-    }
-
-    // MARK: Retrieving JSON from a field
-    private func JSON(fromField field: Object.Key) throws -> Any {
-        guard let value = safeValue(fromField: field, in: JSON) else {
-            throw MapperError.missingField(field: field.stringValue, forType: Object.self)
-        }
-
-        return value
-    }
-
-    internal func JSONValue<T>(fromField field: Object.Key) throws -> T {
-        let rawValue = try JSON(fromField: field)
-
-        guard let value = rawValue as? T else {
-            throw MapperError.typeMismatch(field: field.stringValue, forType: Object.self, value: rawValue, expectedType: T.self)
-        }
-
-        return value
-    }
-
-    private func safeValue(fromField field: Object.Key, in dictionary: NSDictionary) -> Any? {
-        guard !field.stringValue.isEmpty else {
-            return dictionary
-        }
-
-        guard field.stringValue.contains(".") else {
-            return dictionary[field.stringValue]
-        }
-
-        var object: Any? = dictionary
-        var keys = field.stringValue.characters.split(separator: ".").map(String.init)
-
-        while !keys.isEmpty, let currentObject = object {
-            let key = keys.removeFirst()
-            object = (currentObject as? NSDictionary)?[key]
-        }
-
-        return object
+        return try (try? json.value(fromField: field.stringValue, forObject: Object.self)).map(transformation)
     }
 }

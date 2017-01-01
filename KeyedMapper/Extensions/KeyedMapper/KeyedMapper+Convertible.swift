@@ -6,17 +6,17 @@ public extension KeyedMapper {
     }
 
     public func from<T: Convertible>(_ field: Object.Key) throws -> [T] where T == T.ConvertedType {
-        return try [T].fromMap(try JSONValue(fromField: field))
+        return try [T].fromMap(try json.value(fromField: field.stringValue, forObject: Object.self))
     }
 
     public func from<T: Convertible>(_ field: Object.Key) throws -> [[T]] where T == T.ConvertedType {
-        let value: [[Any]] = try JSONValue(fromField: field)
+        let value: [[Any]] = try json.value(fromField: field.stringValue, forObject: Object.self)
 
         return try value.map { try [T].fromMap($0) }
     }
 
     public func from<U: Convertible, T: Convertible>(_ field: Object.Key) throws -> [U: [T]] where U == U.ConvertedType, T == T.ConvertedType {
-        let data: NSDictionary = try JSONValue(fromField: field)
+        let data: NSDictionary = try json.value(fromField: field.stringValue, forObject: Object.self)
 
         var result = [U: [T]]()
         for (key, value) in data {
