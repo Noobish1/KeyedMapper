@@ -14,12 +14,6 @@ fileprivate struct ModelWithStringProperty: Mappable {
     }
 }
 
-extension ModelWithStringProperty: Equatable {
-    fileprivate static func == (lhs: ModelWithStringProperty, rhs: ModelWithStringProperty) -> Bool {
-        return lhs.stringProperty == rhs.stringProperty
-    }
-}
-
 class MappableSpec: QuickSpec {
     override func spec() {
         describe("Mappable") {
