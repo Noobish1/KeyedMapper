@@ -24,5 +24,14 @@ class Sequence_MappableSpec: QuickSpec {
                 expect(models.count) == sequence.count
             }
         }
+
+        describe("Sequence<Sequence<Mappable>>.fromMap") {
+            it("should correctly map a two dimensional array of mappable objects") {
+                let sequence: [[NSDictionary]] = [[[Model.Key.stringProperty.rawValue : ""]]]
+                let models = try! [[Model]].fromMap(sequence)
+
+                expect(models.count) == sequence.count
+            }
+        }
     }
 }

@@ -18,9 +18,18 @@ fileprivate struct ConvertibleObject: Convertible {
 class Sequence_ConvertibleSpec: QuickSpec {
     override func spec() {
         describe("Sequence<Convertible>.fromMap") {
-            it("should correctly map an array of mappable objects") {
+            it("should correctly map an array of convertible objects") {
                 let sequence: [Any] = [""]
                 let models = try! [ConvertibleObject].fromMap(sequence)
+
+                expect(models.count) == sequence.count
+            }
+        }
+
+        describe("Sequence<Sequence<Convertible>>.fromMap") {
+            it("should correctly map a two dimensional array of convertible objects") {
+                let sequence: [[Any]] = [[""]]
+                let models = try! [[ConvertibleObject]].fromMap(sequence)
 
                 expect(models.count) == sequence.count
             }
