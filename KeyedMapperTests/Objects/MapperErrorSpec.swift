@@ -62,6 +62,18 @@ class MapperErrorSpec: QuickSpec {
                     }
                 }
 
+                context("a rootTypeMismatch error") {
+                    it("should return the correct message") {
+                        let type = Model.self
+                        let value = ""
+                        let expectedType = NSDictionary.self
+                        let expectedMessage = "Type mismatch, root object \(value) of type \(type), expected to be of type \(expectedType)"
+                        let error = MapperError.rootTypeMismatch(forType: type, value: value, expectedType: expectedType)
+
+                        expect(error.failureReason) == expectedMessage
+                    }
+                }
+
                 context("a convertible error") {
                     it("should return the correct message") {
                         let value = ""
