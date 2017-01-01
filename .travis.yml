@@ -11,7 +11,7 @@ before_install:
     - bundle install
 
 script:
-    - set -o pipefail && xcodebuild build-for-testing test-without-building -scheme KeyedMapper -workspace KeyedMapper.xcworkspace -sdk iphonesimulator -destination "name=iPhone SE" | xcpretty
+    - set -o pipefail && xcodebuild build-for-testing test-without-building -scheme KeyedMapper -workspace KeyedMapper.xcworkspace -sdk iphonesimulator -destination "name=iPhone SE, OS=10.2" | xcpretty
 
 after_success:
     - bash <(curl -s https://codecov.io/bash) -J 'KeyedMapper'
