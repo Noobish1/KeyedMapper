@@ -21,7 +21,7 @@ class MappableSpec: QuickSpec {
                 it("should map correctly") {
                     let field = ModelWithStringProperty.Key.stringProperty
                     let dict: NSDictionary = [field.rawValue: "value"]
-                    let model = try! ModelWithStringProperty.from(dictionary: dict)
+                    let model = try! ModelWithStringProperty.from(dict)
 
                     expect(model).toNot(beNil())
                 }

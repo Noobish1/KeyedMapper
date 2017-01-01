@@ -5,11 +5,11 @@ public protocol Mappable {
 
     init(map: KeyedMapper<Self>) throws
 
-    static func from(dictionary: NSDictionary) throws -> Self
+    static func from(_ dictionary: NSDictionary) throws -> Self
 }
 
 public extension Mappable {
-    public static func from(dictionary: NSDictionary) throws -> Self {
+    public static func from(_ dictionary: NSDictionary) throws -> Self {
         return try self.init(map: KeyedMapper(JSON: dictionary, type: self))
     }
 }
