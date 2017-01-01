@@ -33,13 +33,6 @@ extension MapperError: Equatable {
                     default:
                         return false
                 }
-            case .rootTypeMismatch(forType: let lhsType, value: _, expectedType: let lhsExpectedType):
-                switch rhs {
-                    case .rootTypeMismatch(forType: let rhsType, value: _, expectedType: let rhsExpectedType):
-                        return lhsType == rhsType && lhsExpectedType == rhsExpectedType
-                    default:
-                        return false
-                }
             case .convertible(value: _, expectedType: let lhsExpectedType):
                 switch rhs {
                     case .convertible(value: _, expectedType: let rhsExpectedType):

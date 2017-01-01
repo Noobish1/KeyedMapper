@@ -6,20 +6,11 @@ public protocol Mappable {
     init(map: KeyedMapper<Self>) throws
 
     static func from(dictionary: NSDictionary) throws -> Self
-    static func from(array: [Any]) throws -> [Self]
 }
 
 public extension Mappable {
     public static func from(dictionary: NSDictionary) throws -> Self {
         return try self.init(map: KeyedMapper(JSON: dictionary, type: self))
-    }
-
-    public static func from(array: [Any]) throws -> [Self] {
-        guard let dictArray = array as? [NSDictionary] else {
-            throw MapperError.rootTypeMismatch(forType: self, value: array, expectedType: [NSDictionary].self)
-        }
-
-        return try dictArray.map(from)
     }
 }
 
