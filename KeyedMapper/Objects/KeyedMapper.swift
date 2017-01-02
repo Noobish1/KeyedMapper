@@ -27,6 +27,14 @@ public struct KeyedMapper<Object: Mappable> {
         return try transformation(value)
     }
 
+    public func from<T>(_ field: Object.Key, transformation: ([Any]) throws -> [T]) throws -> [T] {
+        return try transformation(try json.value(fromField: field.stringValue, forObject: Object.self))
+    }
+
+    public func from<T>(_ field: Object.Key, transformation: ([[Any]]) throws -> [[T]]) throws -> [[T]] {
+        return try transformation(try json.value(fromField: field.stringValue, forObject: Object.self))
+    }
+
     public func optionalFrom<T>(_ field: Object.Key, transformation: (Any) throws -> T) rethrows -> T? {
         return try (try? json.value(fromField: field.stringValue, forObject: Object.self)).map(transformation)
     }
