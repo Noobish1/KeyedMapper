@@ -148,6 +148,12 @@ let object = try Object.from(dictionary: JSON)
 <summary>ReverseMappable</summary>
 
 ```swift
+extension SubObject: ReverseMappable {
+    func toKeyedJSON() -> [SubObject.Key : Any?] {
+        return [.property : property]
+    }
+}
+
 extension Object: ReverseMappable {
     func toKeyedJSON() -> [Object.Key : Any?] {
         return [.property : property,
@@ -166,6 +172,8 @@ extension Object: ReverseMappable {
         ]
     }
 }
+
+let outJSON = object.toJSON()
 
 let outJSON = object.toJSON()
 ```

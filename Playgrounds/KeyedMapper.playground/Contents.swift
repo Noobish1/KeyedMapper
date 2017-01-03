@@ -56,12 +56,6 @@ extension SubObject: Mappable {
     }
 }
 
-extension SubObject: ReverseMappable {
-    func toKeyedJSON() -> [SubObject.Key : Any?] {
-        return [.property : property]
-    }
-}
-
 struct Object {
     let property: String
     let optionalProperty: String?
@@ -124,6 +118,12 @@ let object = try Object.from(dictionary: JSON)
 print(object)
 
 // ReverseMappable
+
+extension SubObject: ReverseMappable {
+    func toKeyedJSON() -> [SubObject.Key : Any?] {
+        return [.property : property]
+    }
+}
 
 extension Object: ReverseMappable {
     func toKeyedJSON() -> [Object.Key : Any?] {
