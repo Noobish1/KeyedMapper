@@ -92,13 +92,13 @@ class KeyedMapperSpec: QuickSpec {
 
             describe("optionalFrom returning optional T") {
                 let field = ModelWithOptionalStringProperty.Key.stringProperty
+                let transformedValue = "transformedValue"
 
                 context("when the field does not exist in the given JSON") {
                     it("should return nil") {
-                        let expectedValue = "notTheExpectedValue"
                         let dict: NSDictionary = [:]
                         let mapper = try! KeyedMapper(JSON: dict, type: ModelWithOptionalStringProperty.self)
-                        let result = mapper.optionalFrom(field, transformation: { _ in expectedValue })
+                        let result = mapper.optionalFrom(field, transformation: { _ in transformedValue })
 
                         expect(result).to(beNil())
                     }
@@ -106,7 +106,6 @@ class KeyedMapperSpec: QuickSpec {
 
                 context("when the field exists in the given JSON") {
                     it("should return the transformed value") {
-                        let transformedValue = "transformedValue"
                         let dict: NSDictionary = [field.stringValue : "notTheExpectedValue"]
                         let mapper = try! KeyedMapper(JSON: dict, type: ModelWithOptionalStringProperty.self)
                         let result = mapper.optionalFrom(field, transformation: { _ in transformedValue })
@@ -115,7 +114,69 @@ class KeyedMapperSpec: QuickSpec {
                     }
                 }
             }
+
+            describe("optionalFrom returning an optional array of T") {
+                let transformedValue = ["transformedValue"]
+
+                context("when the field does not exist in the given JSON") {
+                    it("should return nil") {
+                        let dict: NSDictionary = [:]
+                        let mapper = try! KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
+                        let result: [String]? = mapper.optionalFrom(.arrayMappableProperty, transformation: { _ in transformedValue })
+
+                        expect(result).to(beNil())
+                    }
+                }
+
+                context("when the field exists in the given JSON") {
+                    it("should use the given transform on the returned object") {
+                        let dict: NSDictionary = [ModelWithArrayProperty.Key.arrayMappableProperty.stringValue : ["notTheExpectedValue"]]
+                        let mapper = try! KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
+                        let result: [String]? = mapper.optionalFrom(.arrayMappableProperty, transformation: { _ in transformedValue })
+
+                        expect(result) == transformedValue
+                    }
+                }
+            }
+
+            describe("optionalFrom returning an optional two dimensional array of T") {
+                let modelType = ModelWithTwoDArrayProperty.self
+                let field = modelType.Key.twoDArrayMappableProperty
+                let transformedValue = [["transformedValue"]]
+
+                context("when the field does not exist in the given JSON") {
+                    it("should return nil") {
+                        let dict: NSDictionary = [:]
+                        let mapper = try! KeyedMapper(JSON: dict, type: modelType.self)
+                        let result: [[String]]? = mapper.optionalFrom(field, transformation: { (_: [[Any]]) -> [[String]] in
+                            transformedValue
+                        })
+
+                        expect(result).to(beNil())
+                    }
+                }
+
+                context("when the field exists in the given JSON") {
+                    it("should use the given transform on the returned object") {
+                        let dict: NSDictionary = [field.stringValue : [["notTheExpectedValue"]]]
+                        let mapper = try! KeyedMapper(JSON: dict, type: modelType.self)
+                        let result: [[String]]? = mapper.optionalFrom(field, transformation: { (_: [[Any]]) -> [[String]] in
+                            transformedValue
+                        })
+
+                        expect(result == transformedValue).to(beTrue())
+                    }
+                }
+            }
         }
+    }
+}
+
+fileprivate func == (lhs: [[String]]?, rhs: [[String]]) -> Bool {
+    if let lhs = lhs {
+        return lhs.flatMap { $0 } == rhs.flatMap { $0 }
+    } else {
+        return false
     }
 }
 
