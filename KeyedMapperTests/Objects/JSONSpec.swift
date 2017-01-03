@@ -53,6 +53,23 @@ private struct ModelWithInnerModelProperty: Mappable {
 class JSONSpec: QuickSpec {
     override func spec() {
         describe("KeyedMapper") {
+            describe("init") {
+                context("when the given value cannot be cast into an NSDictionary") {
+                    it("should throw a root type mismatch error") {
+                        let value = ""
+                        let modelType = ModelWithStringProperty.self
+
+                        do {
+                            let _ = try JSON(value: value, forObject: modelType)
+                        } catch let error as MapperError {
+                            expect(error) == MapperError.rootTypeMismatch(forType: modelType, value: value, expectedType: NSDictionary.self)
+                        } catch {
+                            XCTFail("Error thrown from JSON.init was not a MapperError")
+                        }
+                    }
+                }
+            }
+
             describe("JSONValue(fromField:)") {
                 context("when given an empty string") {
                     it("should return the KeyedMapper's JSON") {
@@ -91,7 +108,7 @@ class JSONSpec: QuickSpec {
                             } catch let error as MapperError {
                                 expect(error) == MapperError.missingField(field: field.stringValue, forType: modelType)
                             } catch {
-                                XCTFail("Error thrown from KeyedMapper.JSONValue was not a MapperError")
+                                XCTFail("Error thrown from json.value was not a MapperError")
                             }
                         }
                     }
@@ -124,7 +141,7 @@ class JSONSpec: QuickSpec {
                             } catch let error as MapperError {
                                 expect(error) == MapperError.missingField(field: keyPath.stringValue, forType: modelType)
                             } catch {
-                                XCTFail("Error thrown from KeyedMapper.JSONValue was not a MapperError")
+                                XCTFail("Error thrown from json.value was not a MapperError")
                             }
                         }
                     }
@@ -144,7 +161,7 @@ class JSONSpec: QuickSpec {
                         } catch let error as MapperError {
                             expect(error) == MapperError.typeMismatch(field: field.stringValue, forType: modelType.self, value: value, expectedType: String.self)
                         } catch {
-                            XCTFail("Error thrown from KeyedMapper.JSONValue was not a MapperError")
+                            XCTFail("Error thrown from json.value was not a MapperError")
                         }
                     }
                 }
