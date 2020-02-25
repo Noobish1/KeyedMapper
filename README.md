@@ -9,8 +9,8 @@
 
 # Requirements
  
-- Xcode 8+
-- Swift 3+
+- Xcode 11
+- Swift 5 (as of 1.13, prior versions support Swift 3)
 - iOS 8+
 
 # Usage
