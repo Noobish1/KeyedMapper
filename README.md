@@ -14,6 +14,7 @@
 
 <details>
 <summary>Convertible</summary>
+ 
 ```swift
 extension NSTimeZone: Convertible {
     public static func fromMap(_ value: Any) throws -> NSTimeZone {
@@ -29,10 +30,12 @@ extension NSTimeZone: Convertible {
     }
 }
 ```
+
 </details>
 
 <details>
 <summary>NilConvertible</summary>
+ 
 ```swift
 enum NilConvertibleEnum {
     case something
@@ -49,19 +52,23 @@ extension NilConvertibleEnum: NilConvertible {
     }
 }
 ```
+
 </details>
 
 <details>
 <summary>DefaultConvertible</summary>
+ 
 ```swift
 enum DefaultConvertibleEnum: Int, DefaultConvertible {
     case firstCase = 0
 }
 ```
+
 </details>
  
 <details>
 <summary>Mappable</summary>
+ 
 ```swift
 struct SubObject {
     let property: String
@@ -142,6 +149,7 @@ let JSON: NSDictionary = ["property" : "propertyValue",
 
 let object = try Object.from(dictionary: JSON)
 ```
+
 </details>
 
 <details>
@@ -169,4 +177,5 @@ extension Object: ReverseMappable {
 
 let outJSON = object.toJSON()
 ```
+
 </details>
