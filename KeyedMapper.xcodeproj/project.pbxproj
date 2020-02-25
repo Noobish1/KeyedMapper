@@ -15,7 +15,6 @@
 		75182DFB1D7BE1C200AEAD44 /* KeyedMapperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */; };
 		752518B61DF0C6B000B72977 /* Sequence+MappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */; };
 		752518B81DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752518B71DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift */; };
-		7533AF4F1E0C3A2400A7BBB3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7533AF4E1E0C3A2400A7BBB3 /* .swiftlint.yml */; };
 		7539FA371E18B8CE0041593C /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7539FA361E18B8CE0041593C /* JSON.swift */; };
 		7539FA391E18B92B0041593C /* JSONSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7539FA381E18B92B0041593C /* JSONSpec.swift */; };
 		755470BA1D8A554100472173 /* KeyedMapper+MappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */; };
@@ -96,7 +95,6 @@
 		75182DFA1D7BE1C200AEAD44 /* KeyedMapperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedMapperSpec.swift; sourceTree = "<group>"; };
 		752518B51DF0C6B000B72977 /* Sequence+MappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+MappableSpec.swift"; sourceTree = "<group>"; };
 		752518B71DF0C6C300B72977 /* Sequence+ConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ConvertibleSpec.swift"; sourceTree = "<group>"; };
-		7533AF4E1E0C3A2400A7BBB3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		7539FA361E18B8CE0041593C /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		7539FA381E18B92B0041593C /* JSONSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSpec.swift; sourceTree = "<group>"; };
 		755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+MappableSpec.swift"; sourceTree = "<group>"; };
@@ -329,7 +327,6 @@
 				75182DF71D7BE17400AEAD44 /* Objects */,
 				757073351D8658DF006C5D7F /* Protocols */,
 				750C74D01D7A7A3700B9AB51 /* Supporting Files */,
-				7533AF4E1E0C3A2400A7BBB3 /* .swiftlint.yml */,
 			);
 			path = KeyedMapperTests;
 			sourceTree = "<group>";
@@ -589,7 +586,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7533AF4F1E0C3A2400A7BBB3 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
