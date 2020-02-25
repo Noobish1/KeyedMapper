@@ -2,6 +2,9 @@
 
 # KeyedMapper
 
+:warning: NOTE: This library has been superseded by the [Codable](https://developer.apple.com/documentation/swift/codable) protocol, I would suggest using that instead.
+
+
 `KeyedMapper` was inspired heavily by Lyft's [Mapper](https://github.com/lyft/mapper). I wanted something like Mapper but with enums for keys and support for things like `NilConvertible` and `ReverseMappable` so I made `KeyedMapper`. 
 
 # Requirements
