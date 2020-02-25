@@ -2,8 +2,6 @@ language: swift
 osx_image: xcode11.2
 xcode_workspace: KeyedMapper.xcworkspace
 xcode_scheme: KeyedMapper
-xcode_destination: platform=iOS Simulator,OS=13.2.2,name=iPhone X
-before_install:
-- gem install cocoapods -v '1.7.5'
+xcode_destination: platform=iOS Simulator,OS=12.4,name=iPhone SE
 after_success:
     - bash <(curl -s https://codecov.io/bash) -J 'KeyedMapper'
