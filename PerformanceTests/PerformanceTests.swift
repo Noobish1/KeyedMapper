@@ -24,7 +24,7 @@ class KeyedMapper_Tests: XCTestCase {
         let dict = try! JSONSerialization.jsonObject(with: self.data, options: []) as! NSDictionary
 
         self.measure {
-            let programList = try! ProgramList.from(dictionary: dict)
+            let programList = try! ProgramList.from(dict)
             XCTAssert(programList.programs.count > 1000)
         }
     }
@@ -89,7 +89,7 @@ class KeyedMapper_Tests: XCTestCase {
 
     private func existingSafeValue(forField field: String, in dictionary: NSDictionary) -> Any? {
         var object: Any? = dictionary
-        var keys = field.characters.split(separator: ".").map(String.init)
+        var keys = field.split(separator: ".").map(String.init)
 
         while !keys.isEmpty, let currentObject = object {
             let key = keys.removeFirst()
@@ -105,7 +105,7 @@ class KeyedMapper_Tests: XCTestCase {
         }
 
         var object: Any? = dictionary
-        var keys = field.characters.split(separator: ".").map(String.init)
+        var keys = field.split(separator: ".").map(String.init)
 
         while !keys.isEmpty, let currentObject = object {
             let key = keys.removeFirst()
@@ -125,7 +125,7 @@ class KeyedMapper_Tests: XCTestCase {
         }
 
         var object: Any? = dictionary
-        var keys = field.characters.split(separator: ".").map(String.init)
+        var keys = field.split(separator: ".").map(String.init)
 
         while !keys.isEmpty, let currentObject = object {
             let key = keys.removeFirst()

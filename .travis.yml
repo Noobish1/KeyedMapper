@@ -1,17 +1,7 @@
-language: objective-c
-osx_image: xcode8.2
-rvm:
-    - 2.3.0
-cache:
-    - bundler
-    - cocoapods
-
-before_install:
-    - brew update && brew tap Homebrew/bundle && brew bundle
-    - bundle install
-
-script:
-    - set -o pipefail && xcodebuild build-for-testing test-without-building -scheme KeyedMapper -workspace KeyedMapper.xcworkspace -sdk iphonesimulator -destination "id=DB794781-65A7-4884-8D00-AAC3CBD39A44" | xcpretty
-
+language: swift
+osx_image: xcode11.2
+xcode_workspace: KeyedMapper.xcworkspace
+xcode_scheme: KeyedMapper
+xcode_destination: platform=iOS Simulator,OS=13.2.2,name=iPhone X
 after_success:
     - bash <(curl -s https://codecov.io/bash) -J 'KeyedMapper'

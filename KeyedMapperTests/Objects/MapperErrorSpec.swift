@@ -2,7 +2,7 @@ import Quick
 import Nimble
 @testable import KeyedMapper
 
-fileprivate struct Model: Mappable {
+private struct Model: Mappable {
     fileprivate enum Key: String, JSONKey {
         case stringProperty
     }
@@ -52,11 +52,11 @@ class MapperErrorSpec: QuickSpec {
                 context("a typeMismatch error") {
                     it("should return the correct message") {
                         let field: Model.Key = .stringProperty
-                        let type = Model.self
+                        let fieldType = Model.self
                         let value = ""
                         let expectedType = NSDictionary.self
-                        let expectedMessage = "Type mismatch for field \(field) of type \(type), \"\(value)\" is a \(type(of: value)) but is expected to be \(expectedType)"
-                        let error = MapperError.typeMismatch(field: field.stringValue, forType: type, value: value, expectedType: expectedType)
+                        let expectedMessage = "Type mismatch for field \(field) of type \(fieldType), \"\(value)\" is a \(type(of: value)) but is expected to be \(expectedType)"
+                        let error = MapperError.typeMismatch(field: field.stringValue, forType: fieldType, value: value, expectedType: expectedType)
 
                         expect(error.failureReason) == expectedMessage
                     }

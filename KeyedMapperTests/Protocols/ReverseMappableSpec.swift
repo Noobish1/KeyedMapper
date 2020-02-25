@@ -2,7 +2,7 @@ import Quick
 import Nimble
 @testable import KeyedMapper
 
-fileprivate struct Model: Mappable, ReverseMappable {
+private struct Model: Mappable, ReverseMappable {
     fileprivate enum Key: String, JSONKey {
         case stringProperty
     }
@@ -15,8 +15,8 @@ fileprivate struct Model: Mappable, ReverseMappable {
     }
 
     // MARK: ReverseMappable
-    fileprivate func toKeyedJSON() -> [Key : Any?] {
-        return [.stringProperty : stringProperty]
+    fileprivate func toKeyedJSON() -> [Key: Any?] {
+        return [.stringProperty: stringProperty]
     }
 }
 
@@ -33,14 +33,14 @@ class ReverseMappableSpec: QuickSpec {
                 let field = Model.Key.stringProperty.stringValue
 
                 it("should return an Dictionary that is identical to the one that was passed in originally") {
-                    let expectedDict: NSDictionary = [field : ""]
+                    let expectedDict: NSDictionary = [field: ""]
                     let actualDict = try! Model.from(expectedDict).toJSON()
 
                     expect((actualDict as NSDictionary)) == (expectedDict as NSDictionary)
                 }
 
                 it("should return an Dictionary that can be used to recreate the same model") {
-                    let expectedModel = try! Model.from([field : ""])
+                    let expectedModel = try! Model.from([field: ""])
                     let actualModel = try! Model.from(expectedModel.toJSON())
 
                     expect(actualModel) == expectedModel

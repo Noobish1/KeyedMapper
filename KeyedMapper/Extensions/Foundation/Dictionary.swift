@@ -1,6 +1,6 @@
 import Foundation
 
-internal extension Dictionary {
+extension Dictionary {
     internal func mapKeys <K> (map: (Key) throws -> K) rethrows -> [K: Value] {
         var mapped = [K: Value]()
 

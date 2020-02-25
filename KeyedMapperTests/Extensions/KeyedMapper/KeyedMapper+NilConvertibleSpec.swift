@@ -3,7 +3,7 @@ import Quick
 import Nimble
 @testable import KeyedMapper
 
-fileprivate enum NilConvertibleEnum: NilConvertible {
+private enum NilConvertibleEnum: NilConvertible {
     case nothing
     case something
 
@@ -29,7 +29,7 @@ extension NilConvertibleEnum: Equatable {
     }
 }
 
-fileprivate struct Model: Mappable {
+private struct Model: Mappable {
     fileprivate enum Key: String, JSONKey {
         case enumProperty
     }
@@ -56,7 +56,7 @@ class KeyedMapper_NilConvertibleSpec: QuickSpec {
 
                 context("when the given JSON does contain the value") {
                     it("should map correctly to the something case") {
-                        let JSON: NSDictionary = [Model.Key.enumProperty.stringValue : ""]
+                        let JSON: NSDictionary = [Model.Key.enumProperty.stringValue: ""]
                         let model = try! Model.from(JSON)
 
                         expect(model.enumProperty) == NilConvertibleEnum.something

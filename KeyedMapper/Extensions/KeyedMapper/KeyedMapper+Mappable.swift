@@ -1,6 +1,6 @@
 import Foundation
 
-public extension KeyedMapper {
+extension KeyedMapper {
     public func from<T: Mappable>(_ field: Object.Key) throws -> T {
         return try T.from(json.value(fromField: field.stringValue, forObject: Object.self))
     }

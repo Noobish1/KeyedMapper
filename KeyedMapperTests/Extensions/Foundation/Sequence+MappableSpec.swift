@@ -2,7 +2,7 @@ import Quick
 import Nimble
 @testable import KeyedMapper
 
-fileprivate struct Model: Mappable {
+private struct Model: Mappable {
     fileprivate enum Key: String, JSONKey {
         case stringProperty
     }
@@ -18,7 +18,7 @@ class Sequence_MappableSpec: QuickSpec {
     override func spec() {
         describe("Sequence<Mappable>.fromMap") {
             it("should correctly map an array of mappable objects") {
-                let sequence: [NSDictionary] = [[Model.Key.stringProperty.rawValue : ""]]
+                let sequence: [NSDictionary] = [[Model.Key.stringProperty.rawValue: ""]]
                 let models = try! [Model].fromMap(sequence)
 
                 expect(models.count) == sequence.count
@@ -27,7 +27,7 @@ class Sequence_MappableSpec: QuickSpec {
 
         describe("Sequence<Sequence<Mappable>>.fromMap") {
             it("should correctly map a two dimensional array of mappable objects") {
-                let sequence: [[NSDictionary]] = [[[Model.Key.stringProperty.rawValue : ""]]]
+                let sequence: [[NSDictionary]] = [[[Model.Key.stringProperty.rawValue: ""]]]
                 let models = try! [[Model]].fromMap(sequence)
 
                 expect(models.count) == sequence.count

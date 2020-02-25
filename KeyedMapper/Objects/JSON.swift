@@ -30,7 +30,7 @@ internal final class JSON {
         }
 
         var object: Any? = dictionary
-        var keys = field.characters.split(separator: ".").map(String.init)
+        var keys = field.split(separator: ".").map(String.init)
 
         while !keys.isEmpty, let currentObject = object {
             let key = keys.removeFirst()

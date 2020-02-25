@@ -3,11 +3,11 @@ import Foundation
 public protocol ReverseMappable {
     associatedtype Key: JSONKey
 
-    func toKeyedJSON() -> [Key : Any?]
+    func toKeyedJSON() -> [Key: Any?]
     func toJSON() -> NSDictionary
 }
 
-public extension ReverseMappable {
+extension ReverseMappable {
     public func toJSON() -> NSDictionary {
         return toKeyedJSON().mapKeys { $0.stringValue }.mapFilterValues { $0 } as NSDictionary
     }

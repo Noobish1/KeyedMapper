@@ -2,7 +2,7 @@ import Quick
 import Nimble
 @testable import KeyedMapper
 
-fileprivate struct ModelWithStringProperty: Mappable {
+private struct ModelWithStringProperty: Mappable {
     fileprivate let stringProperty: String
 
     fileprivate enum Key: String, JSONKey {

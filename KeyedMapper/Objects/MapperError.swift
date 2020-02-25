@@ -15,8 +15,8 @@ public enum MapperError: Error {
                 return "\"\(rawValue)\" is not a valid rawValue of \(rawValueType)"
             case .missingField(field: let field, forType: let type):
                 return "Missing field \(field) of type \(type)"
-            case .typeMismatch(field: let field, forType: let type, value: let value, expectedType: let expectedType):
-                return "Type mismatch for field \(field) of type \(type), \"\(value)\" is a \(type(of: value)) but is expected to be \(expectedType)"
+            case .typeMismatch(field: let field, forType: let fieldType, value: let value, expectedType: let expectedType):
+                return "Type mismatch for field \(field) of type \(fieldType), \"\(value)\" is a \(type(of: value)) but is expected to be \(expectedType)"
             case .convertible(value: let value, expectedType: let expectedType):
                 return "Could not convert \(value) to type \(expectedType)"
         }

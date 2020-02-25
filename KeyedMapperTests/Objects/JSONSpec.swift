@@ -71,7 +71,7 @@ class JSONSpec: QuickSpec {
                     context("when the value exists for the given key") {
                         it("should return the value for the given key") {
                             let expectedValue = "value"
-                            let dict: NSDictionary = [field.stringValue : expectedValue]
+                            let dict: NSDictionary = [field.stringValue: expectedValue]
                             let json = JSON(dictionary: dict)
                             let value: String = try! json.value(fromField: field.stringValue, forObject: ModelWithStringProperty.self)
 
@@ -97,13 +97,13 @@ class JSONSpec: QuickSpec {
 
                 context("when given a two part keypath") {
                     let keyPath = ModelWithInnerModelProperty.Key.modelProperty
-                    let firstKey = String(keyPath.rawValue.characters.split(separator: ".").first!)
+                    let firstKey = String(keyPath.rawValue.split(separator: ".").first!)
 
                     context("when the value exists for the given keypath") {
                         it("should return the value for the given keypath") {
-                            let secondKey = String(keyPath.rawValue.characters.split(separator: ".")[1])
+                            let secondKey = String(keyPath.rawValue.split(separator: ".")[1])
                             let expectedValue = "value"
-                            let dict: NSDictionary = [firstKey : [secondKey : expectedValue]]
+                            let dict: NSDictionary = [firstKey: [secondKey: expectedValue]]
                             let json = JSON(dictionary: dict)
                             let value: String = try! json.value(fromField: keyPath.stringValue, forObject: ModelWithInnerModelProperty.self)
 
@@ -113,7 +113,7 @@ class JSONSpec: QuickSpec {
 
                     context("when the value does not exist for the given keypath") {
                         it("should return nil") {
-                            let dict: NSDictionary = [firstKey : [:]]
+                            let dict: NSDictionary = [firstKey: [:]]
                             let json = JSON(dictionary: dict)
 
                             do {
@@ -132,7 +132,7 @@ class JSONSpec: QuickSpec {
 
                     it("should return a typeMismatch error") {
                         let value: NSArray = []
-                        let dict: NSDictionary = [field.stringValue : value]
+                        let dict: NSDictionary = [field.stringValue: value]
                         let json = JSON(dictionary: dict)
 
                         do {

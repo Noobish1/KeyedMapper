@@ -19,6 +19,7 @@
 		7539FA371E18B8CE0041593C /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7539FA361E18B8CE0041593C /* JSON.swift */; };
 		7539FA391E18B92B0041593C /* JSONSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7539FA381E18B92B0041593C /* JSONSpec.swift */; };
 		755470BA1D8A554100472173 /* KeyedMapper+MappableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755470B91D8A554100472173 /* KeyedMapper+MappableSpec.swift */; };
+		755C6398240500DF00287FF4 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C6397240500DF00287FF4 /* Mappable.swift */; };
 		7562CA8D1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562CA8C1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift */; };
 		7566673B1D864A2800AFFE02 /* NilConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566673A1D864A2800AFFE02 /* NilConvertible.swift */; };
 		7566673D1D864A6D00AFFE02 /* KeyedMapper+NilConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566673C1D864A6D00AFFE02 /* KeyedMapper+NilConvertible.swift */; };
@@ -46,6 +47,7 @@
 		75CCE8D71DC8D83C0023D8B4 /* Large.json in Resources */ = {isa = PBXBuildFile; fileRef = 75CCE8D61DC8D83C0023D8B4 /* Large.json */; };
 		75CCE8D91DC8D9000023D8B4 /* ProgramList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CCE8D81DC8D9000023D8B4 /* ProgramList.swift */; };
 		8800A761C99290A96C4E825B /* Pods_KeyedMapperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C32F4E25B088BD6632AAC3 /* Pods_KeyedMapperTests.framework */; };
+		EF0842381252C5D280433717 /* Pods_KeyedMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372B003C4512F244A93D6964 /* Pods_KeyedMapper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,7 @@
 /* Begin PBXFileReference section */
 		06C32F4E25B088BD6632AAC3 /* Pods_KeyedMapperTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyedMapperTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		372B003C4512F244A93D6964 /* Pods_KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69F8C276B77894D1CEEAB459 /* Pods-KeyedMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapper/Pods-KeyedMapper.debug.xcconfig"; sourceTree = "<group>"; };
 		750047151D8CF0DA000C0779 /* MapperErrorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperErrorSpec.swift; sourceTree = "<group>"; };
 		750047191D8CFF0E000C0779 /* KeyedMapper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KeyedMapper.podspec; sourceTree = "<group>"; };
 		7500471B1D8D0C83000C0779 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 		755ADE061D8DE91F0086C900 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = "<group>"; };
 		755ADE071D8DE91F0086C900 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		755ADE081D8DE91F0086C900 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		755C6397240500DF00287FF4 /* Mappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
 		7562CA8B1D88E59700430687 /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codebeatignore; sourceTree = "<group>"; };
 		7562CA8C1D88F6D100430687 /* KeyedMapper+ConvertibleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyedMapper+ConvertibleSpec.swift"; sourceTree = "<group>"; };
 		7566673A1D864A2800AFFE02 /* NilConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NilConvertible.swift; sourceTree = "<group>"; };
@@ -111,8 +115,7 @@
 		7578B9BB1D87AC840009A143 /* ReverseMappableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseMappableSpec.swift; sourceTree = "<group>"; };
 		757BFE461DEF892800FC861C /* Sequence+Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Mappable.swift"; sourceTree = "<group>"; };
 		757BFE481DEF895500FC861C /* Sequence+Convertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Convertible.swift"; sourceTree = "<group>"; };
-		759B4F181D8E085C00241624 /* Brewfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Brewfile; sourceTree = "<group>"; };
-		75A985711D8DF43C00109E0A /* KeyedMapper.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KeyedMapper.playground; sourceTree = "<group>"; };
+		75A985711D8DF43C00109E0A /* KeyedMapper.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KeyedMapper.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75BC667D1D7691520041B0CA /* KeyedMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75BC66801D7691520041B0CA /* KeyedMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyedMapper.h; sourceTree = "<group>"; };
 		75BC66821D7691520041B0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		75CCE8D81DC8D9000023D8B4 /* ProgramList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramList.swift; sourceTree = "<group>"; };
 		75FEE68C1D793D3B002DBF7D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		75FEE68D1D793D3B002DBF7D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		91EF0AD6E5D893E33C1E2C41 /* Pods-KeyedMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapper/Pods-KeyedMapper.release.xcconfig"; sourceTree = "<group>"; };
 		BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests.release.xcconfig"; sourceTree = "<group>"; };
 		D934EE6EF597E359A078575A /* Pods-KeyedMapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyedMapperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF0842381252C5D280433717 /* Pods_KeyedMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +291,6 @@
 				7500471B1D8D0C83000C0779 /* .swift-version */,
 				75FEE68D1D793D3B002DBF7D /* .swiftlint.yml */,
 				750C74D41D7A83B000B9AB51 /* .travis.yml */,
-				759B4F181D8E085C00241624 /* Brewfile */,
 				75BC66AE1D7694C40041B0CA /* Gemfile */,
 				750047191D8CFF0E000C0779 /* KeyedMapper.podspec */,
 				755ADE081D8DE91F0086C900 /* LICENSE */,
@@ -357,6 +361,7 @@
 				75BC66A11D76924E0041B0CA /* JSONKey.swift */,
 				7566673A1D864A2800AFFE02 /* NilConvertible.swift */,
 				75BC66A71D7692D20041B0CA /* ReverseMappable.swift */,
+				755C6397240500DF00287FF4 /* Mappable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -407,6 +412,8 @@
 			children = (
 				D934EE6EF597E359A078575A /* Pods-KeyedMapperTests.debug.xcconfig */,
 				BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */,
+				69F8C276B77894D1CEEAB459 /* Pods-KeyedMapper.debug.xcconfig */,
+				91EF0AD6E5D893E33C1E2C41 /* Pods-KeyedMapper.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -437,7 +444,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75BC66911D7691520041B0CA /* Build configuration list for PBXNativeTarget "KeyedMapper" */;
 			buildPhases = (
-				75FEE6901D793F5D002DBF7D /* Swiftlint */,
+				536383FF95AB4A5D902B1F50 /* [CP] Check Pods Manifest.lock */,
+				755C63962405002D00287FF4 /* SwiftLint autocorrect */,
+				75FEE6901D793F5D002DBF7D /* Swiftlint lint */,
 				75BC66781D7691520041B0CA /* Sources */,
 				75BC66791D7691520041B0CA /* Frameworks */,
 				75BC667A1D7691520041B0CA /* Headers */,
@@ -461,7 +470,6 @@
 				75BC66841D7691520041B0CA /* Frameworks */,
 				75BC66851D7691520041B0CA /* Resources */,
 				73CFC402A8BB49CA9F0EE13D /* [CP] Embed Pods Frameworks */,
-				E52B57AD625DB686A0067E51 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -518,7 +526,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = Noobish1;
 				TargetAttributes = {
 					75BC667C1D7691520041B0CA = {
@@ -552,6 +560,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 75BC66731D7691520041B0CA;
@@ -602,34 +611,79 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		536383FF95AB4A5D902B1F50 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeyedMapper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		73CFC402A8BB49CA9F0EE13D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		755C63962405002D00287FF4 /* SwiftLint autocorrect */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint autocorrect";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect --quiet KeyedMapper/\n";
 		};
-		75FEE6901D793F5D002DBF7D /* Swiftlint */ = {
+		75FEE6901D793F5D002DBF7D /* Swiftlint lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = Swiftlint;
+			name = "Swiftlint lint";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint lint --quiet\nelse\n    echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "set -e\nset -o pipefail\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --strict --quiet KeyedMapper/ | sed 's/warning:/error:/g'\n";
 		};
 		8C130226DC5A0A01A6C057EA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -637,28 +691,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeyedMapperTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E52B57AD625DB686A0067E51 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyedMapperTests/Pods-KeyedMapperTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -669,6 +711,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75BC669A1D76918C0041B0CA /* Dictionary.swift in Sources */,
+				755C6398240500DF00287FF4 /* Mappable.swift in Sources */,
 				7539FA371E18B8CE0041593C /* JSON.swift in Sources */,
 				75BC66A01D7691FD0041B0CA /* MapperError.swift in Sources */,
 				757BFE471DEF892800FC861C /* Sequence+Mappable.swift in Sources */,
@@ -753,20 +796,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -796,7 +848,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -807,20 +859,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -842,7 +903,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -852,6 +913,7 @@
 		};
 		75BC66921D7691520041B0CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69F8C276B77894D1CEEAB459 /* Pods-KeyedMapper.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -871,6 +933,7 @@
 		};
 		75BC66931D7691520041B0CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91EF0AD6E5D893E33C1E2C41 /* Pods-KeyedMapper.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -891,7 +954,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D934EE6EF597E359A078575A /* Pods-KeyedMapperTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "KeyedMapperTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.KeyedMapperTests;
@@ -903,7 +965,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB15C45BEA566614D77E2656 /* Pods-KeyedMapperTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "KeyedMapperTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.KeyedMapperTests;
@@ -930,7 +991,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -952,7 +1012,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.TestModels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -966,7 +1025,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.PerformanceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -980,7 +1038,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.PerformanceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

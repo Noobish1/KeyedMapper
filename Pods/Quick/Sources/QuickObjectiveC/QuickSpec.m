@@ -1,12 +1,13 @@
 #import "QuickSpec.h"
 #import "QuickConfiguration.h"
-#import "NSString+QCKSelectorName.h"
-#import "World.h"
-#import <objc/runtime.h>
+
+#if __has_include("Quick-Swift.h")
+#import "Quick-Swift.h"
+#else
+#import <Quick/Quick-Swift.h>
+#endif
 
 static QuickSpec *currentSpec = nil;
-
-const void * const QCKExampleKey = &QCKExampleKey;
 
 @interface QuickSpec ()
 @property (nonatomic, strong) Example *example;
@@ -17,18 +18,80 @@ const void * const QCKExampleKey = &QCKExampleKey;
 #pragma mark - XCTestCase Overrides
 
 /**
- The runtime sends initialize to each class in a program just before the class, or any class
- that inherits from it, is sent its first message from within the program. QuickSpec hooks into
- this event to compile the example groups for this spec subclass.
+ QuickSpec hooks into this event to compile the example groups for this spec subclass.
 
  If an exception occurs when compiling the examples, report it to the user. Chances are they
  included an expectation outside of a "it", "describe", or "context" block.
  */
-+ (void)initialize {
-    [QuickConfiguration initialize];
++ (XCTestSuite *)defaultTestSuite {
+    [self buildExamplesIfNeeded];
 
+    // Add instance methods for this class' examples.
+    NSArray *examples = [[World sharedWorld] examplesForSpecClass:[self class]];
+    NSMutableSet<NSString*> *selectorNames = [NSMutableSet set];
+
+    for (Example *example in examples) {
+        [self addInstanceMethodForExample:example classSelectorNames:selectorNames];
+    }
+
+    return [super defaultTestSuite];
+}
+
+/**
+ Invocations for each test method in the test case. QuickSpec overrides this method to define a
+ new method for each example defined in +[QuickSpec spec].
+
+ @return An array of invocations that execute the newly defined example methods.
+ */
++ (NSArray *)testInvocations {
+    [self buildExamplesIfNeeded];
+
+    NSArray *examples = [[World sharedWorld] examplesForSpecClass:[self class]];
+    NSMutableArray *invocations = [NSMutableArray arrayWithCapacity:[examples count]];
+    
+    NSMutableSet<NSString*> *selectorNames = [NSMutableSet set];
+    
+    for (Example *example in examples) {
+        SEL selector = [self addInstanceMethodForExample:example classSelectorNames:selectorNames];
+
+        NSMethodSignature *signature = [self instanceMethodSignatureForSelector:selector];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+        invocation.selector = selector;
+
+        [invocations addObject:invocation];
+    }
+
+    return invocations;
+}
+
+#pragma mark - Public Interface
+
+- (void)spec { }
+
++ (QuickSpec*) current {
+    return currentSpec;
+}
+
+#pragma mark - Internal Methods
+
+/**
+ Runs the `spec` method and builds the examples for this class.
+
+ It's safe to call this method multiple times. If the examples for the class have been built, invocation
+ of this method has no effect.
+ */
++ (void)buildExamplesIfNeeded {
+    [QuickConfiguration class];
     World *world = [World sharedWorld];
-    [world performWithCurrentExampleGroup:[world rootExampleGroupForSpecClass:self] closure:^{
+
+    ExampleGroup *rootExampleGroup = [world rootExampleGroupForSpecClass:self];
+
+    if ([rootExampleGroup examples].count > 0) {
+        // The examples fot this subclass have been already built. Skipping.
+        return;
+    }
+
+    [world performWithCurrentExampleGroup:rootExampleGroup closure:^{
         QuickSpec *spec = [self new];
 
         @try {
@@ -45,47 +108,8 @@ const void * const QCKExampleKey = &QCKExampleKey;
              @"Here's the original exception: '%@', reason: '%@', userInfo: '%@'",
              exception.name, exception.reason, exception.userInfo];
         }
-        [self testInvocations];
     }];
 }
-
-/**
- Invocations for each test method in the test case. QuickSpec overrides this method to define a
- new method for each example defined in +[QuickSpec spec].
-
- @return An array of invocations that execute the newly defined example methods.
- */
-+ (NSArray *)testInvocations {
-    NSArray *examples = [[World sharedWorld] examplesForSpecClass:[self class]];
-    NSMutableArray *invocations = [NSMutableArray arrayWithCapacity:[examples count]];
-    
-    NSMutableSet<NSString*> *selectorNames = [NSMutableSet set];
-    
-    for (Example *example in examples) {
-        SEL selector = [self addInstanceMethodForExample:example classSelectorNames:selectorNames];
-        NSInvocation *invocation = [self invocationForInstanceMethodWithSelector:selector
-                                                                         example:example];
-        [invocations addObject:invocation];
-    }
-
-    return invocations;
-}
-
-/**
- XCTest sets the invocation for the current test case instance using this setter.
- QuickSpec hooks into this event to give the test case a reference to the current example.
- It will need this reference to correctly report its name to XCTest.
- */
-- (void)setInvocation:(NSInvocation *)invocation {
-    self.example = objc_getAssociatedObject(invocation, QCKExampleKey);
-    [super setInvocation:invocation];
-}
-
-#pragma mark - Public Interface
-
-- (void)spec { }
-
-#pragma mark - Internal Methods
 
 /**
  QuickSpec uses this method to dynamically define a new instance method for the
@@ -105,21 +129,14 @@ const void * const QCKExampleKey = &QCKExampleKey;
  */
 + (SEL)addInstanceMethodForExample:(Example *)example classSelectorNames:(NSMutableSet<NSString*> *)selectorNames {
     IMP implementation = imp_implementationWithBlock(^(QuickSpec *self){
+        self.example = example;
         currentSpec = self;
         [example run];
     });
-    NSCharacterSet *characterSet = [NSCharacterSet alphanumericCharacterSet];
-    NSMutableString *sanitizedFileName = [NSMutableString string];
-    for (NSUInteger i = 0; i < example.callsite.file.length; i++) {
-        unichar ch = [example.callsite.file characterAtIndex:i];
-        if ([characterSet characterIsMember:ch]) {
-            [sanitizedFileName appendFormat:@"%c", ch];
-        }
-    }
 
-    const char *types = [[NSString stringWithFormat:@"%s%s%s", @encode(id), @encode(id), @encode(SEL)] UTF8String];
-    
-    NSString *originalName = example.name.qck_selectorName;
+    const char *types = [[NSString stringWithFormat:@"%s%s%s", @encode(void), @encode(id), @encode(SEL)] UTF8String];
+
+    NSString *originalName = [QCKObjCStringUtils c99ExtendedIdentifierFrom:example.name];
     NSString *selectorName = originalName;
     NSUInteger i = 2;
     
@@ -133,18 +150,6 @@ const void * const QCKExampleKey = &QCKExampleKey;
     class_addMethod(self, selector, implementation, types);
 
     return selector;
-}
-
-+ (NSInvocation *)invocationForInstanceMethodWithSelector:(SEL)selector
-                                                  example:(Example *)example {
-    NSMethodSignature *signature = [self instanceMethodSignatureForSelector:selector];
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-    invocation.selector = selector;
-    objc_setAssociatedObject(invocation,
-                             QCKExampleKey,
-                             example,
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    return invocation;
 }
 
 /**

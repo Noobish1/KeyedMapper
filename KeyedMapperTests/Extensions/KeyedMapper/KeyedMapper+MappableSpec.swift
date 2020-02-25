@@ -2,7 +2,7 @@ import Quick
 import Nimble
 @testable import KeyedMapper
 
-fileprivate struct SubModel: Mappable {
+private struct SubModel: Mappable {
     fileprivate enum Key: String, JSONKey {
         case stringProperty
     }
@@ -14,7 +14,7 @@ fileprivate struct SubModel: Mappable {
     }
 }
 
-fileprivate struct Model: Mappable {
+private struct Model: Mappable {
     fileprivate enum Key: String, JSONKey {
         case mappableProperty
     }
@@ -26,7 +26,7 @@ fileprivate struct Model: Mappable {
     }
 }
 
-fileprivate struct ModelWithArrayProperty: Mappable {
+private struct ModelWithArrayProperty: Mappable {
     fileprivate enum Key: String, JSONKey {
         case arrayMappableProperty
     }
@@ -38,7 +38,7 @@ fileprivate struct ModelWithArrayProperty: Mappable {
     }
 }
 
-fileprivate struct ModelWithTwoDArrayProperty: Mappable {
+private struct ModelWithTwoDArrayProperty: Mappable {
     fileprivate enum Key: String, JSONKey {
         case twoDArrayMappableProperty
     }
@@ -55,8 +55,8 @@ class KeyedMapper_MappableSpec: QuickSpec {
         describe("from<T: Mappable> -> T") {
             it("should map correctly") {
                 let field = Model.Key.mappableProperty
-                let expectedValue = [SubModel.Key.stringProperty.stringValue : ""]
-                let dict: NSDictionary = [field.stringValue : expectedValue]
+                let expectedValue = [SubModel.Key.stringProperty.stringValue: ""]
+                let dict: NSDictionary = [field.stringValue: expectedValue]
                 let mapper = KeyedMapper(JSON: dict, type: Model.self)
                 let model: SubModel = try! mapper.from(field)
 
@@ -67,8 +67,8 @@ class KeyedMapper_MappableSpec: QuickSpec {
         describe("from<T: Mappable> -> [T]") {
             it("should map correctly") {
                 let field = ModelWithArrayProperty.Key.arrayMappableProperty
-                let expectedValue = [[SubModel.Key.stringProperty.stringValue : ""]]
-                let dict: NSDictionary = [field.stringValue : expectedValue]
+                let expectedValue = [[SubModel.Key.stringProperty.stringValue: ""]]
+                let dict: NSDictionary = [field.stringValue: expectedValue]
                 let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
                 let models: [SubModel] = try! mapper.from(field)
 
@@ -80,8 +80,8 @@ class KeyedMapper_MappableSpec: QuickSpec {
         describe("from<T: Mappable> -> [[T]]") {
             it("should map correctly") {
                 let field = ModelWithTwoDArrayProperty.Key.twoDArrayMappableProperty
-                let expectedValue = [[[SubModel.Key.stringProperty.rawValue : ""]]]
-                let dict: NSDictionary = [field.stringValue : expectedValue]
+                let expectedValue = [[[SubModel.Key.stringProperty.rawValue: ""]]]
+                let dict: NSDictionary = [field.stringValue: expectedValue]
                 let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
                 let models: [[SubModel]] = try! mapper.from(field)
 
@@ -93,8 +93,8 @@ class KeyedMapper_MappableSpec: QuickSpec {
         describe("optionalFrom<T: Mappable> -> T?") {
             it("should map correctly") {
                 let field = Model.Key.mappableProperty
-                let expectedValue = [SubModel.Key.stringProperty.stringValue : ""]
-                let dict: NSDictionary = [field.rawValue : expectedValue]
+                let expectedValue = [SubModel.Key.stringProperty.stringValue: ""]
+                let dict: NSDictionary = [field.rawValue: expectedValue]
                 let mapper = KeyedMapper(JSON: dict, type: Model.self)
                 let model: SubModel? = mapper.optionalFrom(field)
 
@@ -105,8 +105,8 @@ class KeyedMapper_MappableSpec: QuickSpec {
         describe("optionalFrom<T: Mappable> -> [T]?") {
             it("should map correctly") {
                 let field = ModelWithArrayProperty.Key.arrayMappableProperty
-                let expectedValue = [[SubModel.Key.stringProperty.stringValue : ""]]
-                let dict: NSDictionary = [field.stringValue : expectedValue]
+                let expectedValue = [[SubModel.Key.stringProperty.stringValue: ""]]
+                let dict: NSDictionary = [field.stringValue: expectedValue]
                 let mapper = KeyedMapper(JSON: dict, type: ModelWithArrayProperty.self)
                 let models: [SubModel]? = mapper.optionalFrom(field)
 
@@ -118,8 +118,8 @@ class KeyedMapper_MappableSpec: QuickSpec {
         describe("optionalFrom<T: Mappable> -> [[T]]?") {
             it("should map correctly") {
                 let field = ModelWithTwoDArrayProperty.Key.twoDArrayMappableProperty
-                let expectedValue = [[[SubModel.Key.stringProperty.stringValue : ""]]]
-                let dict: NSDictionary = [field.stringValue : expectedValue]
+                let expectedValue = [[[SubModel.Key.stringProperty.stringValue: ""]]]
+                let dict: NSDictionary = [field.stringValue: expectedValue]
                 let mapper = KeyedMapper(JSON: dict, type: ModelWithTwoDArrayProperty.self)
                 let models: [[SubModel]]? = mapper.optionalFrom(field)
 

@@ -2,7 +2,7 @@ import Quick
 import Nimble
 @testable import KeyedMapper
 
-fileprivate struct ConvertibleObject: Convertible {
+private struct ConvertibleObject: Convertible {
     fileprivate let stringProperty: String
 
     //MARK: Convertible

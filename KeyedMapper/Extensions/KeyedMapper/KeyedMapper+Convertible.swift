@@ -1,6 +1,6 @@
 import Foundation
 
-public extension KeyedMapper {
+extension KeyedMapper {
     public func from<T: Convertible>(_ field: Object.Key) throws -> T where T == T.ConvertedType {
         return try from(field, transformation: T.fromMap)
     }
