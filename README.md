@@ -143,14 +143,16 @@ extension Object: Mappable {
     }
 }
 
-let JSON: NSDictionary = ["property" : "propertyValue",
-                         "convertibleProperty" : NSTimeZone(forSecondsFromGMT: 0).abbreviation as Any,
-                         "arrayProperty" : ["arrayPropertyValue1", "arrayPropertyValue2"],
-                         "mappableProperty" : ["property" : "propertyValue"],
-                         "defaultConvertibleProperty" : DefaultConvertibleEnum.firstCase.rawValue,
-                         "twoDArrayProperty" : [["twoDArrayPropertyValue1"], ["twoDArrayPropertyValue2"]]]
+let JSON: NSDictionary = [
+    "property" : "propertyValue",
+    "convertibleProperty" : NSTimeZone(forSecondsFromGMT: 0).abbreviation as Any,
+    "arrayProperty" : ["arrayPropertyValue1", "arrayPropertyValue2"],
+    "mappableProperty" : ["property" : "propertyValue"],
+    "defaultConvertibleProperty" : DefaultConvertibleEnum.firstCase.rawValue,
+    "twoDArrayProperty" : [["twoDArrayPropertyValue1"], ["twoDArrayPropertyValue2"]]
+]
 
-let object = try Object.from(dictionary: JSON)
+let object = try Object.from(JSON)
 ```
 
 </details>
@@ -161,19 +163,20 @@ let object = try Object.from(dictionary: JSON)
 ```swift
 extension Object: ReverseMappable {
     func toKeyedJSON() -> [Object.Key : Any?] {
-        return [.property : property,
-                .optionalProperty : optionalProperty,
-                .convertibleProperty : convertibleProperty,
-                .optionalConvertibleProperty : optionalConvertibleProperty,
-                .nilConvertibleProperty : nilConvertibleProperty,
-                .arrayProperty : arrayProperty,
-                .optionalArrayProperty : optionalArrayProperty,
-                .mappableProperty : mappableProperty.toJSON(),
-                .optionalMappableProperty : optionalMappableProperty?.toJSON(),
-                .defaultConvertibleProperty : defaultConvertibleProperty,
-                .optionalDefaultConvertibleProperty : optionalDefaultConvertibleProperty,
-                .twoDArrayProperty : twoDArrayProperty,
-                .optionalTwoDArrayProperty : optionalTwoDArrayProperty
+        return [
+            .property : property,
+            .optionalProperty : optionalProperty,
+            .convertibleProperty : convertibleProperty,
+            .optionalConvertibleProperty : optionalConvertibleProperty,
+            .nilConvertibleProperty : nilConvertibleProperty,
+            .arrayProperty : arrayProperty,
+            .optionalArrayProperty : optionalArrayProperty,
+            .mappableProperty : mappableProperty.toJSON(),
+            .optionalMappableProperty : optionalMappableProperty?.toJSON(),
+            .defaultConvertibleProperty : defaultConvertibleProperty,
+            .optionalDefaultConvertibleProperty : optionalDefaultConvertibleProperty,
+            .twoDArrayProperty : twoDArrayProperty,
+            .optionalTwoDArrayProperty : optionalTwoDArrayProperty
         ]
     }
 }
