@@ -13,16 +13,6 @@ private struct ConvertibleObject: Convertible, Hashable, Equatable {
 
         return ConvertibleObject(stringProperty: string)
     }
-
-    //MARK: Hashable
-    fileprivate var hashValue: Int {
-        return stringProperty.hashValue
-    }
-
-    //MARK: Equatable
-    fileprivate static func == (lhs: ConvertibleObject, rhs: ConvertibleObject) -> Bool {
-        return lhs.stringProperty == rhs.stringProperty
-    }
 }
 
 private struct Model: Mappable {
